@@ -1,7 +1,6 @@
 # load experts' pairwise response
-setwd("/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/Sora Jeong/results/Amazon MTurk expert response/pairwise_Dan_Wali_Nina_all")
-response_d <- read.csv("cowLR_response_Dan.csv", header = TRUE)
-response_w <- read.csv("cowLR_response_Wali.csv", header = TRUE)
+response_d <- read.csv("../results/all_experts/cowLR_response_Dan.csv", header = TRUE)
+response_w <- read.csv("../results/all_experts/cowLR_response_Wali.csv", header = TRUE)
 
 # calculate the SD and mean of each pair
 response <- rbind(response_d, response_w)
@@ -33,24 +32,9 @@ medium_q_sub_sample <- sample_n(medium_q_sub, 5)
 # all sampled questions
 sampled_q <- rbind(easy_q_sample, medium_q_sub_sample)
 
-# add a negative attention check
-#set.seed(70)
-#neg_cow <- sample(sampled_q$cow_L, 1)
-#new_row <- data.frame(
-#  cow_L = neg_cow,  # Replace with the actual value
-#  cow_R = neg_cow,  # Replace with the actual value
-#  response_sd = 0,  # Replace with the actual value
-#  response_mean = 0,  # Replace with the actual value
-#  response_mean_abs = 0  # Replace with the actual value
-#)
-# Add the new row to the data frame
-#sampled_q <- rbind(sampled_q, new_row)
-
-
 # randomly shuffle the rows
 sampled_q <- sample_n(sampled_q, nrow(sampled_q))
 rownames(sampled_q) <- NULL
 
-setwd("/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/Sora Jeong/results/Amazon MTurk expert response")
-write.csv(sampled_q, file = "test_HIT_q.csv", row.names = FALSE)
-write.csv(summary2, file = "all_HIT_answer_wali_dan.csv", row.names = FALSE)
+write.csv(sampled_q, file = "../results/all_experts/test_HIT_q.csv", row.names = FALSE)
+write.csv(summary2, file = "../results/all_experts/all_HIT_answer_wali_dan.csv", row.names = FALSE)

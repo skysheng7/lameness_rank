@@ -10,7 +10,7 @@ exec(open("Create_HTML_click worker_helper.py").read())
 input_dir = './input file'
 output_dir = '../results'
 old_html_dir = '../../04-generate_54HIT_html_experts/results'
-test_q_dir = '../../05-Amazon_MTurk_expert_response_30cow_pairwise/results'
+test_q_dir = '../../05-Amazon_MTurk_expert_response_30cow_pairwise/results/all_experts'
 
 # obtain unique_pair_id from each video pair
 pair_id_record = pd.read_csv(os.path.join(old_html_dir, 'all_HIT_answer.csv'))

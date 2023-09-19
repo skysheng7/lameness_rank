@@ -47,7 +47,7 @@ today = date.today().strftime("%b-%d-%Y")
 
 input_dir = "../../04-generate_54HIT_html_experts/results"
 key_dir ='/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/data/Amazon MTurk'
-output_dir = "../results"
+output_dir = "../results/RD" # this can be "../results/DW", "../results/WS", "../results/HE" depending on different worker
 
 
 """
@@ -143,10 +143,10 @@ for index, row in master_submitted_tasks_tracker.iterrows():
 
 
 # Save DataFrames to CSV files
-master_worker_response_tracker.to_csv(os.path.join(output_dir, ('master_worker_response_tracker_Nina_' + today + '.csv')), index=False)
-master_approved_responses.to_csv(os.path.join(output_dir, ('master_approved_responses_Nina_' + today + '.csv')), index=False)
-master_rejected_responses.to_csv(os.path.join(output_dir, ('master_rejected_responses_Nina_' + today + '.csv')), index=False)
-master_all_responses.to_csv(os.path.join(output_dir, ('master_all_responses_Nina_' + today + '.csv')), index=False)
+master_worker_response_tracker.to_csv(os.path.join(output_dir, ('master_worker_response_tracke_' + today + '.csv')), index=False)
+master_approved_responses.to_csv(os.path.join(output_dir, ('master_approved_responses_' + today + '.csv')), index=False)
+master_rejected_responses.to_csv(os.path.join(output_dir, ('master_rejected_responses_' + today + '.csv')), index=False)
+master_all_responses.to_csv(os.path.join(output_dir, ('master_all_responses_' + today + '.csv')), index=False)
 
 
 
@@ -259,6 +259,7 @@ for index, row in unsubmitted_master_submitted_tasks_tracker.iterrows():
 #### merge response collected from the same expert from multiple days #########
 ###############################################################################
 """   
+output_dir = "../results/all_experts"
 
 # Dan: 
 merge_responses(["May-14-2023", "May-16-2023", "May-17-2023", "May-18-2023"], 'A10892I86DG5PR', 'Dan', output_dir)
