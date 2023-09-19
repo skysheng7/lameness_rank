@@ -1,0 +1,71 @@
+                <div class="question" id="question${cur_question}">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (${total_q_num} questions)</div>
+                    
+                    <div class="questionTitle" style="margin-top: 2%;" >Question ${cur_question} of ${total_q_num}</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="${video1}" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="${video2}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                            
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q${cur_question}" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+                            
+            
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q${cur_question}" value="-2" required >
+                            </div>
+            
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q${cur_question}" value="-1" required>
+                            </div>
+            
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q${cur_question}" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+                            
+            
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q${cur_question}" value="1" required>
+                            </div>
+            
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q${cur_question}" value="2" required>
+                            </div>
+            
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q${cur_question}" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q${cur_question}" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+                        
+                    </fieldset>
+
+                </div>

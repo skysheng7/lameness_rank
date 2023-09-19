@@ -1,0 +1,323 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+    <HTMLContent><![CDATA[
+<!DOCTYPE html>
+<head>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        
+        .sidebarInstruction {
+            color: #333333;
+            font-family: 'Merriweather', serif;
+        }
+
+        .sidebarTitle {
+            margin-top: 16px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .sidebarContent {
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .question {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .questionTitle {
+            font-size: 20px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .questionDescription {
+            font-family: 'Merriweather', serif;
+        }
+
+        .questionVideos {
+            display: flex;
+            width: 100%;
+            margin: auto;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .videoContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bubblesContainer {
+                width: 100%;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+        }
+
+        @media screen and (max-width: 399px){
+            .root {
+                min-width: 640px;
+                max-width: 640px;
+            }
+
+            .videoContainer video {
+                width: auto;
+                height: 120px;
+            }
+        }
+
+        @media screen and (max-width: 1024px){
+            .root {
+                width: 80%;
+                margin: auto;
+            }
+
+            .videoContainer video {
+                width: 360px;
+                height: auto;
+            }
+        }
+
+        @media screen and (min-width: 1025px){
+            .root {
+                width: 80%;
+                margin: auto;
+            }
+
+            .videoContainer video {
+                width: auto;
+                height: 320px;
+            }
+        }
+        
+        .flipped_video {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+        }
+
+        fieldset {
+            width: 100%;
+            border: none;
+            margin: auto;
+        }
+
+        
+
+        .radioLabel {
+            margin-top: 6px;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .column_bubble {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 36px;
+            width: 36px;
+        }
+
+        .radioBubble:focus {
+            outline: none;
+        }
+
+        .bubble_button1 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #1851a7;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 90%;
+            width: 90%;
+        }
+
+        .bubble_button1:checked {
+            background-color: #1851a7;
+        }
+
+        .bubble_button2 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #5178b3;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 80%;
+            width: 80%;
+        }
+
+        .bubble_button2:checked {
+            background-color: #5178b3;
+        }
+
+        .bubble_button3 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #8ba2c5;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 70%;
+            width: 70%;
+        }
+
+        .bubble_button3:checked {
+            background-color: #8ba2c5;
+        }
+
+        .bubble_button4 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #ccc;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 60%;
+            width: 60%;
+        }
+
+        .bubble_button4:checked {
+            background-color: #ccc;
+        }
+
+        .bubble_button5 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #dac584;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 70%;
+            width: 70%;
+        }
+
+        .bubble_button5:checked {
+            background-color: #dac584;
+        }
+
+        .bubble_button6 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #d3b44e;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 80%;
+            width: 80%;
+        }
+
+        .bubble_button6:checked {
+            background-color: #d3b44e;
+        }
+
+        .bubble_button7 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #cea008;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 90%;
+            width: 90%;
+        }
+
+        .bubble_button7:checked {
+            background-color: #cea008;
+        }
+
+        .errorRadioContainer {
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .buttonContainer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        crowd-button {
+            margin-top: 10px;
+        }
+
+        crowd-button span{
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="root">
+    
+        <crowd-form style="width: 100%;">
+            
+                <!-- <crowd-instructions link-text="View instructions" link-type="button">
+                    <short-instructions class="sidebarInstruction">
+                        <div class="sidebarTitle">Which cow is more lame? (${total_q_num} questions)</div>
+                        <div class="sidebarContent">Read the task carefully and inspect the videos.</div>
+                        <div class="sidebarContent">There are ${total_q_num} questions in this task. Please use the "Next Question" and "Previous Question" buttons to navigate between questions. You would only be able to submit this HIT after all ${total_q_num} questions are answered. Watch video pairs of two cows walking at the same time and label which cow walks with more difficulty. Use colored button to identify which cow looks more lame.
+                        </div>
+                    </short-instructions>
+                
+                    <full-instructions>
+                        <div class="sidebarContent">There are ${total_q_num} questions in this task. Please use the "Next" and "Previous" button to navigate between questions. Watch video pairs of two cows walking at the same time and label which cow walks with more difficulty. Use colored button to identify which cow looks more lame.
+                        </div>
+                    </full-instructions>
+                </crowd-instructions> -->
+
+
+                <div class="question" id="Statement">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (${total_q_num} questions)</div>
+                    
+                    <div class="questionDescription" style="margin-top: 2%;">
+                        <p><strong style="font-size: 1.2em;">Thank you</strong> so much for working on this task! We are a team of scientists from an animal welfare research lab, 
+                            dedicated to improving the welfare of dairy cows. Your work is highly valuable in helping us identify a condition
+                             called lameness in dairy cows. The cows and us would appreciate your attention while completing this task!</p>
+
+                        <p><strong style="font-size: 1.2em;">Work approval and rejection criteria:</strong> This task must be completed on a laptop, desktop computer, or a tablet, 
+                            you cannot proceed to complete this task if you are not working on one of these devices. This task includes attention 
+                            checks to ensure quality. Failure to pass these checks will result in rejection of your work. If you complete the task 
+                            with high quality and accuracy, you will be granted qualification to future tasks of a similar nature.</p>
+
+
+                    </div>
+                    
+
+                </div>
