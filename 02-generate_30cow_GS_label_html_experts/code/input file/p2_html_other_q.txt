@@ -1,0 +1,32 @@
+                <div class="question" id="question${cur_question}">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (${total_q_num} questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question ${cur_question} of ${total_q_num}</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="${video1}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q${cur_question}" value="1" required> 1</label>
+                            <label><input type="radio" name="q${cur_question}" value="2" required> 2</label>
+                            <label><input type="radio" name="q${cur_question}" value="3" required> 3</label>
+                            <label><input type="radio" name="q${cur_question}" value="4" required> 4</label>
+                            <label><input type="radio" name="q${cur_question}" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q${cur_question}" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+

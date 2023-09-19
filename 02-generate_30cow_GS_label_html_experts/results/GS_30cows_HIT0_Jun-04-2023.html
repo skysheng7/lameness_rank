@@ -1,0 +1,1411 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+    <HTMLContent><![CDATA[
+<!DOCTYPE html>
+<head>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        
+        .sidebarInstruction {
+            color: #333333;
+            font-family: 'Merriweather', serif;
+        }
+
+        .sidebarTitle {
+            margin-top: 16px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .sidebarContent {
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .question {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .questionTitle {
+            font-size: 20px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .questionDescription {
+            font-family: 'Merriweather', serif;
+        }
+
+
+        .questionVideos {
+            display: flex;
+            justify-content: center; /* center items horizontally */
+            width: 100%;
+            margin: auto;
+        }
+
+        .videoContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bubblesContainer {
+                width: 100%;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+        }
+
+        @media screen and (max-width: 399px){
+            .root {
+                min-width: 640px;
+                max-width: 640px;
+            }
+
+            .videoContainer video {
+                width: auto;
+                height: 120px;
+            }
+        }
+
+        @media screen and (max-width: 1024px){
+            .root {
+                width: 80%;
+                margin: auto;
+            }
+
+            .videoContainer video {
+                width: 400px;
+                height: auto;
+            }
+        }
+
+        @media screen and (min-width: 1025px){
+            .root {
+                width: 80%;
+                margin: auto;
+            }
+
+            .videoContainer video {
+                width: auto;
+                height: 400px;
+            }
+        }
+        
+        .flipped_video {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+        }
+
+        fieldset {
+            width: 100%;
+            border: none;
+            margin: auto;
+        }
+
+        
+
+        .radioLabel {
+            margin-top: 6px;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .column_bubble {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 36px;
+            width: 36px;
+        }
+
+        .radioBubble:focus {
+            outline: none;
+        }
+
+
+        .errorRadioContainer {
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .buttonContainer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        crowd-button {
+            margin-top: 10px;
+        }
+
+        crowd-button span{
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .gaitScoreContainer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .gaitScoreContainer label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .errorRadioContainer {
+            display: flex;
+            justify-content: center;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .errorRadioContainer label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Merriweather', serif;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="root">
+    
+        <crowd-form style="width: 100%;">
+            
+                <!-- <crowd-instructions link-text="View instructions" link-type="button">
+                    <short-instructions class="sidebarInstruction">
+                        <div class="sidebarTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                        <div class="sidebarContent">There are 30 questions in this task. Please use the "Next Question" and "Previous Question" buttons to navigate between questions. You would only be able to submit this HIT after all 30 questions are answered. Watch videos of cow walking to assess gaitscore on 5 level scale.
+                        </div>
+                    </short-instructions>
+                
+                    <full-instructions>
+                        <div class="sidebarContent">There are 30 questions in this task. Please use the "Next Question" and "Previous Question" buttons to navigate between questions. You would only be able to submit this HIT after all 30 questions are answered. Watch videos of cow walking to assess gaitscore on 5 level scale.
+                        </div>
+                    </full-instructions>
+                </crowd-instructions> -->
+
+
+                <div class="question" id="Statement">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                    
+                    <div class="questionDescription" style="margin-top: 2%;">
+                            <p>
+                                <strong style="font-size: 1.2em;">Thank you</strong> so much for working on this task! We are a team of scientists from an animal welfare research lab, 
+                                dedicated to improving the welfare of dairy cows. Your work is highly valuable in helping us identify a condition
+                                called lameness in dairy cows.
+                            </p>
+
+                            <p>
+                                <strong style="font-size: 1.2em;">Work approval and rejection criteria:</strong> 
+                            </p>
+                        <ul>
+                            <li> Must work on a laptop, desktop computer, or a tablet.</li>
+                            <li> Failure to pass attention checks will result in rejection of your work. </li>
+                            <li> You will be granted qualification to future tasks of a similar nature if your work is of high quality.</li>
+                        </ul>
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="question" id="question1">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                    
+                    <div class="questionDescription" style="margin-top: 2%;">
+                        <ul>
+                            <li>Use the "Next Question" and "Previous Question" buttons to navigate between questions.</li>
+                            <li>HIT can only be submitted after all 30 questions are answered.</li>
+                            <li>Assess the gait score of each cow on a 5 level scale.</li>
+                        </ul>
+                    </div>
+
+                    
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 1 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_130521_am_MVI_0162_short_30_7045.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q1" value="1" required> 1</label>
+                            <label><input type="radio" name="q1" value="2" required> 2</label>
+                            <label><input type="radio" name="q1" value="3" required> 3</label>
+                            <label><input type="radio" name="q1" value="4" required> 4</label>
+                            <label><input type="radio" name="q1" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q1" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question2">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 2 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_280521_pm_MVI_0180_short_27_5087.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q2" value="1" required> 1</label>
+                            <label><input type="radio" name="q2" value="2" required> 2</label>
+                            <label><input type="radio" name="q2" value="3" required> 3</label>
+                            <label><input type="radio" name="q2" value="4" required> 4</label>
+                            <label><input type="radio" name="q2" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q2" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question3">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 3 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_040621_pm_MVI_0188_short_20_6046.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q3" value="1" required> 1</label>
+                            <label><input type="radio" name="q3" value="2" required> 2</label>
+                            <label><input type="radio" name="q3" value="3" required> 3</label>
+                            <label><input type="radio" name="q3" value="4" required> 4</label>
+                            <label><input type="radio" name="q3" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q3" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question4">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 4 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_040621_am_MVI_0183_short_1_7138.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q4" value="1" required> 1</label>
+                            <label><input type="radio" name="q4" value="2" required> 2</label>
+                            <label><input type="radio" name="q4" value="3" required> 3</label>
+                            <label><input type="radio" name="q4" value="4" required> 4</label>
+                            <label><input type="radio" name="q4" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q4" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question5">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 5 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_280521_pm_MVI_0180_short_31_6068.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q5" value="1" required> 1</label>
+                            <label><input type="radio" name="q5" value="2" required> 2</label>
+                            <label><input type="radio" name="q5" value="3" required> 3</label>
+                            <label><input type="radio" name="q5" value="4" required> 4</label>
+                            <label><input type="radio" name="q5" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q5" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question6">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 6 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_130521_am_MVI_0162_short_19_6029.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q6" value="1" required> 1</label>
+                            <label><input type="radio" name="q6" value="2" required> 2</label>
+                            <label><input type="radio" name="q6" value="3" required> 3</label>
+                            <label><input type="radio" name="q6" value="4" required> 4</label>
+                            <label><input type="radio" name="q6" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q6" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question7">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 7 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_040621_am_MVI_0183_short_8_7064.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q7" value="1" required> 1</label>
+                            <label><input type="radio" name="q7" value="2" required> 2</label>
+                            <label><input type="radio" name="q7" value="3" required> 3</label>
+                            <label><input type="radio" name="q7" value="4" required> 4</label>
+                            <label><input type="radio" name="q7" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q7" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question8">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 8 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_280521_am_MVI_0178_short_51_6095.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q8" value="1" required> 1</label>
+                            <label><input type="radio" name="q8" value="2" required> 2</label>
+                            <label><input type="radio" name="q8" value="3" required> 3</label>
+                            <label><input type="radio" name="q8" value="4" required> 4</label>
+                            <label><input type="radio" name="q8" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q8" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question9">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 9 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_110621_am_MVI_0192_short_22_6086.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q9" value="1" required> 1</label>
+                            <label><input type="radio" name="q9" value="2" required> 2</label>
+                            <label><input type="radio" name="q9" value="3" required> 3</label>
+                            <label><input type="radio" name="q9" value="4" required> 4</label>
+                            <label><input type="radio" name="q9" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q9" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question10">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 10 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_110621_am_MVI_0191_short_10_6062.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q10" value="1" required> 1</label>
+                            <label><input type="radio" name="q10" value="2" required> 2</label>
+                            <label><input type="radio" name="q10" value="3" required> 3</label>
+                            <label><input type="radio" name="q10" value="4" required> 4</label>
+                            <label><input type="radio" name="q10" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q10" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question11">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 11 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_300421_pm_MVI_0157_short_46_6096.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q11" value="1" required> 1</label>
+                            <label><input type="radio" name="q11" value="2" required> 2</label>
+                            <label><input type="radio" name="q11" value="3" required> 3</label>
+                            <label><input type="radio" name="q11" value="4" required> 4</label>
+                            <label><input type="radio" name="q11" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q11" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question12">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 12 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_110621_am_MVI_0193_short_26_5064.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q12" value="1" required> 1</label>
+                            <label><input type="radio" name="q12" value="2" required> 2</label>
+                            <label><input type="radio" name="q12" value="3" required> 3</label>
+                            <label><input type="radio" name="q12" value="4" required> 4</label>
+                            <label><input type="radio" name="q12" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q12" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question13">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 13 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_040621_pm_MVI_0189_short_41_7116.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q13" value="1" required> 1</label>
+                            <label><input type="radio" name="q13" value="2" required> 2</label>
+                            <label><input type="radio" name="q13" value="3" required> 3</label>
+                            <label><input type="radio" name="q13" value="4" required> 4</label>
+                            <label><input type="radio" name="q13" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q13" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question14">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 14 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_110621_am_MVI_0193_short_23_7136.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q14" value="1" required> 1</label>
+                            <label><input type="radio" name="q14" value="2" required> 2</label>
+                            <label><input type="radio" name="q14" value="3" required> 3</label>
+                            <label><input type="radio" name="q14" value="4" required> 4</label>
+                            <label><input type="radio" name="q14" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q14" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question15">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 15 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_010421_MVI_0114_short_18_7128.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q15" value="1" required> 1</label>
+                            <label><input type="radio" name="q15" value="2" required> 2</label>
+                            <label><input type="radio" name="q15" value="3" required> 3</label>
+                            <label><input type="radio" name="q15" value="4" required> 4</label>
+                            <label><input type="radio" name="q15" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q15" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question16">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 16 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_280521_am_MVI_0178_short_47_4035.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q16" value="1" required> 1</label>
+                            <label><input type="radio" name="q16" value="2" required> 2</label>
+                            <label><input type="radio" name="q16" value="3" required> 3</label>
+                            <label><input type="radio" name="q16" value="4" required> 4</label>
+                            <label><input type="radio" name="q16" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q16" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question17">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 17 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_090421_pm_MVI_0125_short_8_4026.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q17" value="1" required> 1</label>
+                            <label><input type="radio" name="q17" value="2" required> 2</label>
+                            <label><input type="radio" name="q17" value="3" required> 3</label>
+                            <label><input type="radio" name="q17" value="4" required> 4</label>
+                            <label><input type="radio" name="q17" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q17" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question18">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 18 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_040621_pm_MVI_0189_short_34_6094.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q18" value="1" required> 1</label>
+                            <label><input type="radio" name="q18" value="2" required> 2</label>
+                            <label><input type="radio" name="q18" value="3" required> 3</label>
+                            <label><input type="radio" name="q18" value="4" required> 4</label>
+                            <label><input type="radio" name="q18" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q18" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question19">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 19 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_010421_MVI_0114_short_12_6025.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q19" value="1" required> 1</label>
+                            <label><input type="radio" name="q19" value="2" required> 2</label>
+                            <label><input type="radio" name="q19" value="3" required> 3</label>
+                            <label><input type="radio" name="q19" value="4" required> 4</label>
+                            <label><input type="radio" name="q19" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q19" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question20">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 20 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_110621_am_MVI_0193_short_31_6053.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q20" value="1" required> 1</label>
+                            <label><input type="radio" name="q20" value="2" required> 2</label>
+                            <label><input type="radio" name="q20" value="3" required> 3</label>
+                            <label><input type="radio" name="q20" value="4" required> 4</label>
+                            <label><input type="radio" name="q20" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q20" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question21">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 21 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_210521_pm_MVI_0175_short_37_8083.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q21" value="1" required> 1</label>
+                            <label><input type="radio" name="q21" value="2" required> 2</label>
+                            <label><input type="radio" name="q21" value="3" required> 3</label>
+                            <label><input type="radio" name="q21" value="4" required> 4</label>
+                            <label><input type="radio" name="q21" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q21" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question22">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 22 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_280521_am_MVI_0176_short_17_4008.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q22" value="1" required> 1</label>
+                            <label><input type="radio" name="q22" value="2" required> 2</label>
+                            <label><input type="radio" name="q22" value="3" required> 3</label>
+                            <label><input type="radio" name="q22" value="4" required> 4</label>
+                            <label><input type="radio" name="q22" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q22" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question23">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 23 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_280521_am_MVI_0177_short_31_7114.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q23" value="1" required> 1</label>
+                            <label><input type="radio" name="q23" value="2" required> 2</label>
+                            <label><input type="radio" name="q23" value="3" required> 3</label>
+                            <label><input type="radio" name="q23" value="4" required> 4</label>
+                            <label><input type="radio" name="q23" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q23" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question24">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 24 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_070521_am_MVI_0003_short_14_7109.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q24" value="1" required> 1</label>
+                            <label><input type="radio" name="q24" value="2" required> 2</label>
+                            <label><input type="radio" name="q24" value="3" required> 3</label>
+                            <label><input type="radio" name="q24" value="4" required> 4</label>
+                            <label><input type="radio" name="q24" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q24" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question25">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 25 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_040621_pm_MVI_0187_short_11_6088.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q25" value="1" required> 1</label>
+                            <label><input type="radio" name="q25" value="2" required> 2</label>
+                            <label><input type="radio" name="q25" value="3" required> 3</label>
+                            <label><input type="radio" name="q25" value="4" required> 4</label>
+                            <label><input type="radio" name="q25" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q25" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question26">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 26 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_070521_pm_MVI_0159_short_22_5118.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q26" value="1" required> 1</label>
+                            <label><input type="radio" name="q26" value="2" required> 2</label>
+                            <label><input type="radio" name="q26" value="3" required> 3</label>
+                            <label><input type="radio" name="q26" value="4" required> 4</label>
+                            <label><input type="radio" name="q26" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q26" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question27">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 27 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_210521_pm_MVI_0174_short_24_7163.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q27" value="1" required> 1</label>
+                            <label><input type="radio" name="q27" value="2" required> 2</label>
+                            <label><input type="radio" name="q27" value="3" required> 3</label>
+                            <label><input type="radio" name="q27" value="4" required> 4</label>
+                            <label><input type="radio" name="q27" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q27" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question28">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 28 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_110621_am_MVI_0192_short_17_6092.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q28" value="1" required> 1</label>
+                            <label><input type="radio" name="q28" value="2" required> 2</label>
+                            <label><input type="radio" name="q28" value="3" required> 3</label>
+                            <label><input type="radio" name="q28" value="4" required> 4</label>
+                            <label><input type="radio" name="q28" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q28" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question29">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 29 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_040621_pm_MVI_0188_short_33_7060.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q29" value="1" required> 1</label>
+                            <label><input type="radio" name="q29" value="2" required> 2</label>
+                            <label><input type="radio" name="q29" value="3" required> 3</label>
+                            <label><input type="radio" name="q29" value="4" required> 4</label>
+                            <label><input type="radio" name="q29" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q29" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="question30">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (30 questions)</div>
+                                
+                    <div class="questionTitle" style="margin-top: 2%;">Question 30 of 30</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://skyshengtest1.s3.us-west-2.amazonaws.com/ubc_phase2/compressed_040621_am_MVI_0183_short_4_7153.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <div class="gaitScoreContainer" style="margin-top: 2%;">
+                            <label><input type="radio" name="q30" value="1" required> 1</label>
+                            <label><input type="radio" name="q30" value="2" required> 2</label>
+                            <label><input type="radio" name="q30" value="3" required> 3</label>
+                            <label><input type="radio" name="q30" value="4" required> 4</label>
+                            <label><input type="radio" name="q30" value="5" required> 5</label>
+                        </div>
+        
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <label><input type="radio" name="q30" value="video not playing"> The video is not showing.</label>
+                        </div>
+                                            
+                    </fieldset>
+
+
+                </div>
+
+
+
+                <div class="question" id="feedback">
+                    <div class="questionDescription" style="margin-top: 2%;">
+                        <p><strong style="font-size: 1.2em;">Contact: </strong> You are welcome to contact us if you have any feedback 
+                        and suggestions about this HIT. You are also encouraged to email us if your work is rejected but you paid close 
+                        attention when completing this HIT and want to be paid. Email: <strong><u> skysheng0306@gmail.com</u> </strong> </p>
+
+                    </div>
+                    
+
+                </div>
+
+
+
+
+    <div class="buttonContainer" style="margin-top: 2%;">
+                    <crowd-button onclick="getPrevious()" class="controlBtn">
+                        <span>Previous Question</span>
+                    </crowd-button>
+                    <crowd-button onclick="getNext()" class="controlBtn">
+                        <span>Next Question</span>
+                    </crowd-button>
+                </div>
+            
+
+        </crowd-form>
+    </div> 
+
+    <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+    <script>
+        const statement = document.getElementById("Statement")
+        const question1 = document.getElementById("question1")
+const question2 = document.getElementById("question2")
+const question3 = document.getElementById("question3")
+const question4 = document.getElementById("question4")
+const question5 = document.getElementById("question5")
+const question6 = document.getElementById("question6")
+const question7 = document.getElementById("question7")
+const question8 = document.getElementById("question8")
+const question9 = document.getElementById("question9")
+const question10 = document.getElementById("question10")
+const question11 = document.getElementById("question11")
+const question12 = document.getElementById("question12")
+const question13 = document.getElementById("question13")
+const question14 = document.getElementById("question14")
+const question15 = document.getElementById("question15")
+const question16 = document.getElementById("question16")
+const question17 = document.getElementById("question17")
+const question18 = document.getElementById("question18")
+const question19 = document.getElementById("question19")
+const question20 = document.getElementById("question20")
+const question21 = document.getElementById("question21")
+const question22 = document.getElementById("question22")
+const question23 = document.getElementById("question23")
+const question24 = document.getElementById("question24")
+const question25 = document.getElementById("question25")
+const question26 = document.getElementById("question26")
+const question27 = document.getElementById("question27")
+const question28 = document.getElementById("question28")
+const question29 = document.getElementById("question29")
+const question30 = document.getElementById("question30")
+        const feedback = document.getElementById("feedback")
+
+        const questions = [
+            statement,
+            question1,
+question2,
+question3,
+question4,
+question5,
+question6,
+question7,
+question8,
+question9,
+question10,
+question11,
+question12,
+question13,
+question14,
+question15,
+question16,
+question17,
+question18,
+question19,
+question20,
+question21,
+question22,
+question23,
+question24,
+question25,
+question26,
+question27,
+question28,
+question29,
+question30,
+            feedback
+        ]
+
+        let counter = 0;
+        const numQuestions = 32;
+
+        for(let i = 0; i < numQuestions; i++){
+            questions[i].style.display = i === counter ? "flex" : "none"
+        }
+
+    function isMobileDevice() {
+        var isMobile = {
+            Android: function () { return navigator.userAgent.match(/Android/i); },
+            BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); },
+            iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+            Opera: function () { return navigator.userAgent.match(/Opera Mini/i); },
+            Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
+            any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
+        };
+
+        return isMobile.any();
+    }
+
+    function isBot() {
+        const botCheckInput = document.getElementById("bCheck");
+        return botCheckInput.value !== "";
+    }
+
+
+    function getNext() {
+
+        if (counter == 0 && isMobileDevice()) {
+            alert('This HIT must be accomplished on PC/tablet/laptop. Please quit this HIT now because you are using a mobile device.');
+            return;
+        } else {
+            if (counter < numQuestions - 1) {
+                counter++;
+                for (let i = 0; i < numQuestions; i++) {
+                    questions[i].style.display = i === counter ? "flex" : "none";
+                }
+            }
+        }
+    }
+
+    function getIpAddress() {
+        fetch('https://api.ipify.org?format=json')
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById('worker_ip').value = data.ip + '-' + isBot();
+            })
+            .catch((error) => {
+                console.error('Error fetching IP address:', error);
+            });
+    }
+
+    window.addEventListener('load', getIpAddress);
+
+    function getPrevious() {
+            if (counter > 0) { 
+                counter--;
+                for(let i = 0; i < numQuestions; i++){
+                    questions[i].style.display = i === counter ? "flex" : "none"
+                }
+            }
+    }
+
+    </script>
+
+</body>
+
+</html>
+]]></HTMLContent>
+<FrameHeight>0</FrameHeight>
+</HTMLQuestion>

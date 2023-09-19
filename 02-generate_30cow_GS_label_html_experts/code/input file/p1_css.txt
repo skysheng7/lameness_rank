@@ -1,0 +1,244 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+    <HTMLContent><![CDATA[
+<!DOCTYPE html>
+<head>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        
+        .sidebarInstruction {
+            color: #333333;
+            font-family: 'Merriweather', serif;
+        }
+
+        .sidebarTitle {
+            margin-top: 16px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .sidebarContent {
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .question {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .questionTitle {
+            font-size: 20px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .questionDescription {
+            font-family: 'Merriweather', serif;
+        }
+
+
+        .questionVideos {
+            display: flex;
+            justify-content: center; /* center items horizontally */
+            width: 100%;
+            margin: auto;
+        }
+
+        .videoContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bubblesContainer {
+                width: 100%;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+        }
+
+        @media screen and (max-width: 399px){
+            .root {
+                min-width: 640px;
+                max-width: 640px;
+            }
+
+            .videoContainer video {
+                width: auto;
+                height: 120px;
+            }
+        }
+
+        @media screen and (max-width: 1024px){
+            .root {
+                width: 80%;
+                margin: auto;
+            }
+
+            .videoContainer video {
+                width: 400px;
+                height: auto;
+            }
+        }
+
+        @media screen and (min-width: 1025px){
+            .root {
+                width: 80%;
+                margin: auto;
+            }
+
+            .videoContainer video {
+                width: auto;
+                height: 400px;
+            }
+        }
+        
+        .flipped_video {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+        }
+
+        fieldset {
+            width: 100%;
+            border: none;
+            margin: auto;
+        }
+
+        
+
+        .radioLabel {
+            margin-top: 6px;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .column_bubble {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 36px;
+            width: 36px;
+        }
+
+        .radioBubble:focus {
+            outline: none;
+        }
+
+
+        .errorRadioContainer {
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .buttonContainer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        crowd-button {
+            margin-top: 10px;
+        }
+
+        crowd-button span{
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .gaitScoreContainer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .gaitScoreContainer label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .errorRadioContainer {
+            display: flex;
+            justify-content: center;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .errorRadioContainer label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Merriweather', serif;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="root">
+    
+        <crowd-form style="width: 100%;">
+            
+                <!-- <crowd-instructions link-text="View instructions" link-type="button">
+                    <short-instructions class="sidebarInstruction">
+                        <div class="sidebarTitle">What is the gait score of this cow on a 5 level scale? (${total_q_num} questions)</div>
+                        <div class="sidebarContent">There are ${total_q_num} questions in this task. Please use the "Next Question" and "Previous Question" buttons to navigate between questions. You would only be able to submit this HIT after all ${total_q_num} questions are answered. Watch videos of cow walking to assess gaitscore on 5 level scale.
+                        </div>
+                    </short-instructions>
+                
+                    <full-instructions>
+                        <div class="sidebarContent">There are ${total_q_num} questions in this task. Please use the "Next Question" and "Previous Question" buttons to navigate between questions. You would only be able to submit this HIT after all ${total_q_num} questions are answered. Watch videos of cow walking to assess gaitscore on 5 level scale.
+                        </div>
+                    </full-instructions>
+                </crowd-instructions> -->
+
+
+                <div class="question" id="Statement">
+                    <div class="questionTitle">What is the gait score of this cow on a 5 level scale? (${total_q_num} questions)</div>
+                    
+                    <div class="questionDescription" style="margin-top: 2%;">
+                            <p>
+                                <strong style="font-size: 1.2em;">Thank you</strong> so much for working on this task! We are a team of scientists from an animal welfare research lab, 
+                                dedicated to improving the welfare of dairy cows. Your work is highly valuable in helping us identify a condition
+                                called lameness in dairy cows.
+                            </p>
+
+                            <p>
+                                <strong style="font-size: 1.2em;">Work approval and rejection criteria:</strong> 
+                            </p>
+                        <ul>
+                            <li> Must work on a laptop, desktop computer, or a tablet.</li>
+                            <li> Failure to pass attention checks will result in rejection of your work. </li>
+                            <li> You will be granted qualification to future tasks of a similar nature if your work is of high quality.</li>
+                        </ul>
+                    </div>
+
+                    
+
+                </div>
