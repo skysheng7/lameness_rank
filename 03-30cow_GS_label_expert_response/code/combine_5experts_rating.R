@@ -1,21 +1,18 @@
 library(lubridate)
 library(irr)
-setwd("/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/results/30_cow_gs_HIT_launch")
-#setwd("C:/Users/skysheng/OneDrive - The University Of British Columbia/University of British Columbia/Research/PhD Project/Amazon project phase 2/results/30_cow_gs_HIT_launch")
-gs_p1 <- read.csv("gs_response_Jul-24-2023.csv", header = TRUE)
-gs_p2 <- read.csv("gs_response_Wali_Jul-10-2023.csv", header = TRUE)
-gs_p3 <- read.csv("gs_response_Wali_Jul-14-2023.csv", header = TRUE)
-gs_p4 <- read.csv("gs_response_Wali_Jul-18-2023.csv", header = TRUE)
-gs_p5 <- read.csv("gs_response_Sep-10-2023.csv", header = TRUE)
+gs_p1 <- read.csv("../results/gs_response_Aug-12-2023.csv", header = TRUE)
+gs_p2 <- read.csv("../results/gs_response_Wali_Jul-10-2023.csv", header = TRUE)
+gs_p3 <- read.csv("../results/gs_response_Wali_Jul-14-2023.csv", header = TRUE)
+gs_p4 <- read.csv("../results/gs_response_Wali_Jul-18-2023.csv", header = TRUE)
+gs_p5 <- read.csv("../results/gs_response_Sep-10-2023.csv", header = TRUE)
 
 gs <- rbind(gs_p1, gs_p2)
 gs <- rbind(gs, gs_p3)
 gs <- rbind(gs, gs_p4)
 gs <- rbind(gs, gs_p5)
 
-# load in the data
-setwd("C:/Users/skysheng/OneDrive - The University Of British Columbia/University of British Columbia/Research/PhD Project/Amazon project phase 2/data/expert_response")
-winner_loser_Dan <- read.csv("winner_loser_Dan.csv", header = TRUE, sep = ",")
+# remove worker "SB" as she used a different lameness assessment method than the other workers
+gs <- gs[which(gs$Worker_id != "SB"),]
 
 ######################## GS average processing #################################
 # take the avearge across all experts for each cow
@@ -53,6 +50,8 @@ for (i in seq_along(workers)) {
 
 # Combine the worker IDs and ICC values into a data frame
 icc_df <- data.frame(Worker_id = workers, ICC = icc_values)
+icc_mean <- mean(icc_df$ICC)
+icc_sd <- sd(icc_df$ICC)
 
 ###################### interobserver reliability ###############################
 gs_retain2 <- gs[which(gs$GS_round == 1),]
@@ -62,9 +61,8 @@ gs_retain2 <- gs_retain2[, c("Cow", "Worker_id", "GS")]
 worker_data_wide_inter <- reshape(gs_retain2, idvar = c("Cow"), timevar = "Worker_id", direction = "wide")
 # Calculate the ICC for the current worker
 icc_result_inter <- icc(worker_data_wide_inter[, 2:ncol(worker_data_wide_inter)],model = "twoway", type = "agreement", unit = "single")
-icc_values_inter <- icc_result_inter$value  # 0.4529184
+icc_values_inter <- icc_result_inter$value  # 0.47
 
-setwd("C:/Users/skysheng/OneDrive - The University Of British Columbia/University of British Columbia/Research/PhD Project/Amazon project phase 2/results/30_cow_gs_HIT_launch")
-write.csv(gs, file = "gs_response_combined_Sep-10-2023.csv")
-write.csv(gs_avg, file = "gs_response_combined_avg_Sep-10-2023.csv")
-write.csv(icc_df, file = "intraobserver_reliability_Sep-10-2023.csv")
+write.csv(gs, file = "../results/gs_response_combined.csv")
+write.csv(gs_avg, file = "../results/gs_response_combined_avg.csv")
+write.csv(icc_df, file = "../results/intraobserver_reliability.csv")
