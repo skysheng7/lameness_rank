@@ -23,7 +23,7 @@ winner_loser_degree_replct <- replicate_row_df(winner_loser)
 ################################################################################
 # handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
 winn_loser_processed <- swap_winner_loser(winner_loser, FALSE)
-click_worker_experts <- random_elo_steep(winn_loser_processed, gs_record2, output_dir, "", "experts", gs_record2)
+click_worker_experts <- random_elo_steep(winn_loser_processed, gs_record2, output_dir, "all", "experts", gs_record2)
 
 ################################################################################
 ########################## take degree into consideration + ####################

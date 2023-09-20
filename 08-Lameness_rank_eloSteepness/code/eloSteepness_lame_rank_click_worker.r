@@ -60,7 +60,7 @@ min_worker_num <- min(count_worker_per_pair_sampled$worker_num)
 ################################################################################
 # handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
 winn_loser_processed <- swap_winner_loser(winner_loser, FALSE)
-click_worker_experts <- random_elo_steep(winn_loser_processed, expert_eloSteep, output_dir, "", "click_worker", gs_record2)
+click_worker_experts <- random_elo_steep(winn_loser_processed, expert_eloSteep, output_dir, "all", "click_worker", gs_record2)
 
 ################################################################################
 ################# sample same number of worker per pair ########################

@@ -211,7 +211,7 @@ random_elo_steep <- function(winn_loser_sheet, expert_eloSteep, output_dir, type
   colnames(score_sum2_click_worker) <- c("Cow", paste(type, assessor, "mean", sep = "_"), paste(type, assessor,"sd", sep = "_"))
   
   compare_result_master <- merge(expert_eloSteep, score_sum2_click_worker, all = TRUE)
-  compare_result_master <- compare_result_master[order(compare_result_master$EloSteep_wt_tie_mean, decreasing = TRUE), ]
+  compare_result_master <- compare_result_master[order(compare_result_master$GS, decreasing = TRUE), ]
   
   # compute Elo steepness
   elo_steep_df <- steepness_df_construct(elo_baysian_result[["steepness"]], type, assessor) 
