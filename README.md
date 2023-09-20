@@ -2,7 +2,7 @@
 
 This repository contains the data and code for our project: **Utilizing Crowd-Sourced Data from Amazon MTurk to Derive Lameness Rankings of Diary Cows**.
 
-3. Repository Structure
+# Repository Structure
 Here's a brief overview of the repository's structure. The prefix number in each folder name indicates the sequence of analysis. Each folder contains code and results in the sub-analysis:
 
 - **00-easy_hard_question_cutoff**: Contains machine learning models and output used in analyzing a old data set from phase 1 of this project, in order to distinguish video pairs with clearly distinguishable (easy) and hard to distinguish (hard) lameness differences between the 2 cows.
