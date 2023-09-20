@@ -162,6 +162,22 @@ replicate_row <- function(row) {
   }
 }
 
+# replicate row is degree > 1 for every row in this dataframe
+replicate_row_df <- function(winner_loser) {
+  # replicate row is degree > 1
+  # Apply the function to each row of the data frame
+  replicated_rows <- apply(winner_loser, 1, replicate_row)
+  # Remove NULL elements
+  replicated_rows <- replicated_rows[sapply(replicated_rows, length) > 0]
+  # Unlist the result and convert it back to a data frame
+  winner_loser_replicated <- do.call(rbind, unlist(replicated_rows, recursive = FALSE))
+  # Bind the replicated rows with the original data frame
+  winner_loser_degree_replct <- rbind(winner_loser, winner_loser_replicated)
+  winner_loser_degree_replct <- winner_loser_degree_replct[order(winner_loser_degree_replct$winner, winner_loser_degree_replct$loser),]
+  
+  return(winner_loser_degree_replct)
+}
+
 #' Random Elo Steepness Calculation and Saving
 #'
 #' This function calculates the Elo steepness from a given winner-loser sheet, 
@@ -197,11 +213,15 @@ random_elo_steep <- function(winn_loser_sheet, expert_eloSteep, output_dir, type
   compare_result_master <- merge(expert_eloSteep, score_sum2_click_worker, all = TRUE)
   compare_result_master <- compare_result_master[order(compare_result_master$EloSteep_wt_tie_mean, decreasing = TRUE), ]
   
-  write.csv(score_sum2_click_worker, file = paste0(output_dir, type, "_", assessor, ".csv"), row.names = FALSE)
-  write.csv(individual_elo_win_df, file = paste0(output_dir, type, "_", assessor, "_scores.csv"), row.names = FALSE)
-  write.csv(compare_result_master, file = paste0(output_dir, "eloSteep_click_worker_compare_master.csv"), row.names = FALSE)
+  # compute Elo steepness
+  elo_steep_df <- steepness_df_construct(elo_baysian_result[["steepness"]], type, assessor) 
+  
+  write.csv(score_sum2_click_worker, file = paste0(output_dir, type, "_", assessor, "_scores.csv"), row.names = FALSE)
+  write.csv(individual_elo_win_df, file = paste0(output_dir, type, "_", assessor, "_cumwinprobs.csv"), row.names = FALSE)
+  write.csv(compare_result_master, file = paste0(output_dir, "compare_summary.csv"), row.names = FALSE)
+  write.csv(elo_steep_df, file = paste0(output_dir, type, "_", assessor, "_steepness.csv"), row.names = FALSE)
   save(elo_baysian_result, file = paste0(output_dir, type, "_", assessor, "_elo_baysian.rdata"))
-  save_plot_score(elo_baysian_result, paste(output_dir, type, assessor, sep = "_"), gs_record2)
+  save_plot_score(elo_baysian_result, paste0("../plots/", type, "_", assessor), gs_record2)
   
   return(compare_result_master)
 }
@@ -214,6 +234,17 @@ count_unique_worker_per_HIT <- function(cowLR_df){
   colnames(count_worker_per_HIT) <- c("HIT", "worker_num")
   
   return(count_worker_per_HIT)
+}
+
+
+steepness_df_construct <- function(steepness_values, type, assessor) {
+  steep_mean <- round(mean(steepness_values), digits = 2)
+  steep_sd <- round(sd(steepness_values), digits = 2)
+  method <- paste0(type, "_", assessor)
+  elo_steep_df <- data.frame(method, steep_mean, steep_sd)
+  colnames(elo_steep_df) <- c("method", "steepness_mean", "steepness_SD")
+  
+  return(elo_steep_df)
 }
 
 count_unique_worker_per_pair <- function(cowLR_df){

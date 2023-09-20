@@ -78,15 +78,14 @@ def create_winner_loser_degree_df(final_df):
 
     return new_df
 
-def filter_HIT0_response_by_selected_worker(expert_response_dir, df_2):
+def filter_HIT0_response_by_selected_worker(response_dir, df_2):
     # first luanch of HIT0 12 questions 100 click workers recruited to do the test
     selected_worker = high_performance_worker(df_2, 90)
     
     temp1 = df_2[df_2['Worker_id'].isin(selected_worker)].copy()
 
     # second luanch of HIT0 12 questions 1 click workers recruited to re-do the test as he requested
-    os.chdir(expert_response_dir)
-    special_worker = pd.read_csv("master_all_responses_click_worker_Aug-07-2023.csv")
+    special_worker = pd.read_csv(os.path.join(response_dir, "master_all_responses_click_worker_Aug-07-2023.csv"))
     selected_worker2 = high_performance_worker(special_worker, 90)
     temp2 = special_worker[special_worker['Worker_id'].isin(selected_worker2)].copy()
 
@@ -94,7 +93,7 @@ def filter_HIT0_response_by_selected_worker(expert_response_dir, df_2):
 
     return df_2
 
-def convert_pairwise_to_long(answer_dir, expert_response_dir, data_path_1, data_path_2, hits):
+def convert_pairwise_to_long(answer_dir, response_dir, data_path_1, data_path_2, hits):
     """
     Convert click workers' response to each HIT (10 questions per HIT) into a long format
     recording cow ID for the cow on the left, cow ID for the right, and each click worker's 
@@ -102,7 +101,7 @@ def convert_pairwise_to_long(answer_dir, expert_response_dir, data_path_1, data_
      
     Parameters:
     - answer_dir (str): Directory containing answer data.
-    - expert_response_dir (str): Directory containing expert response data.
+    - response_dir (str): Directory containing expert response data.
     - data_path_1 (str): Path to the first data file.
     - data_path_2 (str): Path to the second data file.
     - hits (str): String indicating the number of HITs, used in the output file name.
@@ -115,14 +114,12 @@ def convert_pairwise_to_long(answer_dir, expert_response_dir, data_path_1, data_
     """
     
     
-    os.chdir(answer_dir)
-    df_1 = pd.read_csv(data_path_1)
+    df_1 = pd.read_csv(os.path.join(answer_dir, data_path_1))
     
-    os.chdir(expert_response_dir)
-    df_2 = pd.read_csv(data_path_2)
+    df_2 = pd.read_csv(os.path.join(response_dir, data_path_2))
 
     if (df_2['HIT'].iloc[0] == 0) :
-        df_2 = filter_HIT0_response_by_selected_worker(expert_response_dir, df_2)
+        df_2 = filter_HIT0_response_by_selected_worker(response_dir, df_2)
     
     # All response, without filtering workers based on if they passed positive & negative attention checks
     final_df = process_and_merge(df_1, df_2)
@@ -141,7 +138,7 @@ def convert_pairwise_to_long(answer_dir, expert_response_dir, data_path_1, data_
 
     return final_df, final_df_pass_pos, final_df_pass_neg, final_df_pass_both
 # Example usage:
-# process_data(answer_dir1, expert_response_dir, data_path_1, data_path_2, "10HITs")
+# process_data(answer_dir1, response_dir, data_path_1, data_path_2, "10HITs")
 
 
 
