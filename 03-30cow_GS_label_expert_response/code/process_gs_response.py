@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from datetime import date
-exec(open("process_gs_response_helper.py").read())
+exec(open("03-30cow_GS_label_expert_response/code/process_gs_response_helper.py").read())
 
 today = date.today().strftime("%b-%d-%Y")
 

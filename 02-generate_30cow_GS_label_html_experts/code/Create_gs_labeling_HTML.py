@@ -6,7 +6,7 @@ from datetime import datetime
 import itertools
 import numpy as np
 from datetime import date
-exec(open("Create_gs_labeling_HTML_helper.py").read())
+exec(open("02-generate_30cow_GS_label_html_experts/code/Create_gs_labeling_HTML_helper.py").read())
 
 today = date.today().strftime("%b-%d-%Y")
 

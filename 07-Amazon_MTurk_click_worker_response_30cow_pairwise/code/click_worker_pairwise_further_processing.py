@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 import math
 import os
-output_dir = "../results"
-exec(open("click_worker_pairwise_further_processing_helper.py").read())
-exec(open("55HIT_10q_helper.py").read())
+output_dir = "07-Amazon_MTurk_click_worker_response_30cow_pairwise/results"
+exec(open("07-Amazon_MTurk_click_worker_response_30cow_pairwise/code/click_worker_pairwise_further_processing_helper.py").read())
+exec(open("07-Amazon_MTurk_click_worker_response_30cow_pairwise/code/55HIT_10q_helper.py").read())
 
 """
 ###############################################################################
@@ -12,8 +12,8 @@ exec(open("55HIT_10q_helper.py").read())
 ###############################################################################
 """
 # load all reponse and answer key csv
-response_dir = "../results"
-answer_dir = "../../06-generate_54HIT_html_click_worker/results"
+response_dir = "07-Amazon_MTurk_click_worker_response_30cow_pairwise/results"
+answer_dir = "06-generate_54HIT_html_click_worker/results"
 data_path_1='all_HIT_answer.csv'
 
 ####### first launch: 1 test HIT ######

@@ -39,7 +39,7 @@ from datetime import date
 import datetime
 import json
 import math
-exec(open("30_cow_gs_launch_helper.py").read())
+exec(open("03-30cow_GS_label_expert_response/code/30_cow_gs_launch_helper.py").read())
 
 
 # get today's date

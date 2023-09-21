@@ -54,14 +54,14 @@ import json
 import math
 
 #import the packages
-exec(open("55HIT_10q_helper.py").read())
+exec(open("07-Amazon_MTurk_click_worker_response_30cow_pairwise/code/55HIT_10q_helper.py").read())
 
 # get today's date
 today = date.today().strftime("%b-%d-%Y")
 
-input_dir = "../../06-generate_54HIT_html_click_worker/results"
+input_dir = "06-generate_54HIT_html_click_worker/results"
 key_dir ='/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/data/Amazon MTurk'
-output_dir = "../results"
+output_dir = "07-Amazon_MTurk_click_worker_response_30cow_pairwise/results"
 
 """
 ###############################################################################

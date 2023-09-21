@@ -3,7 +3,7 @@ import numpy as np
 import math
 import os
 
-exec(open("pairwise_further_processing_helper.py").read())
+exec(open("05-Amazon_MTurk_expert_response_30cow_pairwise/code/pairwise_further_processing_helper.py").read())
 
 """
 ###############################################################################
@@ -11,9 +11,9 @@ exec(open("pairwise_further_processing_helper.py").read())
 ###############################################################################
 """
 # load all reponse and answer key csv
-expert_response_dir = "../results/all_experts"
-answer_dir1 = "../../04-generate_54HIT_html_experts/results"
-answer_dir2 = "../results/wali_resubmission_html"
+expert_response_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/all_experts"
+answer_dir1 = "04-generate_54HIT_html_experts/results"
+answer_dir2 = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/wali_resubmission_html"
 data_path_1='all_HIT_answer.csv'
 data_path_2='master_all_responses_May-14-2023_to_May-18-2023_Dan.csv'
 

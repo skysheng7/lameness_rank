@@ -5,11 +5,11 @@ import pandas as pd
 from datetime import datetime
 import itertools
 import numpy as np
-exec(open("Create_54HITs_experts_HTML_helper.py").read())
+exec(open("04-generate_54HIT_html_experts/code/Create_54HITs_experts_HTML_helper.py").read())
 
-folder_path = "../../01-video_select_compress/data"
-input_dir = './input file'
-output_dir = '../results'
+folder_path = "01-video_select_compress/data"
+input_dir = '04-generate_54HIT_html_experts/code/input file'
+output_dir = '04-generate_54HIT_html_experts/results'
 
 
 # read in the file containing each cow's GS

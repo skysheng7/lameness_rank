@@ -39,16 +39,15 @@ from datetime import date
 import datetime
 import json
 import math
-exec(open("53HIT_expert_10q_launch_collect_helper.py").read())
+exec(open("05-Amazon_MTurk_expert_response_30cow_pairwise/code/53HIT_expert_10q_launch_collect_helper.py").read())
 
 
 # get today's date
 today = date.today().strftime("%b-%d-%Y")
 
-input_dir = "../../04-generate_54HIT_html_experts/results"
+input_dir = "04-generate_54HIT_html_experts/results"
 key_dir ='/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/data/Amazon MTurk'
-output_dir = "../results/RD" # this can be "../results/DW", "../results/WS", "../results/HE" depending on different worker
-
+output_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/RD" # this can be "../results/DW", "../results/WS", "../results/HE" depending on different worker
 
 """
 ###############################################################################
