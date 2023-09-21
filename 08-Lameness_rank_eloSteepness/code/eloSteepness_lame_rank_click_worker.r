@@ -103,7 +103,7 @@ click_worker_experts <- random_elo_steep(winn_loser_processed_sampled_ind_exchan
 # handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
 winn_loser_processed_milestone_min <- swap_winner_loser(winner_loser_milestone_min, FALSE)
 click_worker_experts <- random_elo_steep(winn_loser_processed_milestone_min, click_worker_experts, output_dir, "sampled_milestone_min", "click_worker", gs_record2)
-
+# around 106 comparisons made
 ################################################################################
 ############################ pick 5 milestone cows #############################
 ## 7045 (GS 1.9), 6096 (GS 2.4), 6086(GS 2.87), 4035 (GS 3.1), 5087 (GS 3.9) ###
@@ -112,3 +112,5 @@ click_worker_experts <- random_elo_steep(winn_loser_processed_milestone_min, cli
 # handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
 winn_loser_processed_milestone_max <- swap_winner_loser(winner_loser_milestone_max, FALSE)
 click_worker_experts <- random_elo_steep(winn_loser_processed_milestone_max, click_worker_experts, output_dir, "sampled_milestone_max", "click_worker", gs_record2)
+
+# 125 comparisons
