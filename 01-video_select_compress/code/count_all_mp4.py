@@ -19,3 +19,5 @@ df = pd.DataFrame(results, columns=['Subfolder', 'MP4 Count'])
 print(df)
 df.to_csv("01-video_select_compress/results/videos_per_cow_count.csv", index = False)
 
+df['MP4 Count'].mean()
+df['MP4 Count'].std()
