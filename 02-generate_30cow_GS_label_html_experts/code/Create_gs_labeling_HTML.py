@@ -12,8 +12,8 @@ today = date.today().strftime("%b-%d-%Y")
 
 
 folder_path = '/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/Sora Jeong/results/30cow_artificial_group_compressed'
-input_dir = './input file'
-output_dir = '../results'
+input_dir = '02-generate_30cow_GS_label_html_experts/code/input file'
+output_dir = '02-generate_30cow_GS_label_html_experts/results'
 
 ################################################################
 ############ TASK 1: create URL for each video files ###########

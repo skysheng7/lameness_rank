@@ -46,10 +46,10 @@ exec(open("30_cow_gs_launch_helper.py").read())
 today = date.today().strftime("%b-%d-%Y")
 envir = "Sky"
 if (envir == "Sky"):
-    input_dir = "../../02-generate_30cow_GS_label_html_experts/results"
+    input_dir = "02-generate_30cow_GS_label_html_experts/results"
     key_dir ='/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/data/Amazon MTurk'
-    output_dir = "../results"
-    #output_dir = '/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/Sora Jeong/results/Amazon MTurk expert response'
+    output_dir = "03-30cow_GS_label_expert_response/results"
+    
 """
 ###############################################################################
 ################################ Create HITs ##################################

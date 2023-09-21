@@ -5,12 +5,12 @@ exec(open("process_gs_response_helper.py").read())
 
 today = date.today().strftime("%b-%d-%Y")
 
-response_dir = "../results"
+response_dir = "03-30cow_GS_label_expert_response/results"
 response_file = "master_worker_response_tracker_Anna-merickSep-10-2023.csv"
-html_dir = "../../02-generate_30cow_GS_label_html_experts/results"
+html_dir = "02-generate_30cow_GS_label_html_experts/results"
 html_cow_record = "GS_30cows_HIT0_Jun-04-2023.csv"
 
-output_dir = "../results"
+output_dir = "03-30cow_GS_label_expert_response/results"
 
 # read in the response file
 response_df = pd.read_csv(os.path.join(response_dir, response_file)) 
