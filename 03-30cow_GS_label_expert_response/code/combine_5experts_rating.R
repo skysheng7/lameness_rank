@@ -1,5 +1,6 @@
 library(lubridate)
 library(irr)
+source("combine_5experts_rating_helper.R")
 gs_p1 <- read.csv("../results/gs_response_Aug-12-2023.csv", header = TRUE)
 gs_p2 <- read.csv("../results/gs_response_Wali_Jul-10-2023.csv", header = TRUE)
 gs_p3 <- read.csv("../results/gs_response_Wali_Jul-14-2023.csv", header = TRUE)
@@ -53,16 +54,25 @@ icc_df <- data.frame(Worker_id = workers, ICC = icc_values)
 icc_mean <- mean(icc_df$ICC)
 icc_sd <- sd(icc_df$ICC)
 
-###################### interobserver reliability ###############################
-gs_retain2 <- gs[which(gs$GS_round == 1),]
-gs_retain2 <- gs_retain2[, c("Cow", "Worker_id", "GS")]
+### interobserver reliability calculated independetly for each of the 3 rounds##
+inter_ICC_by_rounds <- interobserver_ICC_per_round_df(gs)
+mean(inter_ICC_by_rounds$interobserver_ICC)
+sd(inter_ICC_by_rounds$interobserver_ICC)
 
-# change data orientation
-worker_data_wide_inter <- reshape(gs_retain2, idvar = c("Cow"), timevar = "Worker_id", direction = "wide")
-# Calculate the ICC for the current worker
-icc_result_inter <- icc(worker_data_wide_inter[, 2:ncol(worker_data_wide_inter)],model = "twoway", type = "agreement", unit = "single")
-icc_values_inter <- icc_result_inter$value  # 0.47
+################# average scores from 3 rounds for each expert #################
+######################## then calculate interobserver ##########################
+score_avg_by_expert <- aggregate(gs$GS, by = list(gs$Cow, gs$Worker_id), FUN = mean)
+colnames(score_avg_by_expert) <- c("Cow", "Worker_id", "GS")
+inter_ICC_by_avg_score <- interobserver_ICC_per_round(score_avg_by_expert)
+
+## progressively sample 1 to 4 assessors, and 1 to 3 rounds from full dataset ##
+##### compare the agreement between average of subsampled score and avergae ####
+################# from full set of 5 assessor & 3 rounds #######################
+set.seed(7)
+icc_change_df <- icc_change_rounds_expert_num(gs)
 
 write.csv(gs, file = "../results/gs_response_combined.csv")
 write.csv(gs_avg, file = "../results/gs_response_combined_avg.csv")
 write.csv(icc_df, file = "../results/intraobserver_reliability.csv")
+write.csv(inter_ICC_by_rounds, file = "../results/interobserver_reliability_by_rounds.csv")
+write.csv(icc_change_df, file = "../results/icc_change_by_round_expert_num.csv")
