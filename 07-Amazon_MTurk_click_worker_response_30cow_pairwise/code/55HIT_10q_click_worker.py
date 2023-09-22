@@ -73,7 +73,7 @@ output_dir = "07-Amazon_MTurk_click_worker_response_30cow_pairwise/results"
 Connect to Amazon AWS using access key
 """
 # By default, HITs are created in the free-to-use Sandbox
-create_hits_in_live = True
+create_hits_in_live = False
 track_ip = True
 # want to just look at the result, or want to approve or reject the work at the same time
 need_approve_or_reject = True
@@ -88,9 +88,9 @@ max_worker_num = 20
 """
 
 # launch test HIT
-html_files = sorted(filter(lambda f: f.endswith(".html") and f.startswith("HIT"), os.listdir(input_dir)))[11:]
+#html_files = sorted(filter(lambda f: f.endswith(".html") and f.startswith("HIT"), os.listdir(input_dir)))[11:]
 #html_files = sorted(filter(lambda f: f.endswith(".html") and f.startswith("HIT"), os.listdir(input_dir)))[1:11]
-# html_files = sorted(filter(lambda f: f.endswith(".html") and f.startswith("HIT"), os.listdir(input_dir)))[:1]
+html_files = sorted(filter(lambda f: f.endswith(".html") and f.startswith("HIT"), os.listdir(input_dir)))[:1]
 # launch all the rest of the HIT
 #html_files = sorted(filter(lambda f: f.endswith(".html") and f.startswith("HIT"), os.listdir(input_dir)))[1:]
 master_submitted_tasks_tracker = process_html_files(html_files, input_dir, create_hits_in_live, key_dir, max_worker_num)
