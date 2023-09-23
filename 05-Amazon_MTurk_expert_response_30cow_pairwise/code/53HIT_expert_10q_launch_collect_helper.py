@@ -96,7 +96,7 @@ def create_and_submit_hit(client, input_dir, html_name, mturk_environment, max_w
         AssignmentDurationInSeconds=1800, # 30 minutes # How long we allow the worker to work on one assignment
         AutoApprovalDelayInSeconds=1209600, # 14 days # How long to auto approve if we did not click approve ourselves
         Reward=mturk_environment['reward'],
-        Title='Require PC/tablet/laptop: Which cow is more lame, and by how much? (' + str(num_questions) + ' questions) ruan Nina' +  html_name + ' ' + str(today),
+        Title='Require PC/tablet/laptop: Which cow is more lame, and by how much? (' + str(num_questions) + ' questions) Nina resub' +  html_name + ' ' + str(today),
         Keywords='cow, video, agriculture, animal, lameness',
         Description='Play two videos of cows walking side by side, and select which cow looks more lame to you.',
         Question=question_sample,
@@ -539,7 +539,7 @@ def passed_positive_attention1(response_row, HIT_answer2, q_col):
 # we need to repost them
 def find_unsubmitted_hits(master_submitted_tasks_tracker, master_worker_response_tracker):
     # Filter master_worker_response_tracker to exclude worker_id "A10892I86DG5PR"
-    filtered_master_worker_response_tracker = master_worker_response_tracker[master_worker_response_tracker["Worker_id"] == "ARUXAWT9AUG92"]
+    filtered_master_worker_response_tracker = master_worker_response_tracker[((master_worker_response_tracker["Worker_id"] == "ARUXAWT9AUG92") or (master_worker_response_tracker["Worker_id"] == "A2EE2N0X2ZPJ5E"))]
 
     # Merge the DataFrames
     merged_df = master_submitted_tasks_tracker.merge(filtered_master_worker_response_tracker, on="HIT", how="outer", indicator=True)
