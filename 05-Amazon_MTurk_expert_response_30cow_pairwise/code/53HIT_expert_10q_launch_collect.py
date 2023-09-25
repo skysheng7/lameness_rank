@@ -259,12 +259,14 @@ for index, row in unsubmitted_master_submitted_tasks_tracker.iterrows():
 #### merge response collected from the same expert from multiple days #########
 ###############################################################################
 """   
-output_dir = "../results/all_experts"
+output_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/all_experts"
 
 # Dan: 
-merge_responses(["May-14-2023", "May-16-2023", "May-17-2023", "May-18-2023"], 'A10892I86DG5PR', 'Dan', output_dir)
+merge_responses(["May-14-2023", "May-16-2023", "May-17-2023", "May-18-2023"], ['A10892I86DG5PR'], 'Dan', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/DW")
 
 # Wali:
-merge_responses(["Jun-19-2023", "Jul-14-2023", "Wali_reSub_Jul-14-2023"], 'ARUXAWT9AUG92', 'Wali', output_dir)
+merge_responses(["Jun-19-2023", "Jul-14-2023", "Wali_reSub_Jul-14-2023"], ['ARUXAWT9AUG92'], 'Wali', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/WS")
 
+# Nina: used 2 different amazon account
+merge_responses(["Sep-22-2023", "resub_Sep-22-2023"], ['ARUXAWT9AUG92', 'A2EE2N0X2ZPJ5E'], 'Nina', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/NV")
 

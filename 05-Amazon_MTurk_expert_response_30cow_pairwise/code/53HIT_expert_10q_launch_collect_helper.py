@@ -539,7 +539,7 @@ def passed_positive_attention1(response_row, HIT_answer2, q_col):
 # we need to repost them
 def find_unsubmitted_hits(master_submitted_tasks_tracker, master_worker_response_tracker):
     # Filter master_worker_response_tracker to exclude worker_id "A10892I86DG5PR"
-    filtered_master_worker_response_tracker = master_worker_response_tracker[((master_worker_response_tracker["Worker_id"] == "ARUXAWT9AUG92") or (master_worker_response_tracker["Worker_id"] == "A2EE2N0X2ZPJ5E"))]
+    filtered_master_worker_response_tracker = master_worker_response_tracker[((master_worker_response_tracker["Worker_id"] == "ARUXAWT9AUG92") | (master_worker_response_tracker["Worker_id"] == "A2EE2N0X2ZPJ5E"))]
 
     # Merge the DataFrames
     merged_df = master_submitted_tasks_tracker.merge(filtered_master_worker_response_tracker, on="HIT", how="outer", indicator=True)
@@ -576,20 +576,20 @@ def post_unsubmitted_hits(unsubmitted_hit_list, input_dir, create_hits_in_live, 
 #### merge response collected from the same expert from multiple days #########
 ###############################################################################
 """   
-def merge_responses(dates, worker_id, worker_name, output_dir):
+def merge_responses(dates, worker_ids, worker_name, output_dir, input_dir):
 
     dataframes = []
 
     for date in dates:
         cur_file_name = "master_all_responses_" + date + ".csv"
-        cur_df = pd.read_csv(os.path.join(output_dir, (cur_file_name)))
+        cur_df = pd.read_csv(os.path.join(input_dir, (cur_file_name)))
         dataframes.append(cur_df)
 
     # Concatenate all the dataframes together
     merged_responses = pd.concat(dataframes, axis=0, ignore_index=True)
 
     # only keep responses from specified worker
-    merged_responses = merged_responses[merged_responses["Worker_id"] == worker_id]
+    merged_responses = merged_responses[merged_responses["Worker_id"].isin(worker_ids)]
 
     # reorder the columns
     desired_columns_order = ['HIT', 'HIT_id', 'HIT_website_address', 'HIT_results_address',
