@@ -26,9 +26,34 @@ winn_loser_processed <- swap_winner_loser(winner_loser, FALSE)
 click_worker_experts <- random_elo_steep(winn_loser_processed, gs_record2, output_dir, "all", "experts", gs_record2)
 
 ################################################################################
+############# handle tie by duplicate row and flip winner loser#################
+######################## individual expert rank: Dan ###########################
+################################################################################
+# handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
+winn_loser_ind <- winn_loser_processed[which(winn_loser_processed$expert == "DW"),]
+click_worker_experts <- random_elo_steep(winn_loser_ind, click_worker_experts, output_dir, "DW", "experts", gs_record2)
+
+################################################################################
+############# handle tie by duplicate row and flip winner loser#################
+######################## individual expert rank: Wali ###########################
+################################################################################
+# handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
+winn_loser_ind <- winn_loser_processed[which(winn_loser_processed$expert == "WS"),]
+click_worker_experts <- random_elo_steep(winn_loser_ind, click_worker_experts, output_dir, "WS", "experts", gs_record2)
+
+################################################################################
+############# handle tie by duplicate row and flip winner loser#################
+######################## individual expert rank: Nina ###########################
+################################################################################
+# handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
+winn_loser_ind <- winn_loser_processed[which(winn_loser_processed$expert == "NV"),]
+click_worker_experts <- random_elo_steep(winn_loser_ind, click_worker_experts, output_dir, "NV", "experts", gs_record2)
+
+
+################################################################################
 ########################## take degree into consideration + ####################
 ############# handle tie by duplicate row and flip winner loser#################
 ################################################################################
 # handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
 winn_loser_processed_degree_replt <- swap_winner_loser(winner_loser_degree_replct, FALSE)
-click_worker_experts <- random_elo_steep(winn_loser_processed, click_worker_experts, output_dir, "weighted", "experts", gs_record2)
+click_worker_experts <- random_elo_steep(winn_loser_processed_degree_replt, click_worker_experts, output_dir, "weighted", "experts", gs_record2)
