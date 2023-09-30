@@ -35,7 +35,7 @@ click_worker_experts <- random_elo_steep(winn_loser_ind, click_worker_experts, o
 
 ################################################################################
 ############# handle tie by duplicate row and flip winner loser#################
-######################## individual expert rank: Wali ###########################
+######################## individual expert rank: Wali ##########################
 ################################################################################
 # handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
 winn_loser_ind <- winn_loser_processed[which(winn_loser_processed$expert == "WS"),]
@@ -43,11 +43,19 @@ click_worker_experts <- random_elo_steep(winn_loser_ind, click_worker_experts, o
 
 ################################################################################
 ############# handle tie by duplicate row and flip winner loser#################
-######################## individual expert rank: Nina ###########################
+######################## individual expert rank: Nina ##########################
 ################################################################################
 # handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
 winn_loser_ind <- winn_loser_processed[which(winn_loser_processed$expert == "NV"),]
 click_worker_experts <- random_elo_steep(winn_loser_ind, click_worker_experts, output_dir, "NV", "experts", gs_record2)
+
+################################################################################
+############# handle tie by duplicate row and flip winner loser#################
+##################### individual expert rank: Nina & Dan #######################
+################################################################################
+# handle ties: duplicate the rows where degree = 0, 1 row: A wins over B, 2nd row: B wins over A
+winn_loser_ind <- winn_loser_processed[which((winn_loser_processed$expert == "NV") | (winn_loser_processed$expert == "DW")),]
+click_worker_experts <- random_elo_steep(winn_loser_ind, click_worker_experts, output_dir, "NV_DW", "experts", gs_record2)
 
 
 ################################################################################
