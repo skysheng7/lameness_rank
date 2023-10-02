@@ -46,7 +46,6 @@ exec(open("05-Amazon_MTurk_expert_response_30cow_pairwise/code/53HIT_expert_10q_
 today = date.today().strftime("%b-%d-%Y")
 
 input_dir = "04-generate_54HIT_html_experts/results"
-input_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/SB"
 key_dir ='/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/data/Amazon MTurk'
 output_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/SB" # this can be "../results/DW", "../results/WS", "../results/HE" depending on different worker
 
@@ -64,7 +63,7 @@ html_files = sorted(filter(lambda f: f.endswith(".html") and f.startswith("HIT")
 master_submitted_tasks_tracker = process_html_files(html_files, input_dir, create_hits_in_live, key_dir, max_worker_num)
 master_submitted_tasks_tracker = master_submitted_tasks_tracker.sort_values(by='HIT').reset_index(drop=True)
 
-master_submitted_tasks_tracker.to_csv(os.path.join(output_dir, ('all_submitted_tracker_SB_' + today + '.csv')))
+master_submitted_tasks_tracker.to_csv(os.path.join(output_dir, ('all_submitted_tracker_SB_hit13' + today + '.csv')))
 
 # a for loop to print out the HIT address of all HITs in master_submitted_tasks_tracker, in the format of "HIT0: address"
 for index, row in master_submitted_tasks_tracker.iterrows():
