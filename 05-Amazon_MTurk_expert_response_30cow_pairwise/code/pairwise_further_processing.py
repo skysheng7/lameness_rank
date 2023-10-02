@@ -63,3 +63,7 @@ mean_responses = exp_all_LR.groupby(['cow_L', 'cow_R'])['response'].mean().reset
 winner_loser_avg = create_winner_loser_degree_df(mean_responses)
 winner_loser_avg[["expert"]] = "avg_D_W_N_S"
 winner_loser_avg.to_csv(os.path.join(expert_response_dir, 'winner_loser_avg.csv'), index=False)
+
+# export mean cow_LR response
+mean_responses.rename(columns={'response': 'response_mean'}, inplace=True)
+mean_responses.to_csv(os.path.join(expert_response_dir, 'all_HIT_answer_wali_dan_NV_SB.csv'), index = False)
