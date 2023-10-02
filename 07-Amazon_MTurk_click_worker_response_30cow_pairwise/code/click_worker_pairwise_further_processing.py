@@ -4,7 +4,7 @@ import math
 import os
 output_dir = "07-Amazon_MTurk_click_worker_response_30cow_pairwise/results"
 exec(open("07-Amazon_MTurk_click_worker_response_30cow_pairwise/code/click_worker_pairwise_further_processing_helper.py").read())
-exec(open("07-Amazon_MTurk_click_worker_response_30cow_pairwise/code/55HIT_10q_helper.py").read())
+exec(open("07-Amazon_MTurk_click_worker_response_30cow_pairwise/code/55HIT_10q_click_worker_helper.py").read())
 
 """
 ###############################################################################
@@ -29,7 +29,7 @@ data_path_2='master_all_responses_click_worker_Sep-13-2023.csv'
 final_df_r2, final_df_pass_pos_r2, final_df_pass_neg_r2, final_df_pass_both_r2 = convert_pairwise_to_long(answer_dir, response_dir, data_path_1, data_path_2, "10HITs")
 
 ####### third launch: 44 HITs ######
-data_path_2='master_all_responses_click_worker_44HITsSep-13-2023.csv'
+data_path_2='master_all_responses_click_worker_44HITsOct-01-2023.csv'
 final_df_r3, final_df_pass_pos_r3, final_df_pass_neg_r3, final_df_pass_both_r3 = convert_pairwise_to_long(answer_dir, response_dir, data_path_1, data_path_2, "44HITs")
 
 # merge all 3 launches together

@@ -11,7 +11,7 @@ Connect to Amazon AWS using access key
 
 def create_mturk_client(create_hits_in_live, key_dir):
     # Load the access key credential file
-    access_key = pd.read_csv(os.path.join(output_dir, ("awp_rootkey.csv")), header=None)
+    access_key = pd.read_csv(os.path.join(key_dir, ("awp_rootkey.csv")), header=None)
     access_key_id_raw = access_key.at[0, 0]
     access_key_key_raw = access_key.at[1, 0]
 
