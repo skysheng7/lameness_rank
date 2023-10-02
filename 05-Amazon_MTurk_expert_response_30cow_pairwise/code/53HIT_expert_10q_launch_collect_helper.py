@@ -96,7 +96,7 @@ def create_and_submit_hit(client, input_dir, html_name, mturk_environment, max_w
         AssignmentDurationInSeconds=1800, # 30 minutes # How long we allow the worker to work on one assignment
         AutoApprovalDelayInSeconds=1209600, # 14 days # How long to auto approve if we did not click approve ourselves
         Reward=mturk_environment['reward'],
-        Title='Require PC/tablet/laptop: Which cow is more lame, and by how much? (' + str(num_questions) + ' questions) Sarah' +  html_name + ' ' + str(today),
+        Title='Require PC/tablet/laptop: Which cow is more lame, and by how much? (' + str(num_questions) + ' questions) Sarah resub' +  html_name + ' ' + str(today),
         Keywords='cow, video, agriculture, animal, lameness',
         Description='Play two videos of cows walking side by side, and select which cow looks more lame to you.',
         Question=question_sample,

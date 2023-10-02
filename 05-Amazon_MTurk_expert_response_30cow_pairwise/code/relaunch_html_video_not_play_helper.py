@@ -12,7 +12,7 @@ def generate_html(input_dir, output_dir, test_HIT_answer, total_ques, cur_hit):
     """
     ########################## p1 css processing ##############################
     """
-    with open(os.join.path(input_dir, r'p1_css.txt'), 'r') as file:
+    with open(os.path.join(input_dir, r'p1_css.txt'), 'r') as file:
         p1_css = file.read()
 
     p1_css_mod = p1_css.replace("${total_q_num}", str(total_ques))
@@ -24,9 +24,9 @@ def generate_html(input_dir, output_dir, test_HIT_answer, total_ques, cur_hit):
     video1 = test_HIT_answer['cow_L_URL'].tolist()
     video2 = test_HIT_answer['cow_R_URL'].tolist()
 
-    with open(os.join.path(input_dir, r'p2_html_q1.txt'), 'r') as file:
+    with open(os.path.join(input_dir, r'p2_html_q1.txt'), 'r') as file:
         p2_html_q1 = file.read()
-    with open(os.join.path(input_dir, r'p2_html_other_q.txt'), 'r') as file:
+    with open(os.path.join(input_dir, r'p2_html_other_q.txt'), 'r') as file:
         p2_html_other = file.read()
 
     for n in range(total_ques):
@@ -48,7 +48,7 @@ def generate_html(input_dir, output_dir, test_HIT_answer, total_ques, cur_hit):
     """
     ########################### p3 java script processing #########################
     """
-    with open(os.join.path(input_dir, r'p3_js.txt'), 'r') as file:
+    with open(os.path.join(input_dir, r'p3_js.txt'), 'r') as file:
         p3_js = file.read()
 
     p3_js_mod = p3_js.replace("${total_q_num}", str(total_ques))
@@ -82,19 +82,19 @@ def generate_html(input_dir, output_dir, test_HIT_answer, total_ques, cur_hit):
     ################################ EXPORT result ################################
     """
     output_file = 'HIT' + str(cur_hit) + '.html'
-    with open(os.join.path(input_dir, output_file), 'w') as f:
+    with open(os.path.join(output_dir, output_file), 'w') as f:
         f.write(merged_html)
 
 
 
 # create each HIT using every 8 test questions + 2 attention checks
-def create_HIT(merged_df2, input_dir, output_dir, chunk_q_num):
+def create_HIT(merged_df2, input_dir, output_dir, chunk_q_num, cur_hit_base):
     # Split the DataFrame into chunks of 10 rows
     chunks = np.array_split(merged_df2, len(merged_df2)//chunk_q_num)
     processed_chunks = []
 
     for i, chunk in enumerate(chunks):
-        cur_hit = 100 + i
+        cur_hit = cur_hit_base + i
     
         # Randomly reshuffle the rows and reset the index
         chunk = chunk.sample(frac=1, random_state=(170+i)).reset_index(drop=True)
