@@ -79,7 +79,7 @@ for index, row in master_submitted_tasks_tracker.iterrows():
 """
 
 # read in submitted tasks
-master_submitted_tasks_tracker = pd.read_csv(os.path.join(output_dir, ("all_submitted_tracker_SB_Oct-01-2023.csv")))
+master_submitted_tasks_tracker = pd.read_csv(os.path.join(output_dir, ("all_submitted_tracker_SB_video_no_play_Oct-01-2023.csv")))
 
 # Create a client
 client, mturk_environment = create_mturk_client(create_hits_in_live, key_dir)
@@ -142,10 +142,10 @@ for index, row in master_submitted_tasks_tracker.iterrows():
 
 
 # Save DataFrames to CSV files
-master_worker_response_tracker.to_csv(os.path.join(output_dir, ('master_worker_response_tracke_SB_' + today + '.csv')), index=False)
-master_approved_responses.to_csv(os.path.join(output_dir, ('master_approved_responses_SB_' + today + '.csv')), index=False)
-master_rejected_responses.to_csv(os.path.join(output_dir, ('master_rejected_responses_SB_' + today + '.csv')), index=False)
-master_all_responses.to_csv(os.path.join(output_dir, ('master_all_responses_SB_' + today + '.csv')), index=False)
+master_worker_response_tracker.to_csv(os.path.join(output_dir, ('master_worker_response_tracke_SB_video_no_play_' + today + '.csv')), index=False)
+master_approved_responses.to_csv(os.path.join(output_dir, ('master_approved_responses_SB_resub_' + today + '.csv')), index=False)
+master_rejected_responses.to_csv(os.path.join(output_dir, ('master_rejected_responses_SB_resub_' + today + '.csv')), index=False)
+master_all_responses.to_csv(os.path.join(output_dir, ('master_all_responses_SB_resub_' + today + '.csv')), index=False)
 
 
 
@@ -268,4 +268,7 @@ merge_responses(["Jun-19-2023", "Jul-14-2023", "Wali_reSub_Jul-14-2023"], ['ARUX
 
 # Nina: used 2 different amazon account
 merge_responses(["Sep-22-2023", "resub_Sep-22-2023"], ['ARUXAWT9AUG92', 'A2EE2N0X2ZPJ5E'], 'Nina', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/NV")
+
+# Sarah
+merge_responses(["SB_Oct-01-2023", "SB_resub_Oct-01-2023"], ['ARUXAWT9AUG92'], 'Sarah', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/SB")
 
