@@ -43,10 +43,13 @@ compute_icc_for_data <- function(data) {
 compute_icc_summary <- function(allworker_icc) {
   icc_mean <- mean(allworker_icc$click_worker_interobserver)
   icc_sd <- sd(allworker_icc$click_worker_interobserver)
-  return(list(mean = icc_mean, sd = icc_sd))
+  icc_min <- min(allworker_icc$click_worker_interobserver)
+  icc_max <- max(allworker_icc$click_worker_interobserver)
+  return(list(mean = icc_mean, sd = icc_sd, min = icc_min, max = icc_max))
 }
 
 compute_inter_rater_ICC <- function(df) {
+  df <- df[which(df$HIT > 0),]
   worker_res <- cowLR_process(df)
   
   # Assuming reshape_worker_responses and compute_icc_for_data 
@@ -273,4 +276,32 @@ compute_icc_click_worker_expert_cl <- function(df_list, expert_response, cur_tit
   p1 <- plot_click_worker_expert(compare_click_worker_expert, cur_title)
   print(p1)
   return(compare_click_worker_expert)
+}
+
+detect_worker_to_delete <- function(cowLR_input) {
+  # delete those who clicked the same answer across all questions in a HIT
+  test_same <- cowLR_input[, c("Worker_id", "HIT", "response")]
+  test_same_sum <- aggregate(test_same$response, by = list(test_same$Worker_id, test_same$HIT), FUN = sd)
+  colnames(test_same_sum) <- c("Worker_id", "HIT", "sd")
+  to_delete <- test_same_sum[which(test_same_sum$sd == 0),]
+  
+  return(to_delete)
+}
+
+delete_worker_answer_same <- function(cowLR_input) {
+  to_delete <- detect_worker_to_delete(cowLR_input)
+  
+  if (nrow(to_delete) > 0) {
+    # update on all cowLR sheets to delete those worker who answered the same across all questions in a HIT
+    temp <- merge(cowLR_input, to_delete, all = TRUE)
+    temp <- temp[which(is.na(temp$sd)),]
+    temp$sd <- NULL
+    temp <- temp[, c(colnames(cowLR_input))]
+    return(temp)
+    
+  } else {
+    return(cowLR_input)
+  }
+  
+  
 }

@@ -13,7 +13,6 @@ source("55HIT_easy_hard_question_assess_helpers.R")
 ################################################################################
 ################################ Load Data #####################################
 ################################################################################
-
 input_dir <- "../results"
 answer_dir <- "../../05-Amazon_MTurk_expert_response_30cow_pairwise/results/all_experts"
 output_dir <- "../results"
@@ -24,12 +23,19 @@ cowLR_response_pass_pos <- read.csv("../results/cowLR_response_clickWorker_55HIT
 cowLR_response_pass_neg <- read.csv("../results/cowLR_response_clickWorker_55HITs_pass_neg.csv", header = TRUE)
 cowLR_response_pass_both <- read.csv("../results/cowLR_response_clickWorker_55HITs_pass_both.csv", header = TRUE)
 
-expert_response <- read.csv(paste0(answer_dir, "/winner_loser_avg.csv"), header = TRUE)
+expert_response <- read.csv(paste0(answer_dir, "/all_HIT_answer_wali_dan_NV_SB.csv"), header = TRUE)
+################################################################################
+################################### cleaning ###################################
+################################################################################
+# delete those who clicked the same answer across all questions in a HIT
+cowLR_response <- delete_worker_answer_same(cowLR_response) 
+cowLR_response_pass_pos <- delete_worker_answer_same(cowLR_response_pass_pos) 
+cowLR_response_pass_neg <- delete_worker_answer_same(cowLR_response_pass_neg) 
+cowLR_response_pass_both <- delete_worker_answer_same(cowLR_response_pass_both) 
 
 ################################################################################
 ################################# All worker ###################################
 ################################################################################
-
 ############## click worker interoserver reliability for each HIT ##############
 # inter-click worker ICC
 result <- compute_inter_rater_ICC(cowLR_response)
