@@ -24,7 +24,7 @@ cowLR_response_pass_neg <- read.csv("../results/cowLR_response_clickWorker_55HIT
 cowLR_response_pass_both <- read.csv("../results/cowLR_response_clickWorker_55HITs_pass_both.csv", header = TRUE)
 
 expert_response <- read.csv(paste0(answer_dir, "/all_HIT_answer_DW_NV_SB.csv"), header = TRUE)
-
+cowlR_expert <- 
 ################################################################################
 ################################### cleaning ###################################
 ################################################################################
@@ -43,6 +43,9 @@ result <- compute_inter_rater_ICC(cowLR_response)
 worker_compare <- result$worker_compare 
 icc_summary <- result$icc_summary  
 print(icc_summary)
+
+############## experienced assessor interoserver reliability ###################
+
 
 ######## click worker average VS expert average interoserver reliability #######
 # get the average response from click worker VS experts
