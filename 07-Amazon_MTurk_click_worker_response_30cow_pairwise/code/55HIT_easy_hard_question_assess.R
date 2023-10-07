@@ -24,7 +24,9 @@ cowLR_response_pass_neg <- read.csv("../results/cowLR_response_clickWorker_55HIT
 cowLR_response_pass_both <- read.csv("../results/cowLR_response_clickWorker_55HITs_pass_both.csv", header = TRUE)
 
 expert_response <- read.csv(paste0(answer_dir, "/all_HIT_answer_DW_NV_SB.csv"), header = TRUE)
-cowlR_expert <- 
+cowlR_expert <- read.csv(paste0(answer_dir, "/cowLR_response_DW_NV_SB.csv"), header = TRUE)
+colnames(cowlR_expert)[colnames(cowlR_expert) == "expert"] <- "Worker_id"
+
 ################################################################################
 ################################### cleaning ###################################
 ################################################################################
@@ -45,12 +47,9 @@ icc_summary <- result$icc_summary
 print(icc_summary)
 
 ############## experienced assessor interoserver reliability ###################
-
-
-######## click worker average VS expert average interoserver reliability #######
-# get the average response from click worker VS experts
-compare_click_worker_expert <- compute_icc_click_worker_expert(cowLR_response, expert_response, "all worker")
-# calculate and plot direct_pct
+expert_dat_reshaped <- reshape(cowlR_expert, idvar = c("cow_L","cow_R"), timevar = "Worker_id", direction = "wide")
+expert_icc_value <- compute_icc_for_data(expert_dat_reshaped)
+2
 worker_response_summary <- calculate_and_plot_direct_pct(worker_compare, compare_click_worker_expert, "all worker")
   
 # calculate sd for each question

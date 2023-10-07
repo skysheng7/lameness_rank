@@ -73,3 +73,4 @@ winner_loser_avg.to_csv(os.path.join(expert_response_dir, 'winner_loser_avg_DW_N
 # export mean cow_LR response
 mean_responses.rename(columns={'response': 'response_mean'}, inplace=True)
 mean_responses.to_csv(os.path.join(expert_response_dir, 'all_HIT_answer_DW_NV_SB.csv'), index = False)
+exp_all_LR.to_csv(os.path.join(expert_response_dir, 'cowLR_response_DW_NV_SB.csv'), index = False)

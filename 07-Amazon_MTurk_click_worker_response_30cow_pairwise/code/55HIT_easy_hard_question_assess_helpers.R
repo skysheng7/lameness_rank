@@ -52,9 +52,6 @@ compute_inter_rater_ICC <- function(df) {
   df <- df[which(df$HIT > 0),]
   worker_res <- cowLR_process(df)
   
-  # Assuming reshape_worker_responses and compute_icc_for_data 
-  # functions are already defined
-  
   all_HIT <- unique(worker_res$Task_number)
   worker_compare <- list()
   allworker_icc <- data.frame()
