@@ -57,13 +57,11 @@ individual_elo_win <- function(array_3d, ids) {
 
 
 plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_others = TRUE) {
-  # Create a color generating function with softer colors
-  colfunc <- colorRampPalette(rev(brewer.pal(9, "RdYlGn")))
   
   correct_object <- FALSE
   if ("cumwinprobs" %in% names(x)) {
     res <- individual_elo_win(x$cumwinprobs, x$ids)
-    xlab <- "summed Elo winning probability"
+    xlab <- "Summed Elo winning probability"
     correct_object <- TRUE
   }
   if ("norm_ds" %in% names(x)) {
@@ -89,7 +87,6 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
   xl <- c(0, n_ids - 1)
   yl <- c(0, pmax * 1.05)
   
-  # Generate colors based on gs_record values
   cols <- sapply(colnames(res), function(id) {
     record <- gs_record[gs_record$Cow == id, ]
     if (nrow(record) == 0) {
@@ -98,7 +95,7 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
       value <- record$GS
       if (value < 2) value <- 2
       if (value > 4) value <- 4
-      return(colfunc(21)[round((value - 2) * 10) + 1])
+      return(rev(viridis(21))[round((value - 2) * 10) + 1])
     }
   })
   
@@ -111,10 +108,16 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
   }
   
   # setup
-  plot(0, 0, type = "n", xlim = xl, ylim = yl, yaxs = "i",
-       xaxs = "i", axes = FALSE, xlab = "", ylab = "", bg = "white")
-  title(ylab = "density", line = 1)
-  title(xlab = xlab, line = 1.8)
+  par(mar = c(7, 4.1, 4.1, 2.1))
+  plot(0, 0, type = "n", xlim = c(1, 30), ylim = yl, yaxs = "i",
+       xaxs = "i", axes = FALSE, xlab = "", ylab = "", bg = "white", xaxt = "n", yaxt = "n") # Turn off automatic axis plotting
+  
+  # Add x-axis with tick marks
+  axis(1, at = seq(1, 31, by = 4), cex.axis = 2) # Adjust font size with cex.axis
+  
+  # Adjust the distance of axis labels
+  title(ylab = "Density", line = 0.5, cex.lab=5) # Increase font size and adjust distance
+  title(xlab = xlab, line = 4.5, cex.lab=5) # Increase font size and adjust distance
   
   # draw the filled posteriors
   for (i in seq_len(ncol(res))) {
@@ -132,6 +135,7 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
     p$x[p$x < 0] <- 0
     polygon(c(p$x, rev(p$x)), c(rep(0, length(p$x)), rev(p$y)), border = border_cols[i])
   }
+
 }
 
 
@@ -146,7 +150,7 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
 #' @return NULL. The function saves the plot to a PNG file and does not return any value.
 save_plot_score <- function(elo_steep_result, png_name, gs_record2) {
   file_name <- paste(png_name, ".png", sep = "")
-  png(file_name, width = 1106, height = 550) # set the width and height of the PNG file
+  png(file_name, width = 1100, height = 650) # set the width and height of the PNG file
   print(plot_scores(elo_steep_result, gs_record2))
   dev.off() # close the PNG file
 }
