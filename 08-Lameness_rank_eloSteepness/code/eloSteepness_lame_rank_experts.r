@@ -4,6 +4,7 @@ library(RColorBrewer)
 library(irr)
 library(viridis)
 library(tidyverse)
+library(ggforce)
 source("eloSteepness_helpers.R")
 
 # load in the data
@@ -125,14 +126,32 @@ names(expt_score) <- c("id", "expert_mean", "expert_q045", "expert_q955")
 worker_expt_sum <- merge(worker_score, expt_score)
 
 # Create the plot
-p <- ggplot(worker_expt_sum, aes(x = expert_mean, y = worker_mean, color = id)) +
-  geom_point() +
-  geom_rect(aes(xmin = expert_q045, xmax = expert_q955, ymin = worker_q045, ymax = worker_q955, fill = id), alpha = 0.2) +
-  scale_x_continuous(name = "Summed Elo winning probability from experienced assessors", limits = c(1, 30)) +
-  scale_y_continuous(name = "Summed Elo winning probability from crowd workers", limits = c(1, 30)) +
-  theme_minimal(base_size = 14) +
-  theme(legend.position = "none", panel.background = element_rect(fill = "white"))
+elo_plot <- ggplot(worker_expt_sum, aes(x = expert_mean, y = worker_mean)) +
+  geom_point(aes(color = id), alpha = 0.9) +
+  geom_ellipse(aes(x0 = (expert_q045 + expert_q955) / 2,
+                   y0 = (worker_q045 + worker_q955) / 2,
+                   a = (expert_q955 - expert_q045) / 2,
+                   b = (worker_q955 - worker_q045) / 2,
+                   angle = 0,
+                   fill = id), alpha = 0.3, color = NA)  +
+  labs(
+    x = "Summed Elo winning probability \nfrom experienced assessors",
+    y = "Summed Elo winning \nprobability from crowd workers"
+  ) +
+  guides(
+    color = "none",  # hide the color legend
+    fill = "none"    # hide the fill legend
+  ) +
+  theme_classic() +
+  theme(
+    text = element_text(size = 35),
+    axis.text.x = element_text(size = 25),
+    axis.text.y = element_text(size = 25)
+  ) +
+  scale_x_continuous(limits = c(1, 30)) +
+  scale_y_continuous(limits = c(1, 30))
 
-# Display the plot
-print(p)
+# Save the plot
+ggsave("../plots/expert_crowd_worker_hiearchy_compare.png", plot = elo_plot, width = 10, height = 8, limitsize = FALSE)
+
 
