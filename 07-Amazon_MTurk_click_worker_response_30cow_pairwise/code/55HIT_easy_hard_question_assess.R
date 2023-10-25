@@ -37,18 +37,30 @@ cowLR_response_pass_neg <- delete_worker_answer_same(cowLR_response_pass_neg)
 cowLR_response_pass_both <- delete_worker_answer_same(cowLR_response_pass_both) 
 
 ################################################################################
+################################# All experts ##################################
+################################################################################
+############## experienced assessor interoserver reliability ###################
+expert_dat_reshaped <- reshape(cowlR_expert, idvar = c("cow_L","cow_R"), timevar = "Worker_id", direction = "wide")
+expert_icc_value <- compute_icc_for_data(expert_dat_reshaped)
+
+# easy and hard questions
+results <- seperate_easy_hard_q_reshape(cowlR_expert, expert_response)
+expert_easy_reshaped <- results$easy_reshaped
+expert_hard_reshaped <- results$hard_reshaped
+
+icc_values_inter_easy <- icc(expert_easy_reshaped[, 3:ncol(expert_easy_reshaped)],model = "twoway", type = "agreement", unit = "single")$value
+icc_values_inter_hard <- icc(expert_hard_reshaped[, 3:ncol(expert_hard_reshaped)],model = "twoway", type = "agreement", unit = "single")$value
+
+
+################################################################################
 ################################# All worker ###################################
 ################################################################################
 ############## click worker interoserver reliability for each HIT ##############
 # inter-click worker ICC
-result <- compute_inter_rater_ICC(cowLR_response)
+result <- compute_inter_rater_ICC(cowLR_response, delete_same_answer = TRUE)
 worker_compare <- result$worker_compare 
 icc_summary <- result$icc_summary  
 print(icc_summary)
-
-############## experienced assessor interoserver reliability ###################
-expert_dat_reshaped <- reshape(cowlR_expert, idvar = c("cow_L","cow_R"), timevar = "Worker_id", direction = "wide")
-expert_icc_value <- compute_icc_for_data(expert_dat_reshaped)
 
 ######## click worker average VS expert average interoserver reliability #######
 # get the average response from click worker VS experts
@@ -81,7 +93,7 @@ plot(worker_response_summary$click_worker_avg, worker_response_summary$dirct_pct
 ################################################################################
 
 ############## click worker interoserver reliability for each HIT ##############
-result <- compute_inter_rater_ICC(cowLR_response_pass_pos)
+result <- compute_inter_rater_ICC(cowLR_response_pass_pos,  delete_same_answer = TRUE)
 worker_compare_pass_pos <- result$worker_compare 
 icc_summary_pass_pos <- result$icc_summary  
 print(icc_summary_pass_pos)
@@ -97,7 +109,7 @@ worker_response_summary_pass_pos <- calculate_and_plot_direct_pct(worker_compare
 ################################################################################
 
 ############## click worker interoserver reliability for each HIT ##############
-result <- compute_inter_rater_ICC(cowLR_response_pass_neg)
+result <- compute_inter_rater_ICC(cowLR_response_pass_neg,  delete_same_answer = TRUE)
 worker_compare_pass_neg <- result$worker_compare 
 icc_summary_pass_neg <- result$icc_summary  
 print(icc_summary_pass_neg)
@@ -113,7 +125,7 @@ worker_response_summary_pass_neg <- calculate_and_plot_direct_pct(worker_compare
 ################################################################################
 
 ############## click worker interoserver reliability for each HIT ##############
-result <- compute_inter_rater_ICC(cowLR_response_pass_both)
+result <- compute_inter_rater_ICC(cowLR_response_pass_both,  delete_same_answer = TRUE)
 worker_compare_pass_both <- result$worker_compare 
 icc_summary_pass_both <- result$icc_summary  
 print(icc_summary_pass_both)

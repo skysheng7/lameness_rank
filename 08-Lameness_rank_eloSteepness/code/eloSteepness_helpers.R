@@ -182,6 +182,39 @@ replicate_row_df <- function(winner_loser) {
   return(winner_loser_degree_replct)
 }
 
+interaction_matrix_generation <- function(winn_loser_sheet) {
+  # Identify unique cows from both winner and loser columns
+  unique_cows <- unique(c(winn_loser_sheet$winner, winn_loser_sheet$loser))
+  
+  # Create the interaction matrix using the unique cows
+  interaction_matrix <- matrix(0, nrow=length(unique_cows), ncol=length(unique_cows),
+                               dimnames=list(unique_cows, unique_cows))
+  
+  # Populate the matrix with the counts from the data
+  for(i in 1:nrow(winn_loser_sheet)) {
+    winner <- winn_loser_sheet$winner[i]
+    loser <- winn_loser_sheet$loser[i]
+    interaction_matrix[as.character(winner), as.character(loser)] <- interaction_matrix[as.character(winner), as.character(loser)] + 1
+  }
+  
+  return(interaction_matrix)
+}
+
+run_elo <- function(winn_loser_sheet){
+  interaction_matrix <- interaction_matrix_generation(winn_loser_sheet) 
+  
+  # use elosteepness from matrix
+  elo_baysian_result <- elo_steepness_from_matrix(interaction_matrix, 
+                                                  algo="fixed_sd", 
+                                                  cores = 4,
+                                                  chains = 4,
+                                                  iter = 5000, 
+                                                  warmup = 1000,
+                                                  seed = 88,)
+  
+  return(elo_baysian_result)
+}
+
 #' Random Elo Steepness Calculation and Saving
 #'
 #' This function calculates the Elo steepness from a given winner-loser sheet, 
@@ -196,16 +229,9 @@ replicate_row_df <- function(winner_loser) {
 #'
 #' @return NULL. The function saves results to files and does not return any value.
 random_elo_steep <- function(winn_loser_sheet, expert_eloSteep, output_dir, type, assessor, gs_record2){
-  interaction_matrix <- with(winn_loser_sheet, table(winner, loser))
   
   # use elosteepness from matrix
-  elo_baysian_result <- elo_steepness_from_matrix(interaction_matrix, 
-                                                  algo="fixed_sd", 
-                                                  cores = 4,
-                                                  chains = 4,
-                                                  iter = 5000, 
-                                                  warmup = 1000,
-                                                  seed = 88,)
+  elo_baysian_result <- run_elo(winn_loser_sheet)
   
   # get individual's score
   individual_elo_win_df <- individual_elo_win(elo_baysian_result$cumwinprobs, elo_baysian_result$ids)
@@ -260,4 +286,85 @@ count_unique_worker_per_pair <- function(cowLR_df){
   colnames(count_worker_per_pair) <- c("q_name", "worker_num")
   
   return(count_worker_per_pair)
+}
+
+unique_pair_id_generation <- function(milestone_df) {
+  # Calculate the maximum and minimum values for each row
+  max_values <- pmax(milestone_df$winner, milestone_df$loser)
+  min_values <- pmin(milestone_df$winner, milestone_df$loser)
+  
+  # Create the pair_id column by pasting the max and min values together with an underscore
+  milestone_df$pair_id <- paste0(max_values, "_", min_values)
+  
+  return(milestone_df)
+}
+
+subsample_and_process <- function(split_df, worker_num) {
+  # Create an empty data frame to store the results
+  sampled_df <- data.frame()
+  
+  # Loop through each group and sample 'worker_num' rows
+  for (group in names(split_df)) {
+    current_df <- split_df[[group]]
+    # Ensure worker_num doesn't exceed the number of rows in the current group
+    n_sample <- min(nrow(current_df), worker_num)
+    sampled_rows <- current_df[sample(1:nrow(current_df), n_sample), ]
+    sampled_df <- rbind(sampled_df, sampled_rows)
+    
+  }
+  
+  
+  sampled_df$pair_id <- NULL
+  sampled_df_processed <- swap_winner_loser(sampled_df, FALSE)
+  
+  return(sampled_df_processed)
+}
+
+icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num = 14, milestone_df, click_worker_experts, expert_col_name) {
+  all_worker_rank <- click_worker_experts[, c("Cow", "all_click_worker_mean")]
+  all_expert_rank <- click_worker_experts[, c("Cow", expert_col_name)]
+  set.seed(7)
+  # prepare an empty df to store change in icc results
+  icc_change_df <- data.frame()
+  
+  milestone_df <- unique_pair_id_generation(milestone_df)
+  # Split the data frame by pair_id
+  split_df <- split(milestone_df, milestone_df$pair_id)
+  
+  for (worker_num in 1:max_worker_num) {
+    for (round in 1:random_rounds){
+      # subsample worker
+      sampled_df_processed <- subsample_and_process(split_df, worker_num)
+      
+      # run elosteepness from matrix
+      elo_baysian_result <- run_elo(sampled_df_processed)
+      
+      # get individual's score
+      score_sum <- scores(elo_baysian_result)
+      colnames(score_sum)[colnames(score_sum) == "id"] <- "Cow"
+      score_sum2_click_worker <- score_sum[, c("Cow", "mean")]
+      
+      # calculate ICC against all workers all response
+      temp_compare <- merge(all_worker_rank, score_sum2_click_worker)
+      icc_result <- icc(temp_compare[, 2:ncol(temp_compare)], model = "twoway", type = "agreement", unit = "single")
+      icc_worker_values <- icc_result$value  
+      # calculate 
+      temp_compare <- merge(all_expert_rank, score_sum2_click_worker)
+      icc_expert_result <- icc(temp_compare[, 2:ncol(temp_compare)], model = "twoway", type = "agreement", unit = "single")
+      icc_expert_values <- icc_expert_result$value  
+      
+      temp <- data.frame(num_of_crowd_worker = worker_num, icc_subsample_with_full_worker = icc_worker_values, icc_subsample_with_full_expert= icc_expert_values)
+      
+      icc_change_df <- rbind(icc_change_df, temp)
+      
+      # save eloSteepness results
+      save(elo_baysian_result, paste0("../results/large files/elo_milestone_", worker_num, "_worker_v", round, ".rdata"))
+      save(score_sum, paste0("../results/elo_score_milestone_", worker_num, "_worker_v", round, ".rdata"))
+      
+    }
+  }
+
+  save(icc_change_df, "../results/milestone_worker_num_ICC_change.rdata")
+  
+  return(icc_change_df)
 }

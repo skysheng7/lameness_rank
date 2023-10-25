@@ -68,29 +68,29 @@ inter_ICC_by_avg_score <- interobserver_ICC_per_round(score_avg_by_expert)
 ## progressively sample 1 to 4 assessors, and 1 to 3 rounds from full dataset ##
 ##### compare the agreement between average of subsampled score and avergae ####
 ################# from full set of 5 assessor & 3 rounds #######################
-icc_change_df <- icc_change_rounds_expert_num(gs)
-icc_se_df <- aggregate(icc_change_df$icc_subsample_with_full, by = list(icc_change_df$num_of_experts, icc_change_df$num_of_rounds), FUN = standard_error)
-colnames(icc_se_df) <- c("num_of_experts", "num_of_rounds", "icc_SE")
-icc_mean_df <- aggregate(icc_change_df$icc_subsample_with_full, by = list(icc_change_df$num_of_experts, icc_change_df$num_of_rounds), FUN = mean)
-colnames(icc_mean_df) <- c("num_of_experts", "num_of_rounds", "icc_mean")
-icc_mean_se_df <- merge(icc_mean_df, icc_se_df)
-icc_mean_se_df <- icc_mean_se_df[-which((icc_mean_se_df$num_of_experts == 5) & (icc_mean_se_df$num_of_rounds == 3)),]
+cor_change_df <- spearman_change_rounds_expert_num(gs) 
+cor_se_df <- aggregate(cor_change_df$cor_subsample_with_full, by = list(cor_change_df$num_of_experts, cor_change_df$num_of_rounds), FUN = standard_error)
+colnames(cor_se_df) <- c("num_of_experts", "num_of_rounds", "cor_SE")
+cor_mean_df <- aggregate(cor_change_df$cor_subsample_with_full, by = list(cor_change_df$num_of_experts, cor_change_df$num_of_rounds), FUN = mean)
+colnames(cor_mean_df) <- c("num_of_experts", "num_of_rounds", "cor_mean")
+cor_mean_se_df <- merge(cor_mean_df, cor_se_df)
+cor_mean_se_df <- cor_mean_se_df[-which((cor_mean_se_df$num_of_experts == 5) & (cor_mean_se_df$num_of_rounds == 3)),]
 
-# plot the icc_mean_se_df
+# plot the cor_mean_se_df
 library(ggplot2)
 
 # Convert num_of_rounds to a factor
-icc_mean_se_df$num_of_rounds_factor <- factor(icc_mean_se_df$num_of_rounds)
+cor_mean_se_df$num_of_rounds_factor <- factor(cor_mean_se_df$num_of_rounds)
 
 # Create a ggplot
-icc_plot <- ggplot(icc_mean_se_df, aes(x = num_of_experts, y = icc_mean)) +
+cor_plot <- ggplot(cor_mean_se_df, aes(x = num_of_experts, y = cor_mean)) +
   geom_point(aes(size = num_of_rounds_factor, color = num_of_rounds_factor, alpha = 0.9)) + # Added alpha for transparency
-  geom_errorbar(aes(ymin = icc_mean - icc_SE, ymax = icc_mean + icc_SE, width = 0.2)) + # Added geom_errorbar for SE error bars
+  geom_errorbar(aes(ymin = cor_mean - cor_SE, ymax = cor_mean + cor_SE, width = 0.2)) + # Added geom_errorbar for SE error bars
   scale_size_manual(values = c(`1` = 10, `2` = 15, `3` = 20)) +
   scale_color_manual(values = c(`1` = "lightblue", `2` = "dodgerblue", `3` = "darkblue")) +
   labs(
     x = "Number of assessors",
-    y = "ICC between subsampled \nand complete responses",
+    y = "Spearman correlation between \nsubsampled and complete responses",
     size = "Number \nof rounds",
     color = "Number \nof rounds"
   ) +
@@ -101,17 +101,17 @@ icc_plot <- ggplot(icc_mean_se_df, aes(x = num_of_experts, y = icc_mean)) +
   ) +
   theme_classic() +
   theme(
-    text = element_text(size = 55),
+    text = element_text(size = 50),
     axis.text.x = element_text(size = 50)
   ) +
   scale_y_continuous(limits = c(0.5, 1), expand = expansion(mult = c(0, .1)))  # Set y-axis limits
 
 
 # Save the plot
-ggsave("../plots/icc_change_by_round_expert_num.png", plot = icc_plot, width = 15, height = 13, limitsize = FALSE)
+ggsave("../plots/cor_change_by_round_expert_num.png", plot = cor_plot, width = 15, height = 13, limitsize = FALSE)
 
 write.csv(gs, file = "../results/gs_response_combined.csv")
 write.csv(gs_avg, file = "../results/gs_response_combined_avg.csv")
 write.csv(icc_df, file = "../results/intraobserver_reliability.csv")
 write.csv(inter_ICC_by_rounds, file = "../results/interobserver_reliability_by_rounds.csv")
-write.csv(icc_mean_se_df, file = "../results/icc_change_by_round_expert_num.csv")
+write.csv(cor_mean_se_df, file = "../results/cor_change_by_round_expert_num.csv")

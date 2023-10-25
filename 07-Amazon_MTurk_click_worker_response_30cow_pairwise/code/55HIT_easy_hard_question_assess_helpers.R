@@ -9,7 +9,7 @@ cowLR_process <- function(df){
 }
 
 # Filter and reshape the worker responses
-reshape_worker_responses <- function(worker_res, cur_HIT, delete_NA) {
+reshape_worker_responses <- function(worker_res, cur_HIT, delete_NA, delete_same_answer) {
   dat1 <- worker_res[which(worker_res$Task_number == cur_HIT),]
   dat1 <- dat1[, c("cow_L", "cow_R", "Worker_id","Answer")]
   dat_reshaped <- reshape(dat1, idvar = c("cow_L","cow_R"), timevar = "Worker_id", direction = "wide")
@@ -20,16 +20,21 @@ reshape_worker_responses <- function(worker_res, cur_HIT, delete_NA) {
     dat_reshaped <- dat_reshaped[, -which(colnames(dat_reshaped) %in% bad_cols)]
   }
   
-  # Calculate standard deviation for each column while ignoring NA values
-  sds <- apply(dat_reshaped[, 3:ncol(dat_reshaped)], 2, sd, na.rm = TRUE)
+  if (delete_same_answer) {
+    # Calculate standard deviation for each column while ignoring NA values
+    sds <- apply(dat_reshaped[, 3:ncol(dat_reshaped)], 2, sd, na.rm = TRUE)
+    
+    # Filter columns based on standard deviation
+    filtered_cols <- dat_reshaped[, 3:ncol(dat_reshaped)][, sds != 0]
+    
+    # Combine the first two columns with the filtered columns
+    result <- cbind(dat_reshaped[, 1:2], filtered_cols)
+    
+    return(result)
+  } else {
+    return(dat_reshaped)
+  }
   
-  # Filter columns based on standard deviation
-  filtered_cols <- dat_reshaped[, 3:ncol(dat_reshaped)][, sds != 0]
-  
-  # Combine the first two columns with the filtered columns
-  result <- cbind(dat_reshaped[, 1:2], filtered_cols)
-  
-  return(result)
 }
 
 # Calculate ICC for a given data
@@ -48,20 +53,45 @@ compute_icc_summary <- function(allworker_icc) {
   return(list(mean = icc_mean, sd = icc_sd, min = icc_min, max = icc_max))
 }
 
-compute_inter_rater_ICC <- function(df) {
+seperate_easy_hard_q_reshape <- function(cowlR_df, expert_response) {
+  # easy and hard questions
+  temp_result <- seperate_easy_hard_q(cowlR_df, expert_response)
+  easy<- temp_result$easy
+  hard<- temp_result$hard
+  
+  easy_reshaped <- reshape(easy, idvar = c("cow_L","cow_R"), timevar = "Worker_id", direction = "wide")
+  hard_reshaped <- reshape(hard, idvar = c("cow_L","cow_R"), timevar = "Worker_id", direction = "wide")
+  
+  return(list(easy_reshaped = easy_reshaped, hard_reshaped = hard_reshaped))
+}
+
+seperate_easy_hard_q <- function(cowlR_df, expert_response) {
+  # easy and hard questions
+  cowlR_m <- merge(cowlR_df, expert_response)
+  easy <- cowlR_m[which(abs(cowlR_m$response_mean) >= 1),]
+  hard <- cowlR_m[which(abs(cowlR_m$response_mean) < 1),]
+  easy$response_mean <- NULL
+  hard$response_mean <- NULL
+  
+  return(list(easy = easy, hard = hard))
+}
+
+compute_inter_rater_ICC <- function(df, delete_same_answer) {
   df <- df[which(df$HIT > 0),]
   worker_res <- cowLR_process(df)
   
-  all_HIT <- unique(worker_res$Task_number)
+  all_HIT <- sort(unique(worker_res$Task_number))
   worker_compare <- list()
   allworker_icc <- data.frame()
   
   for(i in 1:length(all_HIT)) {
     cur_HIT <- all_HIT[i]
-    worker_compare[[i]] <- reshape_worker_responses(worker_res, cur_HIT, delete_NA = TRUE)
+    worker_compare[[i]] <- reshape_worker_responses(worker_res, cur_HIT, delete_NA = TRUE, delete_same_answer)
     
-    icc_value <- compute_icc_for_data(worker_compare[[i]])
-    allworker_icc <- rbind(allworker_icc, data.frame(HIT = cur_HIT, click_worker_interobserver = icc_value))
+    if (nrow(worker_compare[[i]]) > 1) {
+      icc_value <- compute_icc_for_data(worker_compare[[i]])
+      allworker_icc <- rbind(allworker_icc, data.frame(HIT = cur_HIT, click_worker_interobserver = icc_value))
+    }
   }
   
   icc_summary <- compute_icc_summary(allworker_icc)

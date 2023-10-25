@@ -39,7 +39,7 @@ gs_subsampling <- function(gs, selected_rounds, selected_experts) {
   return(gs_sampled_avg)
 }
 
-icc_change_rounds_expert_num <- function(gs) {
+spearman_change_rounds_expert_num <- function(gs) {
   all_rounds <- unique(gs$GS_round)
   all_experts <- unique(gs$Worker_id)
   
@@ -47,7 +47,7 @@ icc_change_rounds_expert_num <- function(gs) {
   gs_avg <- aggregate(gs$GS, by = list(gs$Cow), FUN = mean)
   colnames(gs_avg) <- c("Cow", "GS_avg")
   
-  icc_change_df <- data.frame()
+  cor_change_df <- data.frame()
   
   for (num_of_experts in 1:(length(all_experts))) {
     expert_combinations <- combn(all_experts, num_of_experts, simplify = FALSE)
@@ -59,19 +59,19 @@ icc_change_rounds_expert_num <- function(gs) {
           
           gs_compare <- merge(gs_avg, gs_sampled_avg)
           
-          # calculate ICC
-          icc_result_inter <- icc(gs_compare[, 2:ncol(gs_compare)], model = "twoway", type = "agreement", unit = "single")
-          icc_values_inter <- icc_result_inter$value  
+          # calculate spearman correlation
+          # Calculate Spearman rank correlation
+          correlation <- cor(gs_compare$GS_avg, gs_compare$GS_sampled_avg, method="spearman")
           
-          temp <- data.frame(num_of_experts = num_of_experts, num_of_rounds = num_of_rounds, icc_subsample_with_full = icc_values_inter)
+          temp <- data.frame(num_of_experts = num_of_experts, num_of_rounds = num_of_rounds, cor_subsample_with_full = correlation)
           
-          icc_change_df <- rbind(icc_change_df, temp)
+          cor_change_df <- rbind(cor_change_df, temp)
         }
       }
     }
   }
   
-  return(icc_change_df)
+  return(cor_change_df)
 }
 
 # Define a function to calculate standard error
