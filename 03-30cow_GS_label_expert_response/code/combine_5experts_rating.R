@@ -115,3 +115,62 @@ write.csv(gs_avg, file = "../results/gs_response_combined_avg.csv")
 write.csv(icc_df, file = "../results/intraobserver_reliability.csv")
 write.csv(inter_ICC_by_rounds, file = "../results/interobserver_reliability_by_rounds.csv")
 write.csv(cor_mean_se_df, file = "../results/cor_change_by_round_expert_num.csv")
+
+
+## progressively sample 1 to 4 assessors, and 1 to 3 rounds from full dataset ##
+##### compare the agreement between average of subsampled score and avergae ####
+################# from full set of 5 assessor & 3 rounds #######################
+cor_change_df <- spearman_change_rounds_expert_num_round_seq(gs) 
+cor_se_df <- aggregate(cor_change_df$cor_subsample_with_full, by = list(cor_change_df$num_of_experts, cor_change_df$num_of_rounds), FUN = standard_error)
+colnames(cor_se_df) <- c("num_of_experts", "num_of_rounds", "cor_SE")
+cor_mean_df <- aggregate(cor_change_df$cor_subsample_with_full, by = list(cor_change_df$num_of_experts, cor_change_df$num_of_rounds), FUN = mean)
+colnames(cor_mean_df) <- c("num_of_experts", "num_of_rounds", "cor_mean")
+cor_mean_se_df <- merge(cor_mean_df, cor_se_df)
+cor_mean_se_df <- cor_mean_se_df[-which((cor_mean_se_df$num_of_experts == 5) & (cor_mean_se_df$num_of_rounds == 3)),]
+
+# plot the cor_mean_se_df
+# plot the cor_mean_se_df
+library(ggplot2)
+
+# Convert num_of_rounds to a factor
+cor_mean_se_df$num_of_rounds_factor <- factor(cor_mean_se_df$num_of_rounds)
+cor_mean_se_df$num_of_rounds_factor <- factor(cor_mean_se_df$num_of_rounds)
+
+# Create a ggplot
+cor_plot <- ggplot(cor_mean_se_df, aes(x = num_of_experts, y = cor_mean)) +
+cor_plot <- ggplot(cor_mean_se_df, aes(x = num_of_experts, y = cor_mean)) +
+  geom_point(aes(size = num_of_rounds_factor, color = num_of_rounds_factor, alpha = 0.9)) + # Added alpha for transparency
+  geom_errorbar(aes(ymin = cor_mean - cor_SE, ymax = cor_mean + cor_SE, width = 0.2)) + # Added geom_errorbar for SE error bars
+  geom_errorbar(aes(ymin = cor_mean - cor_SE, ymax = cor_mean + cor_SE, width = 0.2)) + # Added geom_errorbar for SE error bars
+  scale_size_manual(values = c(`1` = 10, `2` = 15, `3` = 20)) +
+  scale_color_manual(values = c(`1` = "lightblue", `2` = "dodgerblue", `3` = "darkblue")) +
+  labs(
+    x = "Number of assessors",
+    y = "Spearman correlation between \nsubsampled and complete responses",
+    y = "Spearman correlation between \nsubsampled and complete responses",
+    size = "Number \nof rounds",
+    color = "Number \nof rounds"
+  ) +
+  guides(
+    color = guide_legend(override.aes = list(size = c(10, 15, 20), alpha = 0.7)),
+    size = "none",  # hide the size legend
+    alpha = "none"  # hide the alpha legend
+  ) +
+  theme_classic() +
+  theme(
+    text = element_text(size = 50),
+    text = element_text(size = 50),
+    axis.text.x = element_text(size = 50)
+  ) +
+  scale_y_continuous(limits = c(0.5, 1), expand = expansion(mult = c(0, .1)))  # Set y-axis limits
+
+
+# Save the plot
+ggsave("../plots/cor_change_by_round_expert_num_round_seq.png", plot = cor_plot, width = 15, height = 13, limitsize = FALSE)
+
+write.csv(gs, file = "../results/gs_response_combined.csv")
+write.csv(gs_avg, file = "../results/gs_response_combined_avg.csv")
+write.csv(icc_df, file = "../results/intraobserver_reliability.csv")
+write.csv(inter_ICC_by_rounds, file = "../results/interobserver_reliability_by_rounds.csv")
+write.csv(cor_mean_se_df, file = "../results/cor_change_by_round_expert_num.csv")
+write.csv(cor_mean_se_df, file = "../results/cor_change_by_round_expert_num.csv")
