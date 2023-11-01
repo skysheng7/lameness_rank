@@ -161,9 +161,3 @@ cor_plot <- ggplot(cor_mean_se_df, aes(x = num_of_experts, y = cor_mean)) +
 
 # Save the plot
 ggsave("../plots/cor_change_by_round_expert_num_round_seq.png", plot = cor_plot, width = 15, height = 13, limitsize = FALSE)
-
-write.csv(gs, file = "../results/gs_response_combined.csv")
-write.csv(gs_avg, file = "../results/gs_response_combined_avg.csv")
-write.csv(icc_df, file = "../results/intraobserver_reliability.csv")
-write.csv(inter_ICC_by_rounds, file = "../results/interobserver_reliability_by_rounds.csv")
-write.csv(cor_mean_se_df, file = "../results/cor_change_by_round_expert_num.csv")
