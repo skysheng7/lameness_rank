@@ -129,24 +129,19 @@ cor_mean_se_df <- merge(cor_mean_df, cor_se_df)
 cor_mean_se_df <- cor_mean_se_df[-which((cor_mean_se_df$num_of_experts == 5) & (cor_mean_se_df$num_of_rounds == 3)),]
 
 # plot the cor_mean_se_df
-# plot the cor_mean_se_df
 library(ggplot2)
 
 # Convert num_of_rounds to a factor
 cor_mean_se_df$num_of_rounds_factor <- factor(cor_mean_se_df$num_of_rounds)
-cor_mean_se_df$num_of_rounds_factor <- factor(cor_mean_se_df$num_of_rounds)
 
 # Create a ggplot
 cor_plot <- ggplot(cor_mean_se_df, aes(x = num_of_experts, y = cor_mean)) +
-cor_plot <- ggplot(cor_mean_se_df, aes(x = num_of_experts, y = cor_mean)) +
   geom_point(aes(size = num_of_rounds_factor, color = num_of_rounds_factor, alpha = 0.9)) + # Added alpha for transparency
-  geom_errorbar(aes(ymin = cor_mean - cor_SE, ymax = cor_mean + cor_SE, width = 0.2)) + # Added geom_errorbar for SE error bars
   geom_errorbar(aes(ymin = cor_mean - cor_SE, ymax = cor_mean + cor_SE, width = 0.2)) + # Added geom_errorbar for SE error bars
   scale_size_manual(values = c(`1` = 10, `2` = 15, `3` = 20)) +
   scale_color_manual(values = c(`1` = "lightblue", `2` = "dodgerblue", `3` = "darkblue")) +
   labs(
     x = "Number of assessors",
-    y = "Spearman correlation between \nsubsampled and complete responses",
     y = "Spearman correlation between \nsubsampled and complete responses",
     size = "Number \nof rounds",
     color = "Number \nof rounds"
@@ -158,7 +153,6 @@ cor_plot <- ggplot(cor_mean_se_df, aes(x = num_of_experts, y = cor_mean)) +
   ) +
   theme_classic() +
   theme(
-    text = element_text(size = 50),
     text = element_text(size = 50),
     axis.text.x = element_text(size = 50)
   ) +
@@ -172,5 +166,4 @@ write.csv(gs, file = "../results/gs_response_combined.csv")
 write.csv(gs_avg, file = "../results/gs_response_combined_avg.csv")
 write.csv(icc_df, file = "../results/intraobserver_reliability.csv")
 write.csv(inter_ICC_by_rounds, file = "../results/interobserver_reliability_by_rounds.csv")
-write.csv(cor_mean_se_df, file = "../results/cor_change_by_round_expert_num.csv")
 write.csv(cor_mean_se_df, file = "../results/cor_change_by_round_expert_num.csv")

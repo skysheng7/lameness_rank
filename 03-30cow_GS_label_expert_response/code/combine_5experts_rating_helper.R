@@ -38,6 +38,7 @@ gs_subsampling <- function(gs, selected_rounds, selected_experts) {
   
   return(gs_sampled_avg)
 }
+
 spearman_change_rounds_expert_num_round_seq <- function(gs) {
   all_rounds <- unique(gs$GS_round)
   all_experts <- unique(gs$Worker_id)
@@ -82,7 +83,7 @@ spearman_change_rounds_expert_num <- function(gs) {
   gs_avg <- aggregate(gs$GS, by = list(gs$Cow), FUN = mean)
   colnames(gs_avg) <- c("Cow", "GS_avg")
   
-  icc_change_df <- data.frame()
+  cor_change_df <- data.frame()
   
   for (num_of_experts in 1:(length(all_experts))) {
     expert_combinations <- combn(all_experts, num_of_experts, simplify = FALSE)
