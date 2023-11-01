@@ -13,13 +13,12 @@ exec(open("05-Amazon_MTurk_expert_response_30cow_pairwise/code/pairwise_further_
 # load all reponse and answer key csv
 expert_response_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/all_experts"
 answer_dir1 = "04-generate_54HIT_html_experts/results"
-answer_dir2 = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/wali_resubmission_html"
 data_path_1='all_HIT_answer.csv'
 data_path_2='master_all_responses_SB_Oct-01-2023_to_SB_resub_Oct-01-2023_Sarah.csv'
 
 df_1= pd.read_csv(os.path.join(answer_dir1, data_path_1))
 column_ord = ['cow_L', 'cow_R', 'cow_L_URL', 'cow_R_URL', 'cow_L_GS', 'cow_R_GS', 'GS_dif', 'question_type', 'question_num', 'HIT', 'question_id', 'pair_id']
-#df_1 = merge_csv_files(df_1, answer_dir2, column_ord)
+
 
 df_2= pd.read_csv(os.path.join(expert_response_dir, data_path_2))
 
@@ -40,14 +39,11 @@ matrix = winner_loser_df.pivot(index='winner', columns='loser', values='degree')
 """
 
 exp1= pd.read_csv(os.path.join(expert_response_dir, "winner_loser_Dan.csv"))
-exp2 = pd.read_csv(os.path.join(expert_response_dir, "winner_loser_Wali.csv"))
-exp3 = pd.read_csv(os.path.join(expert_response_dir, "winner_loser_Nina.csv"))
-exp4 = pd.read_csv(os.path.join(expert_response_dir, "winner_loser_SB.csv"))
+exp2 = pd.read_csv(os.path.join(expert_response_dir, "winner_loser_Nina.csv"))
+exp3 = pd.read_csv(os.path.join(expert_response_dir, "winner_loser_SB.csv"))
 
-#exp_all = pd.concat([exp1, exp2, exp3, exp4], ignore_index=True)
-#exp_all.to_csv(os.path.join(expert_response_dir, 'winner_loser_merged.csv'), index=False)
 
-exp_all = pd.concat([exp1, exp3, exp4], ignore_index=True)
+exp_all = pd.concat([exp1, exp2, exp3], ignore_index=True)
 exp_all.to_csv(os.path.join(expert_response_dir, 'winner_loser_merged_DW_NV_SB.csv'), index=False)
 
 """
@@ -57,12 +53,11 @@ exp_all.to_csv(os.path.join(expert_response_dir, 'winner_loser_merged_DW_NV_SB.c
 """
 
 exp1_LR= pd.read_csv(os.path.join(expert_response_dir, "cowLR_response_Dan.csv"))
-exp2_LR = pd.read_csv(os.path.join(expert_response_dir, "cowLR_response_Wali.csv"))
-exp3_LR = pd.read_csv(os.path.join(expert_response_dir, "cowLR_response_Nina.csv"))
-exp4_LR = pd.read_csv(os.path.join(expert_response_dir, "cowLR_response_SB.csv"))
+exp2_LR = pd.read_csv(os.path.join(expert_response_dir, "cowLR_response_Nina.csv"))
+exp3_LR = pd.read_csv(os.path.join(expert_response_dir, "cowLR_response_SB.csv"))
 
 #exp_all_LR = pd.concat([exp1_LR, exp2_LR, exp3_LR, exp4_LR], ignore_index=True)
-exp_all_LR = pd.concat([exp1_LR, exp3_LR, exp4_LR], ignore_index=True)
+exp_all_LR = pd.concat([exp1_LR, exp2_LR, exp3_LR], ignore_index=True)
 
 # calculate the mean response for each unique set of cow_L and cow_R
 mean_responses = exp_all_LR.groupby(['cow_L', 'cow_R'])['response'].mean().reset_index()
