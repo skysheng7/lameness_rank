@@ -47,7 +47,7 @@ today = date.today().strftime("%b-%d-%Y")
 
 input_dir = "04-generate_54HIT_html_experts/results"
 key_dir ='/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/data/Amazon MTurk'
-output_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/TM" # this can be "../results/DW", "../results/WS", "../results/HE" depending on different worker
+output_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/TM" # this can be "../results/DW", "../results/HE" depending on different worker
 
 """
 ###############################################################################
@@ -262,9 +262,6 @@ output_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/all_experts
 
 # Dan: 
 merge_responses(["May-14-2023", "May-16-2023", "May-17-2023", "May-18-2023"], ['A10892I86DG5PR'], 'Dan', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/DW")
-
-# Wali:
-merge_responses(["Jun-19-2023", "Jul-14-2023", "Wali_reSub_Jul-14-2023"], ['ARUXAWT9AUG92'], 'Wali', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/WS")
 
 # Nina: used 2 different amazon account
 merge_responses(["Sep-22-2023", "resub_Sep-22-2023"], ['ARUXAWT9AUG92', 'A2EE2N0X2ZPJ5E'], 'Nina', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/NV")
