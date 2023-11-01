@@ -1,0 +1,1868 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20214.22.1108.1355                               -->
+<workbook original-version='18.1' source-build='2021.4.13 (20214.22.1108.1355)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='compare_summary' inline='true' name='federated.0uhoa5m0sl1lca18szy191utyy1b' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='compare_summary' name='textscan.1bw407l0ylk31713pwrjv120kxao'>
+            <connection class='textscan' directory='C:/Users/skysheng/OneDrive - The University Of British Columbia/R package project and Git/lameness_rank/08-Lameness_rank_eloSteepness/results' filename='compare_summary.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.1bw407l0ylk31713pwrjv120kxao' name='compare_summary.csv' table='[compare_summary#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_CA' separator=','>
+            <column datatype='integer' name='Cow' ordinal='0' />
+            <column datatype='real' name='GS' ordinal='1' />
+            <column datatype='real' name='all_click_worker_mean' ordinal='2' />
+            <column datatype='real' name='all_click_worker_sd' ordinal='3' />
+            <column datatype='real' name='sampled_click_worker_mean' ordinal='4' />
+            <column datatype='real' name='sampled_click_worker_sd' ordinal='5' />
+            <column datatype='real' name='sampled_delete_click_worker_mean' ordinal='6' />
+            <column datatype='real' name='sampled_delete_click_worker_sd' ordinal='7' />
+            <column datatype='real' name='sampled_exchange0_click_worker_mean' ordinal='8' />
+            <column datatype='real' name='sampled_exchange0_click_worker_sd' ordinal='9' />
+            <column datatype='real' name='sampled_ind_exchange0_click_worker_mean' ordinal='10' />
+            <column datatype='real' name='sampled_ind_exchange0_click_worker_sd' ordinal='11' />
+            <column datatype='real' name='sampled_milestone_min_click_worker_mean' ordinal='12' />
+            <column datatype='real' name='sampled_milestone_min_click_worker_sd' ordinal='13' />
+            <column datatype='real' name='sampled_milestone_max_click_worker_mean' ordinal='14' />
+            <column datatype='real' name='sampled_milestone_max_click_worker_sd' ordinal='15' />
+            <column datatype='real' name='DW_experts_mean' ordinal='16' />
+            <column datatype='real' name='DW_experts_sd' ordinal='17' />
+            <column datatype='real' name='WS_experts_mean' ordinal='18' />
+            <column datatype='real' name='WS_experts_sd' ordinal='19' />
+            <column datatype='real' name='NV_experts_mean' ordinal='20' />
+            <column datatype='real' name='NV_experts_sd' ordinal='21' />
+            <column datatype='real' name='NV_DW_experts_mean' ordinal='22' />
+            <column datatype='real' name='NV_DW_experts_sd' ordinal='23' />
+            <column datatype='real' name='SB_experts_mean' ordinal='24' />
+            <column datatype='real' name='SB_experts_sd' ordinal='25' />
+            <column datatype='real' name='all_experts_mean' ordinal='26' />
+            <column datatype='real' name='all_experts_sd' ordinal='27' />
+            <column datatype='real' name='weighted_experts_mean' ordinal='28' />
+            <column datatype='real' name='weighted_experts_sd' ordinal='29' />
+            <column datatype='real' name='NV_DW_SB_experts_mean' ordinal='30' />
+            <column datatype='real' name='NV_DW_SB_experts_sd' ordinal='31' />
+            <column datatype='real' name='TM_experts_mean' ordinal='32' />
+            <column datatype='real' name='TM_experts_sd' ordinal='33' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.1bw407l0ylk31713pwrjv120kxao' name='compare_summary.csv' table='[compare_summary#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_CA' separator=','>
+            <column datatype='integer' name='Cow' ordinal='0' />
+            <column datatype='real' name='GS' ordinal='1' />
+            <column datatype='real' name='all_click_worker_mean' ordinal='2' />
+            <column datatype='real' name='all_click_worker_sd' ordinal='3' />
+            <column datatype='real' name='sampled_click_worker_mean' ordinal='4' />
+            <column datatype='real' name='sampled_click_worker_sd' ordinal='5' />
+            <column datatype='real' name='sampled_delete_click_worker_mean' ordinal='6' />
+            <column datatype='real' name='sampled_delete_click_worker_sd' ordinal='7' />
+            <column datatype='real' name='sampled_exchange0_click_worker_mean' ordinal='8' />
+            <column datatype='real' name='sampled_exchange0_click_worker_sd' ordinal='9' />
+            <column datatype='real' name='sampled_ind_exchange0_click_worker_mean' ordinal='10' />
+            <column datatype='real' name='sampled_ind_exchange0_click_worker_sd' ordinal='11' />
+            <column datatype='real' name='sampled_milestone_min_click_worker_mean' ordinal='12' />
+            <column datatype='real' name='sampled_milestone_min_click_worker_sd' ordinal='13' />
+            <column datatype='real' name='sampled_milestone_max_click_worker_mean' ordinal='14' />
+            <column datatype='real' name='sampled_milestone_max_click_worker_sd' ordinal='15' />
+            <column datatype='real' name='DW_experts_mean' ordinal='16' />
+            <column datatype='real' name='DW_experts_sd' ordinal='17' />
+            <column datatype='real' name='WS_experts_mean' ordinal='18' />
+            <column datatype='real' name='WS_experts_sd' ordinal='19' />
+            <column datatype='real' name='NV_experts_mean' ordinal='20' />
+            <column datatype='real' name='NV_experts_sd' ordinal='21' />
+            <column datatype='real' name='NV_DW_experts_mean' ordinal='22' />
+            <column datatype='real' name='NV_DW_experts_sd' ordinal='23' />
+            <column datatype='real' name='SB_experts_mean' ordinal='24' />
+            <column datatype='real' name='SB_experts_sd' ordinal='25' />
+            <column datatype='real' name='all_experts_mean' ordinal='26' />
+            <column datatype='real' name='all_experts_sd' ordinal='27' />
+            <column datatype='real' name='weighted_experts_mean' ordinal='28' />
+            <column datatype='real' name='weighted_experts_sd' ordinal='29' />
+            <column datatype='real' name='NV_DW_SB_experts_mean' ordinal='30' />
+            <column datatype='real' name='NV_DW_SB_experts_sd' ordinal='31' />
+            <column datatype='real' name='TM_experts_mean' ordinal='32' />
+            <column datatype='real' name='TM_experts_sd' ordinal='33' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_CA&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cow</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cow]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>Cow</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>GS</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[GS]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>GS</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>all_click_worker_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[all_click_worker_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>all_click_worker_mean</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>all_click_worker_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[all_click_worker_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>all_click_worker_sd</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_click_worker_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_click_worker_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_click_worker_mean</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_click_worker_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_click_worker_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_click_worker_sd</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_delete_click_worker_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_delete_click_worker_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_delete_click_worker_mean</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_delete_click_worker_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_delete_click_worker_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_delete_click_worker_sd</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_exchange0_click_worker_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_exchange0_click_worker_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_exchange0_click_worker_mean</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_exchange0_click_worker_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_exchange0_click_worker_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_exchange0_click_worker_sd</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_ind_exchange0_click_worker_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_ind_exchange0_click_worker_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_ind_exchange0_click_worker_mean</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_ind_exchange0_click_worker_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_ind_exchange0_click_worker_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_ind_exchange0_click_worker_sd</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_milestone_min_click_worker_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_milestone_min_click_worker_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_milestone_min_click_worker_mean</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_milestone_min_click_worker_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_milestone_min_click_worker_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_milestone_min_click_worker_sd</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_milestone_max_click_worker_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_milestone_max_click_worker_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_milestone_max_click_worker_mean</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sampled_milestone_max_click_worker_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sampled_milestone_max_click_worker_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>sampled_milestone_max_click_worker_sd</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DW_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[DW_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>DW_experts_mean</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DW_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[DW_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>DW_experts_sd</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>WS_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[WS_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>WS_experts_mean</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>WS_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[WS_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>WS_experts_sd</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NV_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[NV_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>NV_experts_mean</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NV_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[NV_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>NV_experts_sd</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NV_DW_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[NV_DW_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>NV_DW_experts_mean</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NV_DW_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[NV_DW_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>NV_DW_experts_sd</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SB_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SB_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>SB_experts_mean</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SB_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SB_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>SB_experts_sd</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>all_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[all_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>all_experts_mean</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>all_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[all_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>all_experts_sd</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weighted_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weighted_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>weighted_experts_mean</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weighted_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weighted_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>weighted_experts_sd</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NV_DW_SB_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[NV_DW_SB_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>NV_DW_SB_experts_mean</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NV_DW_SB_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[NV_DW_SB_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>NV_DW_SB_experts_sd</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TM_experts_mean</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[TM_experts_mean]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>TM_experts_mean</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TM_experts_sd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[TM_experts_sd]</local-name>
+            <parent-name>[compare_summary.csv]</parent-name>
+            <remote-alias>TM_experts_sd</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='DW experts mean' datatype='real' name='[DW_experts_mean]' role='measure' type='quantitative' />
+      <column caption='DW experts sd' datatype='real' name='[DW_experts_sd]' role='measure' type='quantitative' />
+      <column caption='NV experts mean' datatype='real' name='[NV_experts_mean]' role='measure' type='quantitative' />
+      <column caption='NV experts sd' datatype='real' name='[NV_experts_sd]' role='measure' type='quantitative' />
+      <column caption='WS experts mean' datatype='real' name='[WS_experts_mean]' role='measure' type='quantitative' />
+      <column caption='WS experts sd' datatype='real' name='[WS_experts_sd]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='compare_summary.csv' datatype='table' name='[__tableau_internal_object_id__].[compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6]' role='measure' type='quantitative' />
+      <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+      <column caption='All Click Worker Sd' datatype='real' name='[all_click_worker_sd]' role='measure' type='quantitative' />
+      <column caption='All Experts Mean' datatype='real' name='[all_experts_mean]' role='measure' type='quantitative' />
+      <column caption='Sampled Click Worker Mean' datatype='real' name='[sampled_click_worker_mean]' role='measure' type='quantitative' />
+      <column caption='Sampled Click Worker Sd' datatype='real' name='[sampled_click_worker_sd]' role='measure' type='quantitative' />
+      <column caption='Sampled Delete Click Worker Mean' datatype='real' name='[sampled_delete_click_worker_mean]' role='measure' type='quantitative' />
+      <column caption='Sampled Delete Click Worker Sd' datatype='real' name='[sampled_delete_click_worker_sd]' role='measure' type='quantitative' />
+      <column caption='Sampled Exchange0 Click Worker Mean' datatype='real' name='[sampled_exchange0_click_worker_mean]' role='measure' type='quantitative' />
+      <column caption='Sampled Exchange0 Click Worker Sd' datatype='real' name='[sampled_exchange0_click_worker_sd]' role='measure' type='quantitative' />
+      <column caption='Sampled Ind Exchange0 Click Worker Mean' datatype='real' name='[sampled_ind_exchange0_click_worker_mean]' role='measure' type='quantitative' />
+      <column caption='Sampled Ind Exchange0 Click Worker Sd' datatype='real' name='[sampled_ind_exchange0_click_worker_sd]' role='measure' type='quantitative' />
+      <column caption='Sampled Milestone Max Click Worker Mean' datatype='real' name='[sampled_milestone_max_click_worker_mean]' role='measure' type='quantitative' />
+      <column caption='Sampled Milestone Max Click Worker Sd' datatype='real' name='[sampled_milestone_max_click_worker_sd]' role='measure' type='quantitative' />
+      <column caption='Sampled Milestone Min Click Worker Mean' datatype='real' name='[sampled_milestone_min_click_worker_mean]' role='measure' type='quantitative' />
+      <column caption='Sampled Milestone Min Click Worker Sd' datatype='real' name='[sampled_milestone_min_click_worker_sd]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' rowDisplayCount='30' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='compare_summary.csv' id='compare_summary.csv_772840677F204F8BA20CD0F75ED19EE6'>
+            <properties context=''>
+              <relation connection='textscan.1bw407l0ylk31713pwrjv120kxao' name='compare_summary.csv' table='[compare_summary#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_CA' separator=','>
+                  <column datatype='integer' name='Cow' ordinal='0' />
+                  <column datatype='real' name='GS' ordinal='1' />
+                  <column datatype='real' name='all_click_worker_mean' ordinal='2' />
+                  <column datatype='real' name='all_click_worker_sd' ordinal='3' />
+                  <column datatype='real' name='sampled_click_worker_mean' ordinal='4' />
+                  <column datatype='real' name='sampled_click_worker_sd' ordinal='5' />
+                  <column datatype='real' name='sampled_delete_click_worker_mean' ordinal='6' />
+                  <column datatype='real' name='sampled_delete_click_worker_sd' ordinal='7' />
+                  <column datatype='real' name='sampled_exchange0_click_worker_mean' ordinal='8' />
+                  <column datatype='real' name='sampled_exchange0_click_worker_sd' ordinal='9' />
+                  <column datatype='real' name='sampled_ind_exchange0_click_worker_mean' ordinal='10' />
+                  <column datatype='real' name='sampled_ind_exchange0_click_worker_sd' ordinal='11' />
+                  <column datatype='real' name='sampled_milestone_min_click_worker_mean' ordinal='12' />
+                  <column datatype='real' name='sampled_milestone_min_click_worker_sd' ordinal='13' />
+                  <column datatype='real' name='sampled_milestone_max_click_worker_mean' ordinal='14' />
+                  <column datatype='real' name='sampled_milestone_max_click_worker_sd' ordinal='15' />
+                  <column datatype='real' name='DW_experts_mean' ordinal='16' />
+                  <column datatype='real' name='DW_experts_sd' ordinal='17' />
+                  <column datatype='real' name='WS_experts_mean' ordinal='18' />
+                  <column datatype='real' name='WS_experts_sd' ordinal='19' />
+                  <column datatype='real' name='NV_experts_mean' ordinal='20' />
+                  <column datatype='real' name='NV_experts_sd' ordinal='21' />
+                  <column datatype='real' name='NV_DW_experts_mean' ordinal='22' />
+                  <column datatype='real' name='NV_DW_experts_sd' ordinal='23' />
+                  <column datatype='real' name='SB_experts_mean' ordinal='24' />
+                  <column datatype='real' name='SB_experts_sd' ordinal='25' />
+                  <column datatype='real' name='all_experts_mean' ordinal='26' />
+                  <column datatype='real' name='all_experts_sd' ordinal='27' />
+                  <column datatype='real' name='weighted_experts_mean' ordinal='28' />
+                  <column datatype='real' name='weighted_experts_sd' ordinal='29' />
+                  <column datatype='real' name='NV_DW_SB_experts_mean' ordinal='30' />
+                  <column datatype='real' name='NV_DW_SB_experts_sd' ordinal='31' />
+                  <column datatype='real' name='TM_experts_mean' ordinal='32' />
+                  <column datatype='real' name='TM_experts_sd' ordinal='33' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name=' WS &amp; NV'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='NV experts mean' datatype='real' name='[NV_experts_mean]' role='measure' type='quantitative' />
+            <column caption='WS experts mean' datatype='real' name='[WS_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[NV_experts_mean]' derivation='None' name='[none:NV_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[WS_experts_mean]' derivation='None' name='[none:WS_experts_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:WS_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:WS_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{03366A94-5867-40EC-9825-A330A7336357}' />
+    </worksheet>
+    <worksheet name='DW &amp; all click worker'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='DW experts mean' datatype='real' name='[DW_experts_mean]' role='measure' type='quantitative' />
+            <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[DW_experts_mean]' derivation='None' name='[none:DW_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[all_click_worker_mean]' derivation='None' name='[none:all_click_worker_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{83513A6F-3548-482A-9F14-7C0191D6F37E}' />
+    </worksheet>
+    <worksheet name='DW&amp; SB'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='DW experts mean' datatype='real' name='[DW_experts_mean]' role='measure' type='quantitative' />
+            <column datatype='real' name='[SB_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[DW_experts_mean]' derivation='None' name='[none:DW_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[SB_experts_mean]' derivation='None' name='[none:SB_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Cow]' derivation='Sum' name='[sum:Cow:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' scope='cols' value='Dan' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' scope='rows' value='Sarah' />
+          </style-rule>
+          <style-rule element='axis-title'>
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' value='36' />
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' value='36' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+              <text column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[sum:Cow:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{BA420C06-782D-41FC-A1A9-B7F2D4D804DD}' />
+    </worksheet>
+    <worksheet name='DW&amp; TM'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='DW experts mean' datatype='real' name='[DW_experts_mean]' role='measure' type='quantitative' />
+            <column datatype='real' name='[TM_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[DW_experts_mean]' derivation='None' name='[none:DW_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[TM_experts_mean]' derivation='None' name='[none:TM_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Cow]' derivation='Sum' name='[sum:Cow:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' scope='cols' value='Dan' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' scope='rows' value='Tiago' />
+          </style-rule>
+          <style-rule element='axis-title'>
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' value='36' />
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' value='36' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+              <text column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[sum:Cow:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{959208DB-1BDC-45C1-9FEA-69C98B3FEA92}' />
+    </worksheet>
+    <worksheet name='NV &amp; DW'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='DW experts mean' datatype='real' name='[DW_experts_mean]' role='measure' type='quantitative' />
+            <column caption='NV experts mean' datatype='real' name='[NV_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[DW_experts_mean]' derivation='None' name='[none:DW_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NV_experts_mean]' derivation='None' name='[none:NV_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Cow]' derivation='Sum' name='[sum:Cow:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' scope='rows' value='Dan' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' scope='cols' value='Nina' />
+          </style-rule>
+          <style-rule element='axis-title'>
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' value='36' />
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' value='36' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+              <text column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[sum:Cow:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{F5C5CC5E-166E-4288-88A2-9B82B7493397}' />
+    </worksheet>
+    <worksheet name='NV &amp; SB'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='NV experts mean' datatype='real' name='[NV_experts_mean]' role='measure' type='quantitative' />
+            <column datatype='real' name='[SB_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[NV_experts_mean]' derivation='None' name='[none:NV_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[SB_experts_mean]' derivation='None' name='[none:SB_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Cow]' derivation='Sum' name='[sum:Cow:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' scope='rows' value='Sarah' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' scope='cols' value='Nina' />
+          </style-rule>
+          <style-rule element='axis-title'>
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' value='36' />
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' value='36' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+              <text column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[sum:Cow:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{506266EE-6375-4754-885D-7D753062CA24}' />
+    </worksheet>
+    <worksheet name='NV &amp; all click worker'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='NV experts mean' datatype='real' name='[NV_experts_mean]' role='measure' type='quantitative' />
+            <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[NV_experts_mean]' derivation='None' name='[none:NV_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[all_click_worker_mean]' derivation='None' name='[none:all_click_worker_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{9DBF9D37-BE47-4178-BB27-3DE72BB40A4D}' />
+    </worksheet>
+    <worksheet name='NV&amp; TM'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='NV experts mean' datatype='real' name='[NV_experts_mean]' role='measure' type='quantitative' />
+            <column datatype='real' name='[TM_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[NV_experts_mean]' derivation='None' name='[none:NV_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[TM_experts_mean]' derivation='None' name='[none:TM_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Cow]' derivation='Sum' name='[sum:Cow:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' scope='rows' value='Tiago' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' scope='cols' value='Nina' />
+          </style-rule>
+          <style-rule element='axis-title'>
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' value='36' />
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]' value='36' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+              <text column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[sum:Cow:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{49EA5EF8-9655-4EDF-B0B0-8DDBB29F6FB2}' />
+    </worksheet>
+    <worksheet name='NV_DW &amp; all click worker'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column datatype='real' name='[NV_DW_experts_mean]' role='measure' type='quantitative' />
+            <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[NV_DW_experts_mean]' derivation='None' name='[none:NV_DW_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[all_click_worker_mean]' derivation='None' name='[none:all_click_worker_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_DW_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_DW_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{F9202D48-7CDA-44AC-8449-75153672C14F}' />
+    </worksheet>
+    <worksheet name='NV_DW_SB &amp; all click worker'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column datatype='real' name='[NV_DW_SB_experts_mean]' role='measure' type='quantitative' />
+            <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[NV_DW_SB_experts_mean]' derivation='None' name='[none:NV_DW_SB_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[all_click_worker_mean]' derivation='None' name='[none:all_click_worker_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_DW_SB_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_DW_SB_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{45A41A28-ECD1-4020-841E-E157C155E96A}' />
+    </worksheet>
+    <worksheet name='SB &amp; TM'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column datatype='real' name='[SB_experts_mean]' role='measure' type='quantitative' />
+            <column datatype='real' name='[TM_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[SB_experts_mean]' derivation='None' name='[none:SB_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[TM_experts_mean]' derivation='None' name='[none:TM_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Cow]' derivation='Sum' name='[sum:Cow:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' scope='rows' value='Tiago' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <format attr='title' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' scope='cols' value='Sarah' />
+          </style-rule>
+          <style-rule element='axis-title'>
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' value='36' />
+            <format attr='font-size' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' value='36' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+              <text column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[sum:Cow:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{1145109D-7E88-415F-9A49-A55558551138}' />
+    </worksheet>
+    <worksheet name='SB &amp; all click worker'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column datatype='real' name='[SB_experts_mean]' role='measure' type='quantitative' />
+            <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[SB_experts_mean]' derivation='None' name='[none:SB_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[all_click_worker_mean]' derivation='None' name='[none:all_click_worker_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{996CFE11-C4AA-4E4B-890E-D45DBDB4F71A}' />
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='real' name='[NV_DW_SB_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[NV_DW_SB_experts_mean]' derivation='None' name='[none:NV_DW_SB_experts_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:NV_DW_SB_experts_mean:qk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{6A394F61-3F43-451E-B5B2-A457A42F25D0}' />
+    </worksheet>
+    <worksheet name='TM &amp; all click worker'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column datatype='real' name='[TM_experts_mean]' role='measure' type='quantitative' />
+            <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[TM_experts_mean]' derivation='None' name='[none:TM_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[all_click_worker_mean]' derivation='None' name='[none:all_click_worker_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:TM_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{37EB5588-2551-439C-89CA-E520DA5CFA62}' />
+    </worksheet>
+    <worksheet name='WS &amp; DW'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='DW experts mean' datatype='real' name='[DW_experts_mean]' role='measure' type='quantitative' />
+            <column caption='WS experts mean' datatype='real' name='[WS_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[DW_experts_mean]' derivation='None' name='[none:DW_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[WS_experts_mean]' derivation='None' name='[none:WS_experts_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:WS_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:DW_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:WS_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{9A1FDCC9-8908-4954-8DE7-104FD2555E1A}' />
+    </worksheet>
+    <worksheet name='WS &amp; SB'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column datatype='real' name='[SB_experts_mean]' role='measure' type='quantitative' />
+            <column caption='WS experts mean' datatype='real' name='[WS_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[SB_experts_mean]' derivation='None' name='[none:SB_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[WS_experts_mean]' derivation='None' name='[none:WS_experts_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:WS_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:SB_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:WS_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{39E7CCF9-82F7-4591-B037-2E1D2930B9EF}' />
+    </worksheet>
+    <worksheet name='WS &amp; all click worker'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='WS experts mean' datatype='real' name='[WS_experts_mean]' role='measure' type='quantitative' />
+            <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[WS_experts_mean]' derivation='None' name='[none:WS_experts_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[all_click_worker_mean]' derivation='None' name='[none:all_click_worker_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:WS_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:WS_experts_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{FCDAF8B4-9264-4C9C-97CF-18194F01EDAD}' />
+    </worksheet>
+    <worksheet name='all experts &amp; all click worker'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='compare_summary' name='federated.0uhoa5m0sl1lca18szy191utyy1b' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0uhoa5m0sl1lca18szy191utyy1b'>
+            <column datatype='integer' name='[Cow]' role='measure' type='quantitative' />
+            <column caption='All Click Worker Mean' datatype='real' name='[all_click_worker_mean]' role='measure' type='quantitative' />
+            <column caption='All Experts Mean' datatype='real' name='[all_experts_mean]' role='measure' type='quantitative' />
+            <column-instance column='[Cow]' derivation='None' name='[none:Cow:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[all_click_worker_mean]' derivation='None' name='[none:all_click_worker_mean:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[all_experts_mean]' derivation='None' name='[none:all_experts_mean:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_experts_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]' field-type='quantitative' max='30.0' min='1.0' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_click_worker_mean:qk]</rows>
+        <cols>[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:all_experts_mean:qk]</cols>
+      </table>
+      <simple-id uuid='{8DAF35B2-9269-451E-97F6-3A58C4F88A3B}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name=' WS &amp; NV'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{128F1E8C-A8DF-4AC9-8F9B-0EF85AF32E79}' />
+    </window>
+    <window class='worksheet' name='WS &amp; DW'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3166A2BF-A035-4966-809E-254FDE387081}' />
+    </window>
+    <window class='worksheet' name='WS &amp; SB'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0B3BA38E-565C-4680-BF95-3E2DCAA20D42}' />
+    </window>
+    <window class='worksheet' name='NV &amp; DW'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1B7ACA98-F889-4AE3-946C-F60134F4A1A4}' />
+    </window>
+    <window class='worksheet' name='NV &amp; SB'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6D79B047-E5D6-4AD8-96C0-256AD28A59DE}' />
+    </window>
+    <window class='worksheet' name='DW&amp; SB'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{9A715A32-B26C-4312-AD95-DA3EB0555BD2}' />
+    </window>
+    <window class='worksheet' name='DW&amp; TM'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F4B5E591-81E1-4A41-99F0-16B7C01D7FBE}' />
+    </window>
+    <window class='worksheet' name='NV&amp; TM'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F27C05CF-7F57-4533-9BBF-EA31BE62BFC8}' />
+    </window>
+    <window class='worksheet' name='SB &amp; TM'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2F75F442-4609-4B51-BC49-5D45A2108316}' />
+    </window>
+    <window class='worksheet' name='DW &amp; all click worker'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{9C5EF543-9398-4A15-91F6-FF4C6F41235A}' />
+    </window>
+    <window class='worksheet' name='NV &amp; all click worker'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F1EDA635-7FCA-40ED-966F-D89481630097}' />
+    </window>
+    <window class='worksheet' name='SB &amp; all click worker'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{4139ADAC-7C45-46B3-A98A-A5AE3A438129}' />
+    </window>
+    <window class='worksheet' name='WS &amp; all click worker'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{CF5050B2-C5FD-44DE-993A-CB1690FEB203}' />
+    </window>
+    <window class='worksheet' name='NV_DW &amp; all click worker'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B66FD2A0-896B-4D3C-B434-DF5BD4ED50EF}' />
+    </window>
+    <window class='worksheet' name='TM &amp; all click worker'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{268EEDC6-FC3E-458A-AEA6-F0ACED3D6DEB}' />
+    </window>
+    <window class='worksheet' maximized='true' name='NV_DW_SB &amp; all click worker'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{11FAD842-796B-4344-95E6-A65B95762834}' />
+    </window>
+    <window class='worksheet' name='all experts &amp; all click worker'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0uhoa5m0sl1lca18szy191utyy1b].[none:Cow:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{75D21C77-1A54-4F8B-9969-F2987217BF4F}' />
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{01F0D69E-0D5C-42C8-8284-3C6B1A36B1D8}' />
+    </window>
+  </windows>
+</workbook>
