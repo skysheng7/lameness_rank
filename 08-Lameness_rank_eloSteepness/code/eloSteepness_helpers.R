@@ -288,15 +288,11 @@ count_unique_worker_per_pair <- function(cowLR_df){
   return(count_worker_per_pair)
 }
 
-unique_pair_id_generation <- function(milestone_df) {
-  # Calculate the maximum and minimum values for each row
-  max_values <- pmax(milestone_df$winner, milestone_df$loser)
-  min_values <- pmin(milestone_df$winner, milestone_df$loser)
-  
+unique_pair_id_generation <- function(cowLR_df) {
   # Create the pair_id column by pasting the max and min values together with an underscore
-  milestone_df$pair_id <- paste0(max_values, "_", min_values)
+  cowLR_df$pair_id <- paste0(cowLR_df$cow_L, "_", cowLR_df$cow_R)
   
-  return(milestone_df)
+  return(cowLR_df)
 }
 
 subsample_and_process <- function(split_df, worker_num) {
@@ -320,16 +316,17 @@ subsample_and_process <- function(split_df, worker_num) {
   return(sampled_df_processed)
 }
 
-icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num = 14, milestone_df, click_worker_experts, expert_col_name) {
+icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num = 14, cowLR_df, click_worker_experts, expert_col_name) {
   all_worker_rank <- click_worker_experts[, c("Cow", "all_click_worker_mean")]
   all_expert_rank <- click_worker_experts[, c("Cow", expert_col_name)]
   set.seed(7)
   # prepare an empty df to store change in icc results
   icc_change_df <- data.frame()
   
-  milestone_df <- unique_pair_id_generation(milestone_df)
+  # generate unique pair ID
+  cowLR_df <- unique_pair_id_generation(cowLR_df)
   # Split the data frame by pair_id
-  split_df <- split(milestone_df, milestone_df$pair_id)
+  split_df <- split(cowLR_df, cowLR_df$pair_id)
   
   for (worker_num in 1:max_worker_num) {
     for (round in 1:random_rounds){

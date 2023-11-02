@@ -124,7 +124,7 @@ worker_basyeian <- elo_baysian_result
 worker_score <- scores(worker_basyeian)
 worker_score<- worker_score[, c("id", "mean", "q045", "q955")]
 names(worker_score) <- c("id", "worker_mean", "worker_q045", "worker_q955")
-load("../results/large files/NV_DW_SB_experts_elo_baysian.rdata")
+load("../results/large files/NV_DW_SB_TM_experts_elo_baysian.rdata")
 expt_basyeian <- elo_baysian_result
 expt_score <- scores(expt_basyeian)
 expt_score<- expt_score[, c("id", "mean", "q045", "q955")]
@@ -159,6 +159,6 @@ elo_plot <- ggplot(worker_expt_sum, aes(x = expert_mean, y = worker_mean)) +
   scale_y_continuous(limits = c(1, 30))
 
 # Save the plot
-ggsave("../plots/expert_crowd_worker_hiearchy_compare.png", plot = elo_plot, width = 10, height = 8, limitsize = FALSE)
+ggsave("../plots/expert_crowd_worker_hiearchy_compare_NV_DW_SB_TM.png", plot = elo_plot, width = 10, height = 8, limitsize = FALSE)
 
 
