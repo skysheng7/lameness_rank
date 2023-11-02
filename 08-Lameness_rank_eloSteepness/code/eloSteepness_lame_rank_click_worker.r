@@ -120,5 +120,12 @@ click_worker_experts <- random_elo_steep(winn_loser_processed_milestone_max, cli
 ####### subsampling of crowd workers after picking 5 milestone cows ############
 ## 7045 (GS 1.9), 6096 (GS 2.4), 6086(GS 2.87), 4035 (GS 3.1), 5087 (GS 3.9) ###
 ################################################################################
+all_unique_cows <- unique(c(cowLR$cow_L, cowLR$cow_R))
+milestone <- c(7045, 6096, 6086, 4035, 5087)
+filtered_cows <- all_unique_cows[!(all_unique_cows)%in%milestone]
 
+icc_change_worker_num_milestone(random_rounds = 10, max_worker_num = 14, 
+                                cowLR, click_worker_experts,
+                                expert_col_name = "NV_DW_SB_TM_experts_mean",
+                                filtered_cows, milestone, type = "min")
 

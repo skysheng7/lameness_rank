@@ -309,14 +309,88 @@ subsample_and_process <- function(split_df, worker_num) {
     
   }
   
-  
   sampled_df$pair_id <- NULL
-  sampled_df_processed <- swap_winner_loser(sampled_df, FALSE)
   
-  return(sampled_df_processed)
+  
+  return(sampled_df)
 }
 
-icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num = 14, cowLR_df, click_worker_experts, expert_col_name) {
+create_winner_loser_degree_df <- function(final_df) {
+  winner <- vector()
+  loser <- vector()
+  degree <- vector()
+  
+  for (i in 1:nrow(final_df)) {
+    if (final_df$response[i] <= 0) {
+      winner <- c(winner, final_df$cow_L[i])
+      loser <- c(loser, final_df$cow_R[i])
+      degree <- c(degree, abs(final_df$response[i]))
+    } else {
+      winner <- c(winner, final_df$cow_R[i])
+      loser <- c(loser, final_df$cow_L[i])
+      degree <- c(degree, abs(final_df$response[i]))
+    }
+  }
+  
+  new_df <- data.frame(
+    winner = winner,
+    loser = loser,
+    degree = degree
+  )
+  
+  return(new_df)
+}
+
+five_milestone_compare <- function(final_df_sampled, filtered_cows, milestone, type, min_worker_per_pair) {
+  
+  # Create an empty data frame with the same columns as final_df_sampled
+  milestone_compare <- final_df_sampled[-(1:nrow(final_df_sampled)),]
+  
+  for (cow in filtered_cows) {
+    position_secure <- FALSE  # Flag variable
+    
+    for (stone in milestone) {
+      cur_pair_results <- final_df_sampled[
+        (final_df_sampled$cow_L == cow & final_df_sampled$cow_R == stone) |
+          (final_df_sampled$cow_L == stone & final_df_sampled$cow_R == cow),]
+      
+      if (type == "max") {
+        milestone_compare <- rbind(milestone_compare, cur_pair_results)
+        
+      } else if (type == "min" & !position_secure) {
+        milestone_compare <- rbind(milestone_compare, cur_pair_results)
+        pair_avg <- mean(cur_pair_results$response)
+        
+        if ((pair_avg <= -2 & cur_pair_results$cow_L[1] == stone) |
+            (pair_avg >= 2 & cur_pair_results$cow_R[1] == stone)) {
+          position_secure <- TRUE
+        }
+        
+      } else if (type == "min" & position_secure) {
+        new_df <- data.frame(
+          cow_L = rep(cow, min_worker_per_pair),
+          cow_R = rep(stone, min_worker_per_pair),
+          question_num = sample(-200:-100, min_worker_per_pair, replace = TRUE),
+          HIT = sample(-200:-100, min_worker_per_pair, replace = TRUE),
+          Worker_id = sample(-200:-100, min_worker_per_pair, replace = TRUE),
+          response = rep(3, min_worker_per_pair)
+        )
+        # Ensure the columns order match before binding rows
+        new_df <- new_df[names(milestone_compare)]
+        milestone_compare <- rbind(milestone_compare, new_df)
+      }
+    }
+  }
+  
+  return(milestone_compare)
+}
+
+
+
+icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num = 14, 
+                                            cowLR_df, click_worker_experts,
+                                            expert_col_name, filtered_cows, 
+                                            milestone, type) {
   all_worker_rank <- click_worker_experts[, c("Cow", "all_click_worker_mean")]
   all_expert_rank <- click_worker_experts[, c("Cow", expert_col_name)]
   set.seed(7)
@@ -331,7 +405,20 @@ icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num =
   for (worker_num in 1:max_worker_num) {
     for (round in 1:random_rounds){
       # subsample worker
-      sampled_df_processed <- subsample_and_process(split_df, worker_num)
+      sampled_cowLR <- subsample_and_process(split_df, worker_num)
+      
+      # compare with milestone cows
+      sampled_cowLR_milestone <- five_milestone_compare(sampled_cowLR, filtered_cows, milestone, type, worker_num)
+      
+      # count how many comparisons were made with milestone cows
+      count_compare <- sampled_cowLR_milestone[which(sampled_cowLR_milestone$question_num > 0),]
+      total_compare <- nrow(unique(count_compare[, c("question_num", "HIT")]))
+      
+      # convert to winner and loser format
+      sampled_winner_lower <- create_winner_loser_degree_df(sampled_cowLR_milestone)
+      
+      # duplicate the rows and swap winner and loser if response is 0
+      sampled_df_processed <- swap_winner_loser(sampled_winner_lower, FALSE)
       
       # run elosteepness from matrix
       elo_baysian_result <- run_elo(sampled_df_processed)
@@ -341,22 +428,22 @@ icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num =
       colnames(score_sum)[colnames(score_sum) == "id"] <- "Cow"
       score_sum2_click_worker <- score_sum[, c("Cow", "mean")]
       
-      # calculate ICC against all workers all response
+      # calculate spearman correlation against all workers all response
       temp_compare <- merge(all_worker_rank, score_sum2_click_worker)
-      icc_result <- icc(temp_compare[, 2:ncol(temp_compare)], model = "twoway", type = "agreement", unit = "single")
-      icc_worker_values <- icc_result$value  
-      # calculate 
+      spearman_worker_values <- cor(temp_compare$mean, temp_compare$all_click_worker_mean, method="spearman")
+      
+      # calculate ICC against all experts' response
       temp_compare <- merge(all_expert_rank, score_sum2_click_worker)
       icc_expert_result <- icc(temp_compare[, 2:ncol(temp_compare)], model = "twoway", type = "agreement", unit = "single")
       icc_expert_values <- icc_expert_result$value  
       
-      temp <- data.frame(num_of_crowd_worker = worker_num, icc_subsample_with_full_worker = icc_worker_values, icc_subsample_with_full_expert= icc_expert_values)
+      temp <- data.frame(num_of_crowd_worker = worker_num, num_of_comparison = total_compare, spearman_subsample_with_full_worker = spearman_worker_values, icc_subsample_with_full_expert= icc_expert_values)
       
       icc_change_df <- rbind(icc_change_df, temp)
       
       # save eloSteepness results
       save(elo_baysian_result, paste0("../results/large files/elo_milestone_", worker_num, "_worker_v", round, ".rdata"))
-      save(score_sum, paste0("../results/elo_score_milestone_", worker_num, "_worker_v", round, ".rdata"))
+      save(score_sum, paste0("../results/large files/elo_score_milestone_", worker_num, "_worker_v", round, ".rdata"))
       
     }
   }
