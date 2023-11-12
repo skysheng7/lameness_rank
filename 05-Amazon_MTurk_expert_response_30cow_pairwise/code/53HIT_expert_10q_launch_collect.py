@@ -47,7 +47,7 @@ today = date.today().strftime("%b-%d-%Y")
 
 input_dir = "04-generate_54HIT_html_experts/results"
 key_dir ='/Users/skysheng/Library/CloudStorage/OneDrive-UBC/University of British Columbia/Research/PhD Project/Amazon project phase 2/data/Amazon MTurk'
-output_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/TM" # this can be "../results/DW", "../results/HE" depending on different worker
+output_dir = "05-Amazon_MTurk_expert_response_30cow_pairwise/results/KI" # this can be "../results/DW", "../results/HE" depending on different worker
 
 """
 ###############################################################################
@@ -63,7 +63,7 @@ html_files = sorted(filter(lambda f: f.endswith(".html") and f.startswith("HIT")
 master_submitted_tasks_tracker = process_html_files(html_files, input_dir, create_hits_in_live, key_dir, max_worker_num)
 master_submitted_tasks_tracker = master_submitted_tasks_tracker.sort_values(by='HIT').reset_index(drop=True)
 
-master_submitted_tasks_tracker.to_csv(os.path.join(output_dir, ('all_submitted_tracker_TM_' + today + '.csv')))
+master_submitted_tasks_tracker.to_csv(os.path.join(output_dir, ('all_submitted_tracker_KI_' + today + '.csv')))
 
 # a for loop to print out the HIT address of all HITs in master_submitted_tasks_tracker, in the format of "HIT0: address"
 for index, row in master_submitted_tasks_tracker.iterrows():
@@ -79,7 +79,7 @@ for index, row in master_submitted_tasks_tracker.iterrows():
 """
 
 # read in submitted tasks
-master_submitted_tasks_tracker = pd.read_csv(os.path.join(output_dir, ("re_submitted_tracker_TMOct-24-2023.csv")))
+master_submitted_tasks_tracker = pd.read_csv(os.path.join(output_dir, ("re_submitted_tracker_KI2Nov-11-2023.csv")))
 
 # Create a client
 client, mturk_environment = create_mturk_client(create_hits_in_live, key_dir)
@@ -142,10 +142,10 @@ for index, row in master_submitted_tasks_tracker.iterrows():
 
 
 # Save DataFrames to CSV files
-master_worker_response_tracker.to_csv(os.path.join(output_dir, ('master_worker_response_tracke_TM_resub' + today + '.csv')), index=False)
-master_approved_responses.to_csv(os.path.join(output_dir, ('master_approved_responses_TM_resub' + today + '.csv')), index=False)
-master_rejected_responses.to_csv(os.path.join(output_dir, ('master_rejected_responses_TM_resub' + today + '.csv')), index=False)
-master_all_responses.to_csv(os.path.join(output_dir, ('master_all_responses_TM_resub' + today + '.csv')), index=False)
+master_worker_response_tracker.to_csv(os.path.join(output_dir, ('master_worker_response_tracke_KI_resub2' + today + '.csv')), index=False)
+master_approved_responses.to_csv(os.path.join(output_dir, ('master_approved_responses_KI_resub2' + today + '.csv')), index=False)
+master_rejected_responses.to_csv(os.path.join(output_dir, ('master_rejected_responses_KI_resub2' + today + '.csv')), index=False)
+master_all_responses.to_csv(os.path.join(output_dir, ('master_all_responses_KI_resub2' + today + '.csv')), index=False)
 
 
 
@@ -233,18 +233,18 @@ for index, row in master_submitted_tasks_tracker.iterrows():
 ###############################################################################
 """
 
-master_submitted_tasks_tracker = pd.read_csv(os.path.join(output_dir, ("all_submitted_tracker_TM_Oct-24-2023.csv")))
-master_worker_response_tracker = pd.read_csv(os.path.join(output_dir, ("master_worker_response_tracke_TM_Oct-24-2023.csv")))
+master_submitted_tasks_tracker = pd.read_csv(os.path.join(output_dir, ("all_submitted_tracker_KI_Nov-11-2023.csv")))
+master_worker_response_tracker = pd.read_csv(os.path.join(output_dir, ("master_worker_response_tracke_KINov-11-2023.csv")))
 
 unsubmitted_hits = find_unsubmitted_hits(master_submitted_tasks_tracker, master_worker_response_tracker)
 unsubmitted_hit_list = get_unsubmitted_hit_list(unsubmitted_hits)
-
+unsubmitted_hit_list = [49]
 
 # Call the function with the unsubmitted_hit_list
 unsubmitted_master_submitted_tasks_tracker = post_unsubmitted_hits(unsubmitted_hit_list, input_dir, create_hits_in_live, key_dir, max_worker_num)
 unsubmitted_master_submitted_tasks_tracker = unsubmitted_master_submitted_tasks_tracker.sort_values(by='HIT').reset_index(drop=True)
 
-unsubmitted_master_submitted_tasks_tracker.to_csv(os.path.join(output_dir, ('re_submitted_tracker_TM' + today + '.csv')))
+unsubmitted_master_submitted_tasks_tracker.to_csv(os.path.join(output_dir, ('re_submitted_tracker_KI2' + today + '.csv')))
 
 # a for loop to print out the HIT address of all HITs in unsubmitted_master_submitted_tasks_tracker, in the format of "HIT0: address"
 for index, row in unsubmitted_master_submitted_tasks_tracker.iterrows():
@@ -269,3 +269,5 @@ merge_responses(["Sep-22-2023", "resub_Sep-22-2023"], ['ARUXAWT9AUG92', 'A2EE2N0
 # Sarah
 merge_responses(["SB_Oct-01-2023", "SB_resub_Oct-01-2023"], ['ARUXAWT9AUG92'], 'Sarah', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/SB")
 
+# Kiyomi
+merge_responses(["KINov-11-2023", "KI_resubNov-11-2023", "KI_resub2Nov-11-2023"], ['ARUXAWT9AUG92', 'A2EE2N0X2ZPJ5E'], 'Kiyomi', output_dir, "05-Amazon_MTurk_expert_response_30cow_pairwise/results/KI")

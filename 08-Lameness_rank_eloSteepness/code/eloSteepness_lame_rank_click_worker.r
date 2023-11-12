@@ -3,6 +3,8 @@ library(EloSteepness)
 library(RColorBrewer)
 library(dplyr)
 library(irr)
+library(gridExtra) 
+library(ggplot2)
 source("eloSteepness_helpers.R")
 
 
@@ -119,13 +121,95 @@ click_worker_experts <- random_elo_steep(winn_loser_processed_milestone_max, cli
 ################################################################################
 ####### subsampling of crowd workers after picking 5 milestone cows ############
 ## 7045 (GS 1.9), 6096 (GS 2.4), 6086(GS 2.87), 4035 (GS 3.1), 5087 (GS 3.9) ###
+#### increment the number of crowd workers subsampled, each level 10 rounds ####
 ################################################################################
 all_unique_cows <- unique(c(cowLR$cow_L, cowLR$cow_R))
 milestone <- c(7045, 6096, 6086, 4035, 5087)
 filtered_cows <- all_unique_cows[!(all_unique_cows)%in%milestone]
 
-icc_change_worker_num_milestone(random_rounds = 10, max_worker_num = 14, 
+# incrmentally subsample 1-14 crowd workers for each video pairs, at each level
+# conduct random sampling of crowd workers 10 rounds
+correlation_change_df <- icc_change_worker_num_milestone(random_rounds = 10, max_worker_num = 14, 
                                 cowLR, click_worker_experts,
-                                expert_col_name = "NV_DW_SB_TM_experts_mean",
+                                expert_col_name = "NV_DW_SB_experts_mean",
                                 filtered_cows, milestone, type = "min")
+
+# calcualte the mean and SE of correlation at each level of num_of_crowd_worker
+spearman_with_full_worker_sum <- avg_se(correlation_change_df, 
+                                        value_var = "spearman_subsample_with_full_worker", 
+                                        by_var = c("num_of_crowd_worker"))
+icc_with_full_expert_sum <- avg_se(correlation_change_df, 
+                                        value_var = "icc_subsample_with_full_expert", 
+                                        by_var = c("num_of_crowd_worker"))
+subsample_sum <- merge(spearman_with_full_worker_sum, icc_with_full_expert_sum)
+correlation_change_df_sum <- merge(correlation_change_df, subsample_sum)
+
+# Plot A
+plot_A <- ggplot(correlation_change_df_sum, aes(x = num_of_crowd_worker, y = spearman_subsample_with_full_worker)) +
+  geom_point(color = "lightblue", alpha = 0.5, size = 10) +
+  geom_point(aes(y = spearman_subsample_with_full_worker_cor_mean), color = "dodgerblue", size = 15) +
+  geom_errorbar(aes(
+      x = num_of_crowd_worker,
+      ymin = spearman_subsample_with_full_worker_ymin, 
+      ymax = spearman_subsample_with_full_worker_ymax, 
+      width = 0.2
+    )
+  ) + 
+  labs(
+    x = "Number of crowd workers",
+    #y = "Spearman correlation between \nsubsampled and complete \nresponses from crowd workers"
+    y = "Spearman correlation coefficient"
+  ) +
+  theme_classic() +
+  theme(
+    text = element_text(size = 60),
+    axis.text.x = element_text(size = 60)
+  ) +
+  scale_y_continuous(limits = c(0.5, 1), expand = expansion(mult = c(0, .1)))
+
+# Plot B
+plot_B <- ggplot(correlation_change_df_sum, aes(x = num_of_crowd_worker, y = icc_subsample_with_full_expert)) +
+  geom_point(color = "lightblue", alpha = 0.5, size = 10) +
+  geom_point(aes(y = icc_subsample_with_full_expert_cor_mean), color = "dodgerblue", size = 15) +
+  geom_errorbar(aes(
+      x = num_of_crowd_worker,
+      ymin = icc_subsample_with_full_expert_cor_mean - icc_subsample_with_full_expert_cor_SE, 
+      ymax = icc_subsample_with_full_expert_cor_mean + icc_subsample_with_full_expert_cor_SE, 
+      width = 0.2
+    )
+  ) +
+  labs(
+    x = "Number of crowd workers",
+    #y = "ICC between subsampled and \ncomplete responses from \nexperienced assessors"
+    y = "ICC"
+  ) +
+  theme_classic() +
+  theme(
+    text = element_text(size = 60),
+    axis.text.x = element_text(size = 60)
+  ) +
+  scale_y_continuous(limits = c(0.5, 1), expand = expansion(mult = c(0, .1)))
+
+# Define the margin
+margin = theme(plot.margin = unit(c(1, 1, 1, 1), "inches"))
+
+# Add the margin to plot_A and plot_B
+plot_A <- plot_A + margin
+plot_B <- plot_B + margin
+
+# Arrange the plots side by side using arrangeGrob()
+combined_grob <- arrangeGrob(plot_A, plot_B, ncol=2)
+
+# Save the combined plot
+ggsave("../plots/combined_plot.png", plot = combined_grob, width = 30, height = 13, limitsize = FALSE)
+
+
+################################################################################
+########################### increamental subsampling ###########################
+################################################################################
+correlation_change_increment <- icc_change_worker_num_increamental(
+  random_rounds = 10, worker_num_seq = c(2, 4, 6, 8, 10, 12, 14), unknown_freq_max = 0.9,
+  cowLR_df = cowLR, click_worker_experts, expert_col_name = "NV_DW_SB_experts_mean")
+
+
 

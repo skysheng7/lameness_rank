@@ -204,16 +204,27 @@ run_elo <- function(winn_loser_sheet){
   interaction_matrix <- interaction_matrix_generation(winn_loser_sheet) 
   
   # use elosteepness from matrix
-  elo_baysian_result <- elo_steepness_from_matrix(interaction_matrix, 
-                                                  algo="fixed_sd", 
-                                                  cores = 4,
-                                                  chains = 4,
-                                                  iter = 5000, 
-                                                  warmup = 1000,
-                                                  seed = 88,)
+  elo_baysian_result <- elo_steepness_from_matrix_set(interaction_matrix)
   
   return(elo_baysian_result)
 }
+
+
+elo_steepness_from_matrix_set <- function(interaction_matrix) {
+  # use elosteepness from matrix
+  elo_baysian_result <- elo_steepness_from_matrix(interaction_matrix, 
+                                                  algo="fixed_sd", 
+                                                  cores = 2,
+                                                  chains = 2,
+                                                  iter = 5000, 
+                                                  warmup = 1000,
+                                                  seed = 88,
+                                                  control = list(adapt_delta = 0.99)
+  )
+  
+  return(elo_baysian_result)
+}
+
 
 #' Random Elo Steepness Calculation and Saving
 #'
@@ -391,11 +402,9 @@ icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num =
                                             cowLR_df, click_worker_experts,
                                             expert_col_name, filtered_cows, 
                                             milestone, type) {
-  all_worker_rank <- click_worker_experts[, c("Cow", "all_click_worker_mean")]
-  all_expert_rank <- click_worker_experts[, c("Cow", expert_col_name)]
   set.seed(7)
-  # prepare an empty df to store change in icc results
-  icc_change_df <- data.frame()
+  # prepare an empty df to store change in spearman correlation results
+  correlation_change_df <- data.frame()
   
   # generate unique pair ID
   cowLR_df <- unique_pair_id_generation(cowLR_df)
@@ -404,6 +413,7 @@ icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num =
   
   for (worker_num in 1:max_worker_num) {
     for (round in 1:random_rounds){
+      print(paste0("worker number: ", worker_num, ", round: ", round))
       # subsample worker
       sampled_cowLR <- subsample_and_process(split_df, worker_num)
       
@@ -429,26 +439,181 @@ icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num =
       score_sum2_click_worker <- score_sum[, c("Cow", "mean")]
       
       # calculate spearman correlation against all workers all response
-      temp_compare <- merge(all_worker_rank, score_sum2_click_worker)
-      spearman_worker_values <- cor(temp_compare$mean, temp_compare$all_click_worker_mean, method="spearman")
-      
-      # calculate ICC against all experts' response
-      temp_compare <- merge(all_expert_rank, score_sum2_click_worker)
-      icc_expert_result <- icc(temp_compare[, 2:ncol(temp_compare)], model = "twoway", type = "agreement", unit = "single")
-      icc_expert_values <- icc_expert_result$value  
+      compare_full_result <- compare_with_full_hierarchy(click_worker_experts, expert_col_name,score_sum2_click_worker)
+      spearman_worker_values <- compare_full_result$spearman_worker_values
+      # ICC against all experts' hierarchy 
+      icc_expert_values <- compare_full_result$icc_expert_values
       
       temp <- data.frame(num_of_crowd_worker = worker_num, num_of_comparison = total_compare, spearman_subsample_with_full_worker = spearman_worker_values, icc_subsample_with_full_expert= icc_expert_values)
       
-      icc_change_df <- rbind(icc_change_df, temp)
+      correlation_change_df <- rbind(correlation_change_df, temp)
       
       # save eloSteepness results
-      save(elo_baysian_result, paste0("../results/large files/elo_milestone_", worker_num, "_worker_v", round, ".rdata"))
-      save(score_sum, paste0("../results/large files/elo_score_milestone_", worker_num, "_worker_v", round, ".rdata"))
+      save(elo_baysian_result, file = paste0("../results/large files/elo_milestone_", worker_num, "_worker_v", round, ".rdata"))
+      save(score_sum, file = paste0("../results/large files/elo_score_milestone_", worker_num, "_worker_v", round, ".rdata"))
       
     }
   }
 
-  save(icc_change_df, "../results/milestone_worker_num_ICC_change.rdata")
+  save(correlation_change_df, file = "../results/milestone_worker_num_ICC_change.rdata")
   
-  return(icc_change_df)
+  return(correlation_change_df)
+}
+
+
+
+# Define a function to calculate standard error
+standard_error <- function(x) {
+  sd(x) / sqrt(length(x))
+}
+
+avg_se <- function(df, value_var, by_var) {
+  cor_se_df <- aggregate(df[, value_var], by = list(df[, by_var]), FUN = standard_error)
+  colnames(cor_se_df) <- c("num_of_crowd_worker", paste0(value_var, "_cor_SE"))
+  cor_mean_df <- aggregate(df[, value_var], by = list(df[, by_var]), FUN = mean)
+  colnames(cor_mean_df) <- c("num_of_crowd_worker", paste0(value_var, "_cor_mean"))
+  cor_mean_se_df <- merge(cor_mean_df, cor_se_df)
+  cor_mean_se_df[, paste0(value_var, "_ymin")] <- cor_mean_se_df[, paste0(value_var, "_cor_mean")] - cor_mean_se_df[, paste0(value_var, "_cor_SE")]
+  cor_mean_se_df[, paste0(value_var, "_ymax")] <- cor_mean_se_df[, paste0(value_var, "_cor_mean")] + cor_mean_se_df[, paste0(value_var, "_cor_SE")]
+  
+  return(cor_mean_se_df)
+}
+
+compare_with_full_hierarchy <- function(click_worker_experts, expert_col_name,score_sum2_click_worker) {
+  all_worker_rank <- click_worker_experts[, c("Cow", "all_click_worker_mean")]
+  all_expert_rank <- click_worker_experts[, c("Cow", expert_col_name)]
+  
+  # calculate spearman correlation against all workers all response
+  temp_compare <- merge(all_worker_rank, score_sum2_click_worker)
+  spearman_worker_values <- cor(temp_compare$mean, temp_compare$all_click_worker_mean, method="spearman")
+  
+  # calculate ICC against all experts' response
+  temp_compare <- merge(all_expert_rank, score_sum2_click_worker)
+  icc_expert_result <- icc(temp_compare[, 2:ncol(temp_compare)], model = "twoway", type = "agreement", unit = "single")
+  icc_expert_values <- icc_expert_result$value  
+  
+  return(list(spearman_worker_values= spearman_worker_values, 
+              icc_expert_values = icc_expert_values))
+}
+
+increment_unknown_pct <- function(unknown_pct_seq_index, unknown_pct_seq_all, 
+                                  reduce_dyad_result, click_worker_experts, 
+                                  expert_col_name, worker_num, round, comp_round, 
+                                  correlation_change_increment) {
+  for (ind in 1:length(unknown_pct_seq_index)) {
+    cur_unknown_pct <- unknown_pct_seq_all[ind]
+    cur_unknown_pct_seq_index <- unknown_pct_seq_index[ind]
+    cur_matrix <- reduce_dyad_result[["matrices"]][[cur_unknown_pct_seq_index]]
+    
+    print(paste0("worker number: ", worker_num, ", round: ", round, ", unknown_freq: ", cur_unknown_pct, ", round: ", comp_round))
+    
+    # run elosteepness from matrix
+    elo_baysian_result <- elo_steepness_from_matrix_set(cur_matrix)
+    
+    # get individual's score
+    score_sum <- scores(elo_baysian_result)
+    colnames(score_sum)[colnames(score_sum) == "id"] <- "Cow"
+    score_sum2_click_worker <- score_sum[, c("Cow", "mean")]
+    
+    # calculate spearman correlation against all workers all response
+    compare_full_result <- compare_with_full_hierarchy(click_worker_experts, expert_col_name,score_sum2_click_worker)
+    spearman_worker_values <- compare_full_result$spearman_worker_values
+    # ICC against all experts' hierarchy 
+    icc_expert_values <- compare_full_result$icc_expert_values
+    
+    temp <- data.frame(
+      num_of_crowd_worker = worker_num, num_of_crowd_worker_round = round, 
+      num_of_comparison_round = comp_round, unknown_pct = cur_unknown_pct, 
+      spearman_subsample_with_full_worker = spearman_worker_values, 
+      icc_subsample_with_full_expert= icc_expert_values)
+    
+    correlation_change_increment <- rbind(correlation_change_increment, temp)
+    
+    # save eloSteepness results
+    save(elo_baysian_result, file = paste0(
+      "../results/large files/elo_increamental_", worker_num, "_worker_v", round, "_", cur_unknown_pct, "v", comp_round, ".rdata"))
+    save(score_sum, file = paste0(
+      "../results/large files/elo_score_increamental_", worker_num, "_worker_v", round, "_", cur_unknown_pct, "v", comp_round, ".rdata"))
+    
+  }
+  
+  return(correlation_change_increment)
+}
+
+random_sample_worker_per_level <- function(random_rounds, worker_num, split_df, 
+                                           click_worker_experts, 
+                                           expert_col_name,
+                                           correlation_change_increment, unknown_freq_max) {
+  # randomly sample workers for "random_rounds" number of rounds
+  for (round in 1:random_rounds){
+    
+    # subsample worker
+    sampled_cowLR <- subsample_and_process(split_df, worker_num)
+    
+    # convert to winner and loser format
+    sampled_winner_lower <- create_winner_loser_degree_df(sampled_cowLR)
+    
+    # duplicate the rows and swap winner and loser if response is 0
+    sampled_df_processed <- swap_winner_loser(sampled_winner_lower, FALSE)
+    
+    # convert winner loser dataframe into a interaction matrix
+    interaction_matrix <- interaction_matrix_generation(sampled_df_processed) 
+    
+    # randomly remove dyads (video pairs) for "random_rounds" number of rounds
+    for (comp_round in 1:random_rounds) {
+      
+      reduce_dyad_result <- remove_dyads(
+        interaction_matrix,
+        removal_mode = "by_dyad",
+        stop_at = unknown_freq_max,
+        max_out = NULL
+      )
+      
+      # incremental steps in the percentage of unknown dyads
+      unknown_pct_seq <- seq(0.1, unknown_freq_max, by = 0.1)
+      unknown_pct_seq_all <- c(0, unknown_pct_seq)
+      unknown_pct_seq_index <- c(1, round(unknown_pct_seq * ((ncol(interaction_matrix) * (ncol(interaction_matrix) -1))/2)))
+      
+      correlation_change_increment <- increment_unknown_pct(unknown_pct_seq_index, unknown_pct_seq_all, 
+                                                            reduce_dyad_result, click_worker_experts, 
+                                                            expert_col_name, worker_num, round, comp_round, 
+                                                            correlation_change_increment)
+      
+    }
+  }
+  
+  return(correlation_change_increment)
+}
+
+
+
+icc_change_worker_num_increamental <- function(random_rounds = 10, worker_num_seq = c(2, 4, 6, 8, 10, 12, 14), 
+                                               unknown_freq_max = 0.9,
+                                            cowLR_df, click_worker_experts,
+                                            expert_col_name = "NV_DW_SB_experts_mean") {
+  
+  set.seed(7)
+  # prepare an empty df to store change in spearman correlation results
+  correlation_change_increment <- data.frame()
+  
+  # generate unique pair ID
+  cowLR_df <- unique_pair_id_generation(cowLR_df)
+  # Split the data frame by pair_id
+  split_df <- split(cowLR_df, cowLR_df$pair_id)
+  
+  for (worker_num in worker_num_seq) {
+    correlation_change_increment <- random_sample_worker_per_level(random_rounds, 
+                                                                   worker_num, 
+                                                                   split_df,
+                                                                   click_worker_experts,
+                                                                   expert_col_name,
+                                                                   correlation_change_increment, 
+                                                                   unknown_freq_max)
+    
+  }
+  
+  worker_num_string = paste(worker_num_seq, collapse = "_")
+  save(correlation_change_increment, file = "../results/increamental_worker_num_ICC_change_", worker_num_string, ".rdata")
+  
+  return(correlation_change_increment)
 }
