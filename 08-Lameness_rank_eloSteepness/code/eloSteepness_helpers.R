@@ -93,9 +93,7 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
       return("black")
     } else {
       value <- record$GS
-      if (value < 2) value <- 2
-      if (value > 4) value <- 4
-      return(rev(viridis(21))[round((value - 2) * 10) + 1])
+      return(rev(magma(21))[round(((value - 1)/4) * 20) + 1])
     }
   })
   
@@ -106,9 +104,20 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
       border_cols[cn_locs] <- NA
     }
   }
+
   
+  # Calculate the number of colors needed
+  num_colors <- 21
+  color_palette <- rev(magma(num_colors))
+  
+  # Setup plot layout to accommodate both the main plot and the color bar
+  layout(matrix(c(1, 2), nrow = 1, byrow = TRUE), widths = c(7,1), heights = c(1))
+  
+  # Main plot
+  par(mar = c(6.5, 4, 5, 0) + 0.1) # Adjust right margin to create more white space
+  
+
   # setup
-  par(mar = c(7, 4.1, 4.1, 2.1))
   plot(0, 0, type = "n", xlim = c(1, 30), ylim = yl, yaxs = "i",
        xaxs = "i", axes = FALSE, xlab = "", ylab = "", bg = "white", xaxt = "n", yaxt = "n") # Turn off automatic axis plotting
   
@@ -116,8 +125,8 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
   axis(1, at = seq(1, 31, by = 4), cex.axis = 2) # Adjust font size with cex.axis
   
   # Adjust the distance of axis labels
-  title(ylab = "Density", line = 0.5, cex.lab=5) # Increase font size and adjust distance
-  title(xlab = xlab, line = 4.5, cex.lab=5) # Increase font size and adjust distance
+  title(ylab = "Density", line = 0.5, cex.lab=4) # Increase font size and adjust distance
+  title(xlab = xlab, line = 4.5, cex.lab=4) # Increase font size and adjust distance
   
   # draw the filled posteriors
   for (i in seq_len(ncol(res))) {
@@ -135,7 +144,28 @@ plot_scores <- function(x, gs_record, adjustpar = 4, subset_ids = NULL, include_
     p$x[p$x < 0] <- 0
     polygon(c(p$x, rev(p$x)), c(rep(0, length(p$x)), rev(p$y)), border = border_cols[i])
   }
-
+  
+  
+  
+  # Color bar plot
+  par(mar = c(5, 0, 7, 8) + 0.1) # Adjust margins for the color bar, more space on the right
+  
+  # Start the color bar plot, set up its coordinate system but do not draw axes
+  plot(0, 0, type = "n", xlim = c(0, 1), ylim = c(1, 5), axes = FALSE, xlab = "", ylab = "")
+  
+  # Draw the color bar
+  bar_height <- (5 - 1) / num_colors
+  for (i in 1:num_colors) {
+    rect(0, 1 + (i - 1) * bar_height, 1, 1 + i * bar_height, col = color_palette[i], border = NA)
+  }
+  
+  # Add an axis to the color bar with larger font size
+  axis(4, at = seq(1, 5, by = 1), labels = seq(1, 5, by = 1), las = 2, cex.axis = 2) # Increased font size
+  
+  # Add "Average gait score" text aligned with the left side of the color bar
+  mtext("Average\ngait score", side = 3, line = 1, cex = 2.6, adj = 0)
+  
+  
 }
 
 
@@ -440,11 +470,13 @@ icc_change_worker_num_milestone <- function(random_rounds = 10, max_worker_num =
       
       # calculate spearman correlation against all workers all response
       compare_full_result <- compare_with_full_hierarchy(click_worker_experts, expert_col_name,score_sum2_click_worker)
-      spearman_worker_values <- compare_full_result$spearman_worker_values
+      spearman_worker_result <- compare_full_result$spearman_worker_values
+      spearman_worker_values <- spearman_worker_result$estimate
+      spearman_worker_p_values <- spearman_worker_result$p.value
       # ICC against all experts' hierarchy 
       icc_expert_values <- compare_full_result$icc_expert_values
       
-      temp <- data.frame(num_of_crowd_worker = worker_num, num_of_comparison = total_compare, spearman_subsample_with_full_worker = spearman_worker_values, icc_subsample_with_full_expert= icc_expert_values)
+      temp <- data.frame(num_of_crowd_worker = worker_num, num_of_comparison = total_compare, spearman_subsample_with_full_worker = spearman_worker_values, spearman_subsample_with_full_worker_p_value = spearman_worker_p_values, icc_subsample_with_full_expert= icc_expert_values)
       
       correlation_change_df <- rbind(correlation_change_df, temp)
       
@@ -485,7 +517,7 @@ compare_with_full_hierarchy <- function(click_worker_experts, expert_col_name,sc
   
   # calculate spearman correlation against all workers all response
   temp_compare <- merge(all_worker_rank, score_sum2_click_worker)
-  spearman_worker_values <- cor(temp_compare$mean, temp_compare$all_click_worker_mean, method="spearman")
+  spearman_worker_values <- cor.test(temp_compare$mean, temp_compare$all_click_worker_mean, method="spearman")
   
   # calculate ICC against all experts' response
   temp_compare <- merge(all_expert_rank, score_sum2_click_worker)
@@ -517,7 +549,9 @@ increment_unknown_pct <- function(unknown_pct_seq_index, unknown_pct_seq_all,
     
     # calculate spearman correlation against all workers all response
     compare_full_result <- compare_with_full_hierarchy(click_worker_experts, expert_col_name,score_sum2_click_worker)
-    spearman_worker_values <- compare_full_result$spearman_worker_values
+    spearman_worker_result <- compare_full_result$spearman_worker_values
+    spearman_worker_values <- spearman_worker_result$estimate
+    spearman_worker_p_values <- spearman_worker_result$p.value
     # ICC against all experts' hierarchy 
     icc_expert_values <- compare_full_result$icc_expert_values
     
@@ -525,6 +559,7 @@ increment_unknown_pct <- function(unknown_pct_seq_index, unknown_pct_seq_all,
       num_of_crowd_worker = worker_num, num_of_crowd_worker_round = round, 
       num_of_comparison_round = comp_round, unknown_pct = cur_unknown_pct, 
       spearman_subsample_with_full_worker = spearman_worker_values, 
+      spearman_subsample_with_full_worker_p_valeu = spearman_worker_p_values,
       icc_subsample_with_full_expert= icc_expert_values)
     
     correlation_change_increment <- rbind(correlation_change_increment, temp)

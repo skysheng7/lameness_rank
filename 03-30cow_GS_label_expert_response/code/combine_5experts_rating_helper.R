@@ -97,9 +97,13 @@ spearman_change_rounds_expert_num <- function(gs) {
           
           # calculate spearman correlation
           # Calculate Spearman rank correlation
-          correlation <- cor(gs_compare$GS_avg, gs_compare$GS_sampled_avg, method="spearman")
+          correlation <- cor.test(gs_compare$GS_avg, gs_compare$GS_sampled_avg, method="spearman")
           
-          temp <- data.frame(num_of_experts = num_of_experts, num_of_rounds = num_of_rounds, cor_subsample_with_full = correlation)
+          # If you want to extract and print just the correlation coefficient and the p-value
+          correlation_coefficient <- correlation$estimate
+          p_value <- correlation$p.value
+          
+          temp <- data.frame(num_of_experts = num_of_experts, num_of_rounds = num_of_rounds, cor_subsample_with_full = correlation_coefficient, p_value = p_value)
           
           cor_change_df <- rbind(cor_change_df, temp)
         }
