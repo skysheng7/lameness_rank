@@ -258,13 +258,3 @@ ggsave("../plots/combined_plot_vertical.png", plot = combined_plot_with_title, w
 
 
 
-
-################################################################################
-########################### increamental subsampling ###########################
-################################################################################
-correlation_change_increment <- icc_change_worker_num_increamental(
-  random_rounds = 10, worker_num_seq = c(2, 4, 6, 8, 10, 12, 14), unknown_freq_max = 0.9,
-  cowLR_df = cowLR, click_worker_experts, expert_col_name = "NV_DW_SB_experts_mean")
-
-
-
