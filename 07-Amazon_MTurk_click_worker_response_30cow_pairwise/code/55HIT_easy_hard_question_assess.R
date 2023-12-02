@@ -23,8 +23,8 @@ cowLR_response_pass_pos <- read.csv("../results/cowLR_response_clickWorker_55HIT
 cowLR_response_pass_neg <- read.csv("../results/cowLR_response_clickWorker_55HITs_pass_neg.csv", header = TRUE)
 cowLR_response_pass_both <- read.csv("../results/cowLR_response_clickWorker_55HITs_pass_both.csv", header = TRUE)
 
-expert_response <- read.csv(paste0(answer_dir, "/all_HIT_answer_DW_NV_SB_TM.csv"), header = TRUE)
-cowlR_expert <- read.csv(paste0(answer_dir, "/cowLR_response_DW_NV_SB_TM.csv"), header = TRUE)
+expert_response <- read.csv(paste0(answer_dir, "/all_HIT_answer_DW_NV_SB_KI.csv"), header = TRUE)
+cowlR_expert <- read.csv(paste0(answer_dir, "/cowLR_response_DW_NV_SB_KI.csv"), header = TRUE)
 colnames(cowlR_expert)[colnames(cowlR_expert) == "expert"] <- "Worker_id"
 
 ################################################################################
