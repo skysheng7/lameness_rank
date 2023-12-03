@@ -527,3 +527,19 @@ compare_with_full_hierarchy <- function(click_worker_experts, expert_col_name,sc
   return(list(spearman_worker_values= spearman_worker_values, 
               icc_expert_values = icc_expert_values))
 }
+
+calculate_scc <- function(var1, var2){
+  # Calculate Spearman rank correlation using cor.test
+  cor_test_result <- cor.test(var1, var2, method = "spearman")
+  
+  # Print the result
+  print(cor_test_result)
+  
+  # If you want to extract and print just the correlation coefficient and the p-value
+  correlation_coefficient <- cor_test_result$estimate
+  p_value <- cor_test_result$p.value
+  
+  cat("Correlation coefficient:", correlation_coefficient, "\n")
+  cat("P-value:", p_value, "\n")
+  
+}
