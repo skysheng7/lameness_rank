@@ -170,7 +170,8 @@ plot_A <- ggplot(correlation_change_df_sum, aes(x = num_of_crowd_worker, y = spe
     axis.text.x = element_text(size = 50)
   ) +
   scale_y_continuous(limits = c(0.5, 1), expand = expansion(mult = c(0, .1))) +
-  ggtitle("(A) Subsampled VS All Crowd Worker Hierarchies") +
+  #ggtitle("(A) Subsampled VS all crowd worker hierarchies") +
+  ggtitle("(A)") +
   theme(plot.title = element_text(size = 40, hjust = 0, vjust = 0.5))+ 
   theme(plot.margin = margin(t = 0.5, r = 1, b = 1, l = 1, unit = "cm")) + 
   theme(
@@ -201,7 +202,8 @@ plot_B <- ggplot(correlation_change_df_sum, aes(x = num_of_crowd_worker, y = icc
     axis.text.x = element_text(size = 50)
   ) +
   scale_y_continuous(limits = c(0.5, 1), expand = expansion(mult = c(0, .1)))+
-  ggtitle("(B) Subsampled Workers VS All Experienced \nAssessor Hierarchies") +
+  #ggtitle("(B) Subsampled workers VS all experienced \nassessor hierarchies") +
+  ggtitle("(B)") +
   theme(plot.title = element_text(size = 40, hjust = 0, vjust = 0.5))+
   theme(plot.margin = margin(t = 0.5, r = 1, b = 1, l = 1, unit = "cm")) +
   theme(
@@ -232,7 +234,8 @@ plot_C <- ggplot(correlation_change_df_sum, aes(x = num_of_crowd_worker, y = num
     axis.text.x = element_text(size = 50)
   ) +
   scale_y_continuous(limits = c(70, 120), expand = expansion(mult = c(0, 0.1)))+
-  ggtitle("(C) Number of comparisons used") +
+  #ggtitle("(C) Number of comparisons used") +
+  ggtitle("(C)") +
   theme(plot.title = element_text(size = 40, hjust = 0, vjust = 0.5))+
   theme(plot.margin = margin(t = 0.5, r = 1, b = 1, l = 1, unit = "cm"))
 

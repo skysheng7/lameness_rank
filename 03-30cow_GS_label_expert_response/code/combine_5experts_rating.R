@@ -1,4 +1,5 @@
 library(lubridate)
+library(ggplot2)
 library(irr)
 source("combine_5experts_rating_helper.R")
 gs_p1 <- read.csv("../results/gs_response_Aug-12-2023.csv", header = TRUE)
@@ -77,8 +78,6 @@ cor_mean_se_df <- merge(cor_mean_df, cor_se_df)
 cor_mean_se_df <- cor_mean_se_df[-which((cor_mean_se_df$num_of_experts == 5) & (cor_mean_se_df$num_of_rounds == 3)),]
 
 # plot the cor_mean_se_df
-library(ggplot2)
-
 # Convert num_of_rounds to a factor
 cor_mean_se_df$num_of_rounds_factor <- factor(cor_mean_se_df$num_of_rounds)
 
@@ -90,7 +89,7 @@ cor_plot <- ggplot(cor_mean_se_df, aes(x = num_of_experts, y = cor_mean)) +
   scale_color_manual(values = c(`1` = "lightblue", `2` = "dodgerblue", `3` = "darkblue")) +
   labs(
     x = "Number of assessors",
-    y = "Spearman correlation between \nsubsampled and complete responses",
+    y = expression(atop(paste(r[s], " between subsampled"), "and complete responses")),
     size = "Number \nof rounds",
     color = "Number \nof rounds"
   ) +
