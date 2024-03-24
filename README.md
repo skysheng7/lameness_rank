@@ -63,5 +63,4 @@ Thank you for your interest in our project. We hope you find the data and code i
 
 - **Date of Video Collection:** March 30, 2021 - June 11, 2021
 - **Location of Video Collection:** UBC Dairy Education and Research Centre, 6947 No. 7 Highway, Agassiz, BC V0M 1A0, Canada  
-- **Date of Data Collection on Amazon MTurk:** April 25, 2023 - present
 - **Funding:** This project was supported by the NSERC Industrial Research Chair, University of British Columbia Land and Food System Internal Research Grant.
