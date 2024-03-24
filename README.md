@@ -1,6 +1,6 @@
 # Lameness Rank Analysis
 
-This repository contains the data and code for our project: **Utilizing Crowd-Sourced Data from Amazon MTurk to Derive Lameness Rankings of Diary Cows**.
+This repository contains the data and code for our project: **Which Cow is Most Lame? Redefining Lameness Assessment Using Crowd-Sourced Data**.
 
 ## Repository Structure
 Here's a brief overview of the repository's structure. The prefix number in each folder name indicates the sequence of analysis. Each folder contains code and results in the sub-analysis:
@@ -54,7 +54,7 @@ Thank you for your interest in our project. We hope you find the data and code i
   - Email: <forisbori@gmail.com>
 
 - **Contributor:** Varinia Cabrera
-  - ORCID: NA
+  - ORCID: https://orcid.org/0009-0007-7819-6612
   - Affiliation 1: University of British Columbia  
   - Affiliation 2: Universidad de la República de Uruguay
   - Email: <variniacabrera6@gmail.com>
