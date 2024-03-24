@@ -1,4 +1,4 @@
-![gif](04-generate_54HIT_html_experts/results/platform_example.gif)
+![gif](04-generate_54HIT_html_experts/results/platform_example_short.gif)
 
 # Redefining Lameness Assessment Using Crowd-Sourced Data
 
