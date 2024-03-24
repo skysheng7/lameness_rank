@@ -1,4 +1,6 @@
-# Lameness Rank Analysis
+![gif](04-generate_54HIT_html_experts/results/platform_example.gif)
+
+# Redefining Lameness Assessment Using Crowd-Sourced Data
 
 This repository contains the data and code for our project: **Which Cow is Most Lame? Redefining Lameness Assessment Using Crowd-Sourced Data**.
 
