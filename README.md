@@ -4,6 +4,9 @@
 
 This repository contains the data and code for our project: **Which Cow is Most Lame? Redefining Lameness Assessment Using Crowd-Sourced Data**.
 
+# Example Videos in Lameness Hierarchy
+![gif](04-generate_54HIT_html_experts/results/08-Lameness_rank_eloSteepness/plots/hierarchy_example.gif)
+
 ## Repository Structure
 Here's a brief overview of the repository's structure. The prefix number in each folder name indicates the sequence of analysis. Each folder contains code and results in the sub-analysis:
 
