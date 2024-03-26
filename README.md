@@ -26,7 +26,6 @@ Thank you for your interest in our project. We hope you find the data and code i
 
 ## Dataset Information
 
-- **Title of Dataset:** Replication Data for: Utilizing Crowd-Sourced Data from Amazon MTurk to Derive Lameness Rankings of Diary Cows
 - **Dataset DOI:** <https://doi.org/10.5683/SP3/QF1VTK>
 - **Dataset Created:** 2023-09-17
 - **Created by:** Kehan (Sky) Sheng
