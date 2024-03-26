@@ -62,7 +62,7 @@ Thank you for your interest in our project. We hope you find the data and code i
 - **Contributor:** Varinia Cabrera
   - ORCID: 0009-0007-7819-6612
   - Affiliation 1: University of British Columbia  
-  - Affiliation 2: Universidad de la República de Uruguay
+  - Affiliation 2: University of the Republic, Uruguay
   - Email: <variniacabrera6@gmail.com>
 
 ## Project Information
